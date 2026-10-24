@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+# pipeline run artefacts (regenerate with `python src/main.py`)
+output/
+data/

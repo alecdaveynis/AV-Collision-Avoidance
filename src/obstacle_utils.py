@@ -1,36 +1,57 @@
 import cv2
 
+import config
+
+
 def estimate_distance(cls, pixel_height, focal_length):
-    # Monocular Depth Estimation
-    # Person/Bike height approx 1.7m, Car approx 1.5m
-    real_h = 1.7 if cls in [0, 1] else 1.5
-    return (focal_length * real_h) / pixel_height if pixel_height > 0 else 0
+    """Monocular depth from box height and an assumed real-world height."""
+    real_h = config.CLASS_HEIGHT_M.get(int(cls), config.DEFAULT_HEIGHT_M)
+    return (focal_length * real_h) / pixel_height if pixel_height > 0 else 0.0
 
-def draw_tracked_obstacles(image, yolo_results, model_names, focal_length):
-    tracked_objects = [] # List to store data for the Behavior Manager
-    
-    if yolo_results.boxes is not None and yolo_results.boxes.id is not None:
-        boxes = yolo_results.boxes.xyxy.cpu().numpy().astype(int)
-        ids = yolo_results.boxes.id.cpu().numpy().astype(int)
-        clss = yolo_results.boxes.cls.cpu().numpy().astype(int)
-        confs = yolo_results.boxes.conf.cpu().numpy()
 
-        for box, track_id, cls, conf in zip(boxes, ids, clss, confs):
-            x1, y1, x2, y2 = box
-            
-            if cls in [0, 1, 2, 3, 7] and conf > 0.4:
-                # 1. Calculate distance
-                pixel_height = y2 - y1
-                dist_m = estimate_distance(cls, pixel_height, focal_length)
-                
-                # 2. Append to our data list for Phase 3
-                tracked_objects.append({'id': track_id, 'class': cls, 'dist': dist_m})
-                
-                # 3. Drawing logic
-                color = (0, 0, 255) if dist_m < 7 else (0, 255, 255)
-                cv2.rectangle(image, (x1, y1), (x2, y2), color, 3)
-                label = f"ID:{track_id} {model_names[cls]} {dist_m:.1f}m"
-                cv2.putText(image, label, (x1, y1 - 10), 
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
-                            
-    return image, tracked_objects 
+def extract_tracks(yolo_results, focal_length):
+    """Convert YOLO/BoT-SORT output into a list of track dicts.
+
+    Each track has: id, class, box (x1,y1,x2,y2), mono_dist. Fusion and planning
+    stages add lidar_dist, dist, dist_source and in_path.
+    """
+    tracks = []
+    boxes_obj = yolo_results.boxes
+    if boxes_obj is None or boxes_obj.id is None:
+        return tracks
+
+    boxes = boxes_obj.xyxy.cpu().numpy().astype(int)
+    ids = boxes_obj.id.cpu().numpy().astype(int)
+    clss = boxes_obj.cls.cpu().numpy().astype(int)
+    confs = boxes_obj.conf.cpu().numpy()
+
+    for box, track_id, cls, conf in zip(boxes, ids, clss, confs):
+        if cls not in config.TRACKED_CLASSES or conf <= config.MIN_CONF:
+            continue
+        x1, y1, x2, y2 = [int(v) for v in box]
+        tracks.append({
+            'id': int(track_id),
+            'class': int(cls),
+            'box': (x1, y1, x2, y2),
+            'mono_dist': estimate_distance(cls, y2 - y1, focal_length),
+        })
+    return tracks
+
+
+def draw_tracked_obstacles(image, tracks, model_names):
+    """Draw boxes. Red/yellow = on the ego path (close/far), green = off path."""
+    for t in tracks:
+        x1, y1, x2, y2 = t['box']
+        dist = t['dist']
+        if not t.get('in_path', True):
+            color = (0, 200, 0)
+        else:
+            color = (0, 0, 255) if dist < 7 else (0, 255, 255)
+        cv2.rectangle(image, (x1, y1), (x2, y2), color, 3)
+        tag = 'L' if t.get('dist_source') == 'lidar' else 'M'
+        label = f"ID:{t['id']} {model_names[t['class']]} {dist:.1f}m {tag}"
+        if t.get('ttc_learned') is not None and t['ttc_learned'] < config.TTC_MAX - 0.05:
+            label += f" ttc{t['ttc_learned']:.1f}s"
+        cv2.putText(image, label, (x1, max(y1 - 10, 15)),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
+    return image
