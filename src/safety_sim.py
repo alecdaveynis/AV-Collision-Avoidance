@@ -16,6 +16,7 @@ Actuation: commanded deceleration through a first-order lag (tau = 0.2 s), max 8
 Policies compared
   planner-analytic : BehaviorManager, range-rate TTC          (the production planner)
   planner-kalman   : BehaviorManager, TTC from the 3D Kalman track
+  planner-improved : SafeBehaviorManager (src/safe_braking.py): delay-compensated required-deceleration braking, Kalman mode
   rss              : Responsibility-Sensitive Safety longitudinal rule (Shalev-Shwartz et al. 2017)
   aeb              : Kalman TTC AEB (partial brake < 2.5 s, full < 1.2 s)
   predictive       : constant-velocity prediction of ego/object conflict within 4 s
@@ -40,6 +41,7 @@ import config
 import predict
 import tracker3d as t3
 from behavior_manager import BehaviorManager
+from safe_braking import make_behavior_manager
 
 DT = 0.1
 MAX_DECEL = 8.0
@@ -182,9 +184,9 @@ class NonePolicy:
 
 
 class PlannerPolicy:
-    def __init__(self, mode):
-        self.pm = BehaviorManager(ttc_mode=mode)
-        self.name = f'planner-{mode}'
+    def __init__(self, mode, planner='baseline'):
+        self.pm = make_behavior_manager(planner, mode)
+        self.name = f'planner-{mode}' if planner == 'baseline' else f'planner-{planner}-{mode}'
 
     def decide(self, tracks, clusters, pose, v, dt):
         obs = []
@@ -192,7 +194,7 @@ class PlannerPolicy:
             raw = [c.x_near for c in clusters
                    if abs(c.x - tr.rel_pos[0]) < 1.5 and abs(c.y - tr.rel_pos[1]) < 1.5]
             obs.append({'id': tr.id, 'dist': min(raw) if raw else tr.bumper_range,
-                        'in_path': _inpath(tr), 'ttc_3d': tr.ttc()[0]})
+                        'in_path': _inpath(tr), 'ttc_3d': tr.ttc()[0], 'closing_3d': tr.closing_speed, 'track_hits': tr.hits})
         lid = min([c.x_near for c in clusters
                    if c.x_near > 0 and abs(c.y) < config.PATH_MAX_LATERAL + 0.5 * c.ext_y], default=99.0)
         return MAX_DECEL * self.pm.update_state(obs, lid, dt=dt, ego_speed=v).brake
@@ -256,6 +258,7 @@ POLICIES = {
     'none': NonePolicy,
     'planner-analytic': lambda: PlannerPolicy('analytic'),
     'planner-kalman': lambda: PlannerPolicy('kalman'),
+    'planner-improved': lambda: PlannerPolicy('kalman', planner='improved'),
     'rss': RSSPolicy,
     'aeb': AEBPolicy,
     'predictive': PredictivePolicy,
@@ -373,6 +376,7 @@ def main():
     a = ap.parse_args()
     table = summarize(evaluate(a.n, a.seed))
     print_table(table)
+    a.plots_dir.mkdir(parents=True, exist_ok=True)
     (a.plots_dir / 'safety_sim.json').write_text(json.dumps(table, indent=1))
     plot(table, a.plots_dir / 'safety_sim.png')
     print(f"\nwrote {a.plots_dir / 'safety_sim.png'}")

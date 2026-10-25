@@ -1,0 +1,166 @@
+{
+  "baseline_format": 1,
+  "baseline_version": "v1",
+  "note": "reference planner at introduction of the red-team suite (kalman mode, macOS/py3.12)",
+  "created_utc": "2026-10-25T04:35:37+00:00",
+  "git_commit": "aeba567",
+  "framework_version": "0.1.0",
+  "sut": {
+    "name": "safety_sim",
+    "planner_mode": "kalman",
+    "config_overrides": {},
+    "dt": 0.1,
+    "max_decel": 8.0,
+    "actuator_lag": 0.2
+  },
+  "criteria": {
+    "near_miss_gap": 0.5,
+    "hazard_decel": 3.0,
+    "hazard_margin": 2.0,
+    "response_cmd": 0.5,
+    "response_window": 1.5,
+    "unnecessary_cmd": 3.0,
+    "unnecessary_req": 1.0,
+    "unnecessary_min_s": 0.3,
+    "perception_range": 40.0,
+    "kinds": [
+      "collision",
+      "near_miss",
+      "missed_hazard",
+      "unnecessary_braking"
+    ],
+    "include_hard_collisions": false,
+    "anomaly_lost_steps": 3,
+    "anomaly_range_error": 2.0,
+    "reference_delay_s": 0.2
+  },
+  "scenarios": {
+    "fail_01_collision_lead_braking": {
+      "fingerprint": "313751220949",
+      "result": {
+        "collision": true,
+        "impact_speed": 0.34,
+        "min_gap": 0.0,
+        "min_ttc": 0.018140412305097567,
+        "brake_reaction_time": 0.0,
+        "missed_hazards": 0,
+        "unnecessary_braking_s": 0.0,
+        "max_state": "STOPPED",
+        "peak_cmd_decel": 8.0,
+        "first_brake_t": 10.700000000000001,
+        "collision_class": "avoidable",
+        "failure_kinds": [
+          "collision"
+        ]
+      }
+    },
+    "fail_02_collision_lead_braking": {
+      "fingerprint": "ace6f149090d",
+      "result": {
+        "collision": true,
+        "impact_speed": 2.6,
+        "min_gap": 0.0,
+        "min_ttc": 0.007957000489127413,
+        "brake_reaction_time": 0.0,
+        "missed_hazards": 0,
+        "unnecessary_braking_s": 0.0,
+        "max_state": "STOPPED",
+        "peak_cmd_decel": 8.0,
+        "first_brake_t": 9.0,
+        "collision_class": "avoidable",
+        "failure_kinds": [
+          "collision"
+        ]
+      }
+    },
+    "fail_03_collision_lead_braking": {
+      "fingerprint": "0f89253ac902",
+      "result": {
+        "collision": true,
+        "impact_speed": 1.7,
+        "min_gap": 0.0,
+        "min_ttc": 0.056084116327729236,
+        "brake_reaction_time": 0.0,
+        "missed_hazards": 0,
+        "unnecessary_braking_s": 0.0,
+        "max_state": "STOPPED",
+        "peak_cmd_decel": 8.0,
+        "first_brake_t": 7.2,
+        "collision_class": "avoidable",
+        "failure_kinds": [
+          "collision"
+        ]
+      }
+    },
+    "fail_04_collision_lead_braking": {
+      "fingerprint": "3f5fe1d12add",
+      "result": {
+        "collision": true,
+        "impact_speed": 3.08,
+        "min_gap": 0.0,
+        "min_ttc": 0.02955871840962726,
+        "brake_reaction_time": 0.6000000000000005,
+        "missed_hazards": 0,
+        "unnecessary_braking_s": 0.0,
+        "max_state": "STOPPED",
+        "peak_cmd_decel": 8.0,
+        "first_brake_t": 7.1000000000000005,
+        "collision_class": "avoidable",
+        "failure_kinds": [
+          "collision"
+        ]
+      }
+    },
+    "pass_01_lead_braking": {
+      "fingerprint": "b1ba5c1f45d9",
+      "result": {
+        "collision": false,
+        "impact_speed": 0.0,
+        "min_gap": 0.035769977111755225,
+        "min_ttc": 0.05134018067037609,
+        "brake_reaction_time": 0.10000000000000053,
+        "missed_hazards": 0,
+        "unnecessary_braking_s": 0.0,
+        "max_state": "STOPPED",
+        "peak_cmd_decel": 8.0,
+        "first_brake_t": 1.4000000000000001,
+        "collision_class": "none",
+        "failure_kinds": []
+      }
+    },
+    "pass_02_steady": {
+      "fingerprint": "6e781cd9a36a",
+      "result": {
+        "collision": false,
+        "impact_speed": 0.0,
+        "min_gap": 0.8046453124971009,
+        "min_ttc": 0.40193361054177484,
+        "brake_reaction_time": 0.10000000000000009,
+        "missed_hazards": 0,
+        "unnecessary_braking_s": 0.0,
+        "max_state": "STOPPED",
+        "peak_cmd_decel": 8.0,
+        "first_brake_t": 0.6000000000000001,
+        "collision_class": "none",
+        "failure_kinds": []
+      }
+    },
+    "pass_03_parked": {
+      "fingerprint": "489dbe603cad",
+      "result": {
+        "collision": false,
+        "impact_speed": 0.0,
+        "min_gap": 4.812099999998566,
+        "min_ttc": 1.6130202002203597,
+        "brake_reaction_time": null,
+        "missed_hazards": 0,
+        "unnecessary_braking_s": 0.0,
+        "max_state": "STOPPED",
+        "peak_cmd_decel": 8.0,
+        "first_brake_t": 0.2,
+        "collision_class": "none",
+        "failure_kinds": []
+      }
+    }
+  }
+}

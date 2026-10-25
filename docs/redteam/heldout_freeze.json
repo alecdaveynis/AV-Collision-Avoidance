@@ -1,0 +1,40 @@
+{
+ "purpose": "Improved-planner configuration frozen BEFORE the held-out sets were run for the first time. If the fingerprint in a held-out report differs, the planner changed after the freeze.",
+ "frozen_unix": 1792904209,
+ "improved_planner_fingerprint": {
+  "sha256": "60cec23e5f2d5bf9",
+  "constants": {
+   "SAFE_ACTUATOR_LAG": 0.25,
+   "SAFE_A_IMMEDIATE": 6.0,
+   "SAFE_A_SLOW": 1.5,
+   "SAFE_A_STOP": 4.0,
+   "SAFE_A_UNCONFIRMED": 3.0,
+   "SAFE_MARGIN_FACTOR": 1.25,
+   "SAFE_MIN_TRACK_HITS": 5,
+   "SAFE_RELEASE_RATIO": 0.7,
+   "STOP_BASE_DIST": 2.0,
+   "SLOW_BASE_DIST": 6.0,
+   "SLOW_HEADWAY": 1.0,
+   "TTC_SLOW": 3.0,
+   "TTC_STOP": 1.0,
+   "EMERGENCY_DECEL": 8.0,
+   "ESCALATE_FRAMES": 2,
+   "RELEASE_FRAMES": 5,
+   "DIST_EMA_ALPHA": 0.5,
+   "MIN_CLOSING_SPEED": 0.5
+  }
+ },
+ "heldout_sets": [
+  "heldout_random",
+  "heldout_speed_range",
+  "heldout_near_boundary",
+  "heldout_faults"
+ ],
+ "heldout_runs_before_freeze": 0,
+ "design_iterations_on_dev_sets": [
+  "v0: required-deceleration policy with delay-compensated gap, proportional braking, TTC cannot STOP. dev_random: 0 avoidable collisions but 16% unnecessary braking (hard stops on the first frames of every track).",
+  "v1: obstacles whose closing speed is not yet measured are capped at SAFE_A_UNCONFIRMED (found by inspecting the t=0 hard stops).",
+  "v2: Kalman closing speed trusted only from SAFE_MIN_TRACK_HITS=5 hits; raw LiDAR-minimum range-rate not used for demand in kalman mode (found by inspecting hard stops on 3-hit tracks whose closing speed was 2x the truth under distance noise).",
+  "Constants SAFE_ACTUATOR_LAG, SAFE_MARGIN_FACTOR, SAFE_A_SLOW, SAFE_A_STOP, SAFE_A_IMMEDIATE, SAFE_RELEASE_RATIO were set a priori and not changed during iteration."
+ ]
+}

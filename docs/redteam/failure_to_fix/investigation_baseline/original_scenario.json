@@ -1,0 +1,18 @@
+{
+  "ego_speed": 19.909,
+  "lead_speed": 7.955,
+  "initial_gap": 30.581,
+  "lead_decel": 5.414,
+  "brake_onset_s": 1.601,
+  "perception_latency_s": 0.304,
+  "distance_noise_std_m": 0.456,
+  "dropout_prob": 0.0,
+  "detection_loss_start_s": 1.375,
+  "detection_loss_duration_s": 1.387,
+  "ttc_error_factor": 1.0,
+  "ghost_prob": 0.0,
+  "duration_s": 14.0,
+  "seed": 1577662154,
+  "name": "top_finding",
+  "schema_version": 1
+}

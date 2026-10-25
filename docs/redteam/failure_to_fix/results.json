@@ -1,0 +1,428 @@
+{
+ "command": "python -m autonomy_redteam fix-demo --seed 42 --budget 100",
+ "discovery": {
+  "sims": 100,
+  "failing": 28,
+  "first_failure_sim": 1,
+  "findings": [
+   {
+    "severity": 240.7,
+    "members": 9,
+    "signature": "collision | faults: none | lead_braking"
+   },
+   {
+    "severity": 239.7,
+    "members": 5,
+    "signature": "collision | faults: detection_loss | lead_braking"
+   },
+   {
+    "severity": 232.4,
+    "members": 1,
+    "signature": "collision | faults: detection_loss | parked"
+   },
+   {
+    "severity": 224.2,
+    "members": 1,
+    "signature": "collision | faults: detection_loss | steady"
+   },
+   {
+    "severity": 184.6,
+    "members": 1,
+    "signature": "collision | faults: detection_loss, perception_latency | lead_braking"
+   }
+  ]
+ },
+ "minimization": {
+  "minimized": {
+   "ego_speed": 19.5,
+   "lead_speed": 20.0,
+   "initial_gap": 80.0,
+   "lead_decel": 2.0,
+   "brake_onset_s": 1.5,
+   "perception_latency_s": 0.0,
+   "distance_noise_std_m": 0.0,
+   "dropout_prob": 0.0,
+   "detection_loss_start_s": 0.0,
+   "detection_loss_duration_s": 0.0,
+   "ttc_error_factor": 1.0,
+   "ghost_prob": 0.0,
+   "duration_s": 14.0,
+   "seed": 1577662154,
+   "name": "known_failure_minimized",
+   "schema_version": 1
+  },
+  "necessary_faults": [],
+  "reproducible": {
+   "status": "reproducible",
+   "deterministic_replay": true,
+   "fails_with_its_seed": true,
+   "seed_failure_rate_minimized": 1.0,
+   "seed_failure_rate_original": 1.0,
+   "n_seeds": 20
+  }
+ },
+ "diagnosis": {
+  "verdict": "primary",
+  "primary": [
+   "planner_logic"
+  ],
+  "contributing": [],
+  "outcome_improved_by": [],
+  "inconclusive_reasons": [],
+  "mechanism": {
+   "t_first_non_drive": 8.5,
+   "t_first_stopped": 10.3,
+   "t_hazard": 8.700000000000001,
+   "gap_at_stopped": 10.52599990844763,
+   "closing_at_stopped": 13.01999908447262,
+   "distance_needed_at_full_brake": 14.501023235321027,
+   "standstill_margin": 2.0,
+   "slowing_phase_s": 1.5999999999999996,
+   "mean_cmd_during_slowing": 2.7294117647058824,
+   "mean_required_during_slowing": 5.286700024368806,
+   "peak_required_during_slowing": 9.941378018999606,
+   "collided": true,
+   "min_gap": 0.0,
+   "impact_speed": 7.5794531241058944
+  }
+ },
+ "improvement": {
+  "minimized": {
+   "baseline": {
+    "n": 16,
+    "collisions": 16,
+    "failures": 16,
+    "mean_min_gap_m": 0.0,
+    "mean_impact_speed_mps": 6.58,
+    "worst_impact_speed_mps": 7.3
+   },
+   "improved": {
+    "n": 16,
+    "collisions": 0,
+    "failures": 0,
+    "mean_min_gap_m": 7.65,
+    "mean_impact_speed_mps": 0.0,
+    "worst_impact_speed_mps": 0.0
+   }
+  },
+  "original_fault_laden": {
+   "baseline": {
+    "n": 16,
+    "collisions": 16,
+    "failures": 16,
+    "mean_min_gap_m": 0.0,
+    "mean_impact_speed_mps": 13.99,
+    "worst_impact_speed_mps": 14.07
+   },
+   "improved": {
+    "n": 16,
+    "collisions": 16,
+    "failures": 16,
+    "mean_min_gap_m": 0.0,
+    "mean_impact_speed_mps": 12.27,
+    "worst_impact_speed_mps": 12.69
+   }
+  },
+  "original_attribution_by_planner": {
+   "baseline": {
+    "verdict": "primary",
+    "primary": [
+     "planner_logic"
+    ],
+    "contributing": [],
+    "lines": [
+     "attribution: primary root cause: Planner decision logic / thresholds",
+     "  - Object detection: error observed, ground-truth replacement does not change the outcome; longest lost-track run 10 steps, no lead return in 50% of window steps",
+     "  - Distance estimation: error observed, ground-truth replacement does not change the outcome; zero-mean range residual rms 0.30 m after removing the 0.3 s lag; raw-return jitter 0.50 m",
+     "  - Reaction latency (perception): error observed, ground-truth replacement does not change the outcome; perceived range best matches the true range 0.3 s earlier (rms 3.31 m at zero lag -> 0.31 m at the fitted lag)",
+     "  - Planner decision logic / thresholds: primary root cause; with every perception component ideal the planner still fails in 8/8 seeds (90% CI 0.75..1.00); the RSS reference on the same inputs fails in 0.00 of seeds (a comparison point, not ground truth)"
+    ]
+   },
+   "improved": {
+    "verdict": "joint",
+    "primary": [
+     "object_detection",
+     "reaction_latency"
+    ],
+    "contributing": [],
+    "lines": [
+     "attribution: joint / ambiguous root cause between: Object detection, Reaction latency (perception)",
+     "  - Object detection: joint root cause (ambiguous split); longest lost-track run 14 steps, no lead return in 53% of window steps",
+     "  - Distance estimation: error observed, ground-truth replacement does not change the outcome; zero-mean range residual rms 0.30 m after removing the 0.3 s lag; raw-return jitter 0.50 m",
+     "  - Reaction latency (perception): joint root cause (ambiguous split); perceived range best matches the true range 0.3 s earlier (rms 2.96 m at zero lag -> 0.31 m at the fitted lag)"
+    ]
+   }
+  }
+ },
+ "validation": {
+  "n": 300,
+  "seed": 31337,
+  "summary": {
+   "baseline": {
+    "n": 300,
+    "failure": {
+     "k": 104,
+     "n": 300,
+     "rate": 0.3466666666666667,
+     "ci95": [
+      0.2951,
+      0.4022
+     ]
+    },
+    "collision": {
+     "k": 78,
+     "n": 300,
+     "rate": 0.26,
+     "ci95": [
+      0.2136,
+      0.3124
+     ]
+    },
+    "avoidable_collision": {
+     "k": 78,
+     "n": 300,
+     "rate": 0.26,
+     "ci95": [
+      0.2136,
+      0.3124
+     ]
+    },
+    "hard_collision": {
+     "k": 0,
+     "n": 300,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0126
+     ]
+    },
+    "unavoidable_collision": {
+     "k": 0,
+     "n": 300,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0126
+     ]
+    },
+    "unnecessary_braking": {
+     "k": 20,
+     "n": 300,
+     "rate": 0.06666666666666667,
+     "ci95": [
+      0.0436,
+      0.1007
+     ]
+    },
+    "margin_violation": {
+     "k": 92,
+     "n": 300,
+     "rate": 0.30666666666666664,
+     "ci95": [
+      0.2572,
+      0.361
+     ]
+    },
+    "min_gap_m": {
+     "mean": 11.264181724296929,
+     "median": 3.3143249462143416,
+     "p5": 0.0
+    },
+    "impact_speed_given_collision_mps": {
+     "mean": 7.8071794871794875,
+     "max": 19.75,
+     "n": 78
+    },
+    "mean_impact_speed_all_mps": 2.029866666666667,
+    "reaction_time_s": {
+     "mean": 0.2650349650349651,
+     "p95": 1.0999999999999996,
+     "n": 143
+    },
+    "peak_cmd_decel": {
+     "mean": 4.826666666666666,
+     "p95": 8.0
+    },
+    "transitions_per_episode": 2.2266666666666666,
+    "transitions_per_min": 13.6735807860262
+   },
+   "improved": {
+    "n": 300,
+    "failure": {
+     "k": 37,
+     "n": 300,
+     "rate": 0.12333333333333334,
+     "ci95": [
+      0.0908,
+      0.1654
+     ]
+    },
+    "collision": {
+     "k": 25,
+     "n": 300,
+     "rate": 0.08333333333333333,
+     "ci95": [
+      0.0571,
+      0.1201
+     ]
+    },
+    "avoidable_collision": {
+     "k": 25,
+     "n": 300,
+     "rate": 0.08333333333333333,
+     "ci95": [
+      0.0571,
+      0.1201
+     ]
+    },
+    "hard_collision": {
+     "k": 0,
+     "n": 300,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0126
+     ]
+    },
+    "unavoidable_collision": {
+     "k": 0,
+     "n": 300,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0126
+     ]
+    },
+    "unnecessary_braking": {
+     "k": 10,
+     "n": 300,
+     "rate": 0.03333333333333333,
+     "ci95": [
+      0.0182,
+      0.0603
+     ]
+    },
+    "margin_violation": {
+     "k": 29,
+     "n": 300,
+     "rate": 0.09666666666666666,
+     "ci95": [
+      0.0681,
+      0.1354
+     ]
+    },
+    "min_gap_m": {
+     "mean": 17.35377015592643,
+     "median": 8.491018668652199,
+     "p5": 0.0
+    },
+    "impact_speed_given_collision_mps": {
+     "mean": 6.138000000000001,
+     "max": 19.75,
+     "n": 25
+    },
+    "mean_impact_speed_all_mps": 0.5115,
+    "reaction_time_s": {
+     "mean": 0.32708333333333345,
+     "p95": 0.965,
+     "n": 48
+    },
+    "peak_cmd_decel": {
+     "mean": 3.588218158800727,
+     "p95": 8.0
+    },
+    "transitions_per_episode": 3.276666666666667,
+    "transitions_per_min": 16.89003436426117
+   }
+  },
+  "paired_improved_minus_baseline": {
+   "avoidable collision": {
+    "n": 300,
+    "rate_a": 0.26,
+    "rate_b": 0.08333333333333333,
+    "diff_b_minus_a": -0.1766666666666667,
+    "ci95": [
+     -0.2233,
+     -0.13
+    ],
+    "only_a": 56,
+    "only_b": 3,
+    "mcnemar_p": 1.189326415129699e-13
+   },
+   "any collision": {
+    "n": 300,
+    "rate_a": 0.26,
+    "rate_b": 0.08333333333333333,
+    "diff_b_minus_a": -0.1766666666666667,
+    "ci95": [
+     -0.2233,
+     -0.13
+    ],
+    "only_a": 56,
+    "only_b": 3,
+    "mcnemar_p": 1.189326415129699e-13
+   },
+   "unnecessary braking": {
+    "n": 300,
+    "rate_a": 0.06666666666666667,
+    "rate_b": 0.03333333333333333,
+    "diff_b_minus_a": -0.03333333333333333,
+    "ci95": [
+     -0.0667,
+     0.0
+    ],
+    "only_a": 18,
+    "only_b": 8,
+    "mcnemar_p": 0.07551869750022888
+   },
+   "margin violation (<1 m)": {
+    "n": 300,
+    "rate_a": 0.30666666666666664,
+    "rate_b": 0.09666666666666666,
+    "diff_b_minus_a": -0.20999999999999996,
+    "ci95": [
+     -0.2633,
+     -0.1633
+    ],
+    "only_a": 66,
+    "only_b": 3,
+    "mcnemar_p": 1.857035033560328e-16
+   },
+   "any failure": {
+    "n": 300,
+    "rate_a": 0.3466666666666667,
+    "rate_b": 0.12333333333333334,
+    "diff_b_minus_a": -0.22333333333333333,
+    "ci95": [
+     -0.2767,
+     -0.17
+    ],
+    "only_a": 76,
+    "only_b": 9,
+    "mcnemar_p": 2.405361458283649e-14
+   }
+  }
+ },
+ "protection": {
+  "contract_role_of_fixed_scenario": "safe_contract",
+  "improved_vs_own_baseline": {
+   "passed": true,
+   "tier": "ok"
+  },
+  "original_planner_vs_improved_baseline": {
+   "passed": false,
+   "tier": "hard_violation",
+   "violations": [
+    "fail_01_collision_lead_braking",
+    "fail_02_collision_lead_braking",
+    "fail_03_collision_lead_braking",
+    "fail_04_collision_lead_braking",
+    "known_failure_gentle_lead_braking",
+    "pass_01_lead_braking",
+    "pass_02_steady",
+    "pass_03_parked"
+   ]
+  }
+ },
+ "seconds": 13.8
+}

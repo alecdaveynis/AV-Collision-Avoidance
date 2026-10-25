@@ -1,0 +1,2644 @@
+{
+ "protocol_version": 1,
+ "split": "dev",
+ "planners": {
+  "baseline": {
+   "name": "baseline",
+   "planner": "baseline",
+   "overrides": {},
+   "policy": "planner",
+   "note": "original BehaviorManager"
+  },
+  "improved": {
+   "name": "improved",
+   "planner": "improved",
+   "overrides": {},
+   "policy": "planner",
+   "note": "SafeBehaviorManager (src/safe_braking.py)"
+  },
+  "baseline+EMERGENCY_DECEL=4": {
+   "name": "baseline+EMERGENCY_DECEL=4",
+   "planner": "baseline",
+   "overrides": {
+    "EMERGENCY_DECEL": 4.0
+   },
+   "policy": "planner",
+   "note": "original planner, stop zone sized for 4 m/s^2 (threshold-only control)"
+  },
+  "reference_rss": {
+   "name": "reference_rss",
+   "planner": "baseline",
+   "overrides": {},
+   "policy": "reference",
+   "note": "RSS longitudinal rule (comparison point)"
+  }
+ },
+ "improved_planner_fingerprint": {
+  "sha256": "60cec23e5f2d5bf9",
+  "constants": {
+   "SAFE_ACTUATOR_LAG": 0.25,
+   "SAFE_A_IMMEDIATE": 6.0,
+   "SAFE_A_SLOW": 1.5,
+   "SAFE_A_STOP": 4.0,
+   "SAFE_A_UNCONFIRMED": 3.0,
+   "SAFE_MARGIN_FACTOR": 1.25,
+   "SAFE_MIN_TRACK_HITS": 5,
+   "SAFE_RELEASE_RATIO": 0.7,
+   "STOP_BASE_DIST": 2.0,
+   "SLOW_BASE_DIST": 6.0,
+   "SLOW_HEADWAY": 1.0,
+   "TTC_SLOW": 3.0,
+   "TTC_STOP": 1.0,
+   "EMERGENCY_DECEL": 8.0,
+   "ESCALATE_FRAMES": 2,
+   "RELEASE_FRAMES": 5,
+   "DIST_EMA_ALPHA": 0.5,
+   "MIN_CLOSING_SPEED": 0.5
+  }
+ },
+ "sets": {
+  "known_failure_minimized": {
+   "role": "dev",
+   "description": "the discovered failure after minimization (no faults) x 20 noise seeds",
+   "n": 20,
+   "summary": {
+    "baseline": {
+     "n": 20,
+     "failure": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "collision": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "avoidable_collision": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "margin_violation": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "min_gap_m": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p5": 0.0
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 6.5760000000000005,
+      "max": 7.3,
+      "n": 20
+     },
+     "mean_impact_speed_all_mps": 6.5760000000000005,
+     "reaction_time_s": {
+      "mean": 0.0,
+      "p95": 0.0,
+      "n": 20
+     },
+     "peak_cmd_decel": {
+      "mean": 8.0,
+      "p95": 8.0
+     },
+     "transitions_per_episode": 2.0,
+     "transitions_per_min": 10.480349344978166
+    },
+    "improved": {
+     "n": 20,
+     "failure": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "avoidable_collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "margin_violation": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "min_gap_m": {
+      "mean": 7.6864557162774165,
+      "median": 7.735515609555932,
+      "p5": 7.405898467208274
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 0.0,
+      "max": 0.0,
+      "n": 0
+     },
+     "mean_impact_speed_all_mps": 0.0,
+     "reaction_time_s": {
+      "mean": NaN,
+      "p95": NaN,
+      "n": 0
+     },
+     "peak_cmd_decel": {
+      "mean": 3.0,
+      "p95": 3.0
+     },
+     "transitions_per_episode": 2.1,
+     "transitions_per_min": 9.0
+    },
+    "baseline+EMERGENCY_DECEL=4": {
+     "n": 20,
+     "failure": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "avoidable_collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "margin_violation": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "min_gap_m": {
+      "mean": 4.23902947972123,
+      "median": 4.62503417955746,
+      "p5": 2.540137550896522
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 0.0,
+      "max": 0.0,
+      "n": 0
+     },
+     "mean_impact_speed_all_mps": 0.0,
+     "reaction_time_s": {
+      "mean": 0.0,
+      "p95": 0.0,
+      "n": 20
+     },
+     "peak_cmd_decel": {
+      "mean": 8.0,
+      "p95": 8.0
+     },
+     "transitions_per_episode": 3.2,
+     "transitions_per_min": 15.100275265434526
+    },
+    "reference_rss": {
+     "n": 20,
+     "failure": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "avoidable_collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "margin_violation": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "min_gap_m": {
+      "mean": 2.122711190680866,
+      "median": 2.1318785459976084,
+      "p5": 2.0932386737322743
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 0.0,
+      "max": 0.0,
+      "n": 0
+     },
+     "mean_impact_speed_all_mps": 0.0,
+     "reaction_time_s": {
+      "mean": 0.04210526315789459,
+      "p95": 0.09999999999999964,
+      "n": 19
+     },
+     "peak_cmd_decel": {
+      "mean": 4.0,
+      "p95": 4.0
+     },
+     "transitions_per_episode": 34.95,
+     "transitions_per_min": 149.78571428571428
+    }
+   },
+   "paired": {
+    "avoidable collision": {
+     "n": 20,
+     "rate_a": 1.0,
+     "rate_b": 0.0,
+     "diff_b_minus_a": -1.0,
+     "ci95": [
+      -1.0,
+      -1.0
+     ],
+     "only_a": 20,
+     "only_b": 0,
+     "mcnemar_p": 1.9073486328125e-06
+    },
+    "any collision": {
+     "n": 20,
+     "rate_a": 1.0,
+     "rate_b": 0.0,
+     "diff_b_minus_a": -1.0,
+     "ci95": [
+      -1.0,
+      -1.0
+     ],
+     "only_a": 20,
+     "only_b": 0,
+     "mcnemar_p": 1.9073486328125e-06
+    },
+    "unnecessary braking": {
+     "n": 20,
+     "rate_a": 0.0,
+     "rate_b": 0.0,
+     "diff_b_minus_a": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "only_a": 0,
+     "only_b": 0,
+     "mcnemar_p": 1.0
+    },
+    "margin violation (<1 m)": {
+     "n": 20,
+     "rate_a": 1.0,
+     "rate_b": 0.0,
+     "diff_b_minus_a": -1.0,
+     "ci95": [
+      -1.0,
+      -1.0
+     ],
+     "only_a": 20,
+     "only_b": 0,
+     "mcnemar_p": 1.9073486328125e-06
+    },
+    "any failure": {
+     "n": 20,
+     "rate_a": 1.0,
+     "rate_b": 0.0,
+     "diff_b_minus_a": -1.0,
+     "ci95": [
+      -1.0,
+      -1.0
+     ],
+     "only_a": 20,
+     "only_b": 0,
+     "mcnemar_p": 1.9073486328125e-06
+    }
+   },
+   "paired_planners": [
+    "baseline",
+    "improved"
+   ]
+  },
+  "known_failure_original": {
+   "role": "dev",
+   "description": "the discovered failure as found by the search (latency 0.3 s, distance noise, 1.4 s detection loss) x 20 noise seeds",
+   "n": 20,
+   "summary": {
+    "baseline": {
+     "n": 20,
+     "failure": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "collision": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "avoidable_collision": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "margin_violation": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "min_gap_m": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p5": 0.0
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 13.855500000000001,
+      "max": 14.07,
+      "n": 20
+     },
+     "mean_impact_speed_all_mps": 13.855500000000001,
+     "reaction_time_s": {
+      "mean": 0.2100000000000001,
+      "p95": 0.21000000000000021,
+      "n": 20
+     },
+     "peak_cmd_decel": {
+      "mean": 2.96,
+      "p95": 8.0
+     },
+     "transitions_per_episode": 2.25,
+     "transitions_per_min": 47.53521126760563
+    },
+    "improved": {
+     "n": 20,
+     "failure": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "collision": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "avoidable_collision": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "margin_violation": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "min_gap_m": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p5": 0.0
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 12.159500000000001,
+      "max": 12.69,
+      "n": 20
+     },
+     "mean_impact_speed_all_mps": 12.159500000000001,
+     "reaction_time_s": {
+      "mean": 0.0,
+      "p95": 0.0,
+      "n": 20
+     },
+     "peak_cmd_decel": {
+      "mean": 5.883794996022354,
+      "p95": 7.581598970133354
+     },
+     "transitions_per_episode": 3.25,
+     "transitions_per_min": 60.278207109737245
+    },
+    "baseline+EMERGENCY_DECEL=4": {
+     "n": 20,
+     "failure": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "collision": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "avoidable_collision": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "margin_violation": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "min_gap_m": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p5": 0.0
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 10.91,
+      "max": 12.89,
+      "n": 20
+     },
+     "mean_impact_speed_all_mps": 10.91,
+     "reaction_time_s": {
+      "mean": 0.18500000000000008,
+      "p95": 0.20500000000000013,
+      "n": 20
+     },
+     "peak_cmd_decel": {
+      "mean": 8.0,
+      "p95": 8.0
+     },
+     "transitions_per_episode": 3.85,
+     "transitions_per_min": 71.73913043478261
+    },
+    "reference_rss": {
+     "n": 20,
+     "failure": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "collision": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "avoidable_collision": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 0,
+      "n": 20,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1611
+      ]
+     },
+     "margin_violation": {
+      "k": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95": [
+       0.8389,
+       1.0
+      ]
+     },
+     "min_gap_m": {
+      "mean": 0.0,
+      "median": 0.0,
+      "p5": 0.0
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 11.775,
+      "max": 12.71,
+      "n": 20
+     },
+     "mean_impact_speed_all_mps": 11.775,
+     "reaction_time_s": {
+      "mean": 0.1,
+      "p95": 0.09999999999999998,
+      "n": 20
+     },
+     "peak_cmd_decel": {
+      "mean": 8.0,
+      "p95": 8.0
+     },
+     "transitions_per_episode": 4.25,
+     "transitions_per_min": 74.7800586510264
+    }
+   },
+   "paired": {
+    "avoidable collision": {
+     "n": 20,
+     "rate_a": 1.0,
+     "rate_b": 1.0,
+     "diff_b_minus_a": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "only_a": 0,
+     "only_b": 0,
+     "mcnemar_p": 1.0
+    },
+    "any collision": {
+     "n": 20,
+     "rate_a": 1.0,
+     "rate_b": 1.0,
+     "diff_b_minus_a": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "only_a": 0,
+     "only_b": 0,
+     "mcnemar_p": 1.0
+    },
+    "unnecessary braking": {
+     "n": 20,
+     "rate_a": 0.0,
+     "rate_b": 0.0,
+     "diff_b_minus_a": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "only_a": 0,
+     "only_b": 0,
+     "mcnemar_p": 1.0
+    },
+    "margin violation (<1 m)": {
+     "n": 20,
+     "rate_a": 1.0,
+     "rate_b": 1.0,
+     "diff_b_minus_a": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "only_a": 0,
+     "only_b": 0,
+     "mcnemar_p": 1.0
+    },
+    "any failure": {
+     "n": 20,
+     "rate_a": 1.0,
+     "rate_b": 1.0,
+     "diff_b_minus_a": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "only_a": 0,
+     "only_b": 0,
+     "mcnemar_p": 1.0
+    }
+   },
+   "paired_planners": [
+    "baseline",
+    "improved"
+   ]
+  },
+  "regression_suite": {
+   "role": "dev",
+   "description": "committed scenarios/regression/*.json x 20 noise seeds",
+   "n": 140,
+   "summary": {
+    "baseline": {
+     "n": 140,
+     "failure": {
+      "k": 65,
+      "n": 140,
+      "rate": 0.4642857142857143,
+      "ci95": [
+       0.3837,
+       0.5467
+      ]
+     },
+     "collision": {
+      "k": 42,
+      "n": 140,
+      "rate": 0.3,
+      "ci95": [
+       0.2303,
+       0.3804
+      ]
+     },
+     "avoidable_collision": {
+      "k": 42,
+      "n": 140,
+      "rate": 0.3,
+      "ci95": [
+       0.2303,
+       0.3804
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 140,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0267
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 140,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0267
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 1,
+      "n": 140,
+      "rate": 0.007142857142857143,
+      "ci95": [
+       0.0013,
+       0.0393
+      ]
+     },
+     "margin_violation": {
+      "k": 98,
+      "n": 140,
+      "rate": 0.7,
+      "ci95": [
+       0.6196,
+       0.7697
+      ]
+     },
+     "min_gap_m": {
+      "mean": 1.1283031551616602,
+      "median": 0.5519868440401012,
+      "p5": 0.0
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 2.5419047619047617,
+      "max": 6.99,
+      "n": 42
+     },
+     "mean_impact_speed_all_mps": 0.7625714285714285,
+     "reaction_time_s": {
+      "mean": 0.14237288135593226,
+      "p95": 0.7149999999999994,
+      "n": 118
+     },
+     "peak_cmd_decel": {
+      "mean": 7.5600000000000005,
+      "p95": 8.0
+     },
+     "transitions_per_episode": 2.25,
+     "transitions_per_min": 15.907751872737983
+    },
+    "improved": {
+     "n": 140,
+     "failure": {
+      "k": 2,
+      "n": 140,
+      "rate": 0.014285714285714285,
+      "ci95": [
+       0.0039,
+       0.0506
+      ]
+     },
+     "collision": {
+      "k": 0,
+      "n": 140,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0267
+      ]
+     },
+     "avoidable_collision": {
+      "k": 0,
+      "n": 140,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0267
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 140,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0267
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 140,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0267
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 2,
+      "n": 140,
+      "rate": 0.014285714285714285,
+      "ci95": [
+       0.0039,
+       0.0506
+      ]
+     },
+     "margin_violation": {
+      "k": 0,
+      "n": 140,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0267
+      ]
+     },
+     "min_gap_m": {
+      "mean": 13.834448141780564,
+      "median": 9.912217671932023,
+      "p5": 4.57317378817119
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 0.0,
+      "max": 0.0,
+      "n": 0
+     },
+     "mean_impact_speed_all_mps": 0.0,
+     "reaction_time_s": {
+      "mean": 0.0,
+      "p95": 0.0,
+      "n": 20
+     },
+     "peak_cmd_decel": {
+      "mean": 3.639194480834165,
+      "p95": 8.0
+     },
+     "transitions_per_episode": 3.6785714285714284,
+     "transitions_per_min": 18.549645815824228
+    },
+    "baseline+EMERGENCY_DECEL=4": {
+     "n": 140,
+     "failure": {
+      "k": 11,
+      "n": 140,
+      "rate": 0.07857142857142857,
+      "ci95": [
+       0.0444,
+       0.1352
+      ]
+     },
+     "collision": {
+      "k": 8,
+      "n": 140,
+      "rate": 0.05714285714285714,
+      "ci95": [
+       0.0292,
+       0.1087
+      ]
+     },
+     "avoidable_collision": {
+      "k": 8,
+      "n": 140,
+      "rate": 0.05714285714285714,
+      "ci95": [
+       0.0292,
+       0.1087
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 140,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0267
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 140,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0267
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 3,
+      "n": 140,
+      "rate": 0.02142857142857143,
+      "ci95": [
+       0.0073,
+       0.0611
+      ]
+     },
+     "margin_violation": {
+      "k": 16,
+      "n": 140,
+      "rate": 0.11428571428571428,
+      "ci95": [
+       0.0716,
+       0.1776
+      ]
+     },
+     "min_gap_m": {
+      "mean": 4.434903207117914,
+      "median": 4.4494267377925,
+      "p5": 0.0
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 3.84375,
+      "max": 6.99,
+      "n": 8
+     },
+     "mean_impact_speed_all_mps": 0.21964285714285714,
+     "reaction_time_s": {
+      "mean": 0.13826086956521744,
+      "p95": 0.7000000000000002,
+      "n": 115
+     },
+     "peak_cmd_decel": {
+      "mean": 7.64,
+      "p95": 8.0
+     },
+     "transitions_per_episode": 2.7857142857142856,
+     "transitions_per_min": 17.146625632007034
+    },
+    "reference_rss": {
+     "n": 140,
+     "failure": {
+      "k": 67,
+      "n": 140,
+      "rate": 0.4785714285714286,
+      "ci95": [
+       0.3975,
+       0.5608
+      ]
+     },
+     "collision": {
+      "k": 28,
+      "n": 140,
+      "rate": 0.2,
+      "ci95": [
+       0.1422,
+       0.2739
+      ]
+     },
+     "avoidable_collision": {
+      "k": 28,
+      "n": 140,
+      "rate": 0.2,
+      "ci95": [
+       0.1422,
+       0.2739
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 140,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0267
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 140,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0267
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 55,
+      "n": 140,
+      "rate": 0.39285714285714285,
+      "ci95": [
+       0.3159,
+       0.4756
+      ]
+     },
+     "margin_violation": {
+      "k": 63,
+      "n": 140,
+      "rate": 0.45,
+      "ci95": [
+       0.37,
+       0.5326
+      ]
+     },
+     "min_gap_m": {
+      "mean": 2.3814608743563093,
+      "median": 1.1690750553252087,
+      "p5": 0.0
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 3.0117857142857147,
+      "max": 6.2,
+      "n": 28
+     },
+     "mean_impact_speed_all_mps": 0.6023571428571428,
+     "reaction_time_s": {
+      "mean": 0.15249999999999997,
+      "p95": 0.7000000000000002,
+      "n": 120
+     },
+     "peak_cmd_decel": {
+      "mean": 4.885714285714286,
+      "p95": 8.0
+     },
+     "transitions_per_episode": 16.65714285714286,
+     "transitions_per_min": 91.24225627649169
+    }
+   },
+   "paired": {
+    "avoidable collision": {
+     "n": 140,
+     "rate_a": 0.3,
+     "rate_b": 0.0,
+     "diff_b_minus_a": -0.3,
+     "ci95": [
+      -0.3786,
+      -0.2286
+     ],
+     "only_a": 42,
+     "only_b": 0,
+     "mcnemar_p": 4.547473508864641e-13
+    },
+    "any collision": {
+     "n": 140,
+     "rate_a": 0.3,
+     "rate_b": 0.0,
+     "diff_b_minus_a": -0.3,
+     "ci95": [
+      -0.3786,
+      -0.2286
+     ],
+     "only_a": 42,
+     "only_b": 0,
+     "mcnemar_p": 4.547473508864641e-13
+    },
+    "unnecessary braking": {
+     "n": 140,
+     "rate_a": 0.007142857142857143,
+     "rate_b": 0.014285714285714285,
+     "diff_b_minus_a": 0.007142857142857143,
+     "ci95": [
+      -0.0143,
+      0.0357
+     ],
+     "only_a": 1,
+     "only_b": 2,
+     "mcnemar_p": 1.0
+    },
+    "margin violation (<1 m)": {
+     "n": 140,
+     "rate_a": 0.7,
+     "rate_b": 0.0,
+     "diff_b_minus_a": -0.7,
+     "ci95": [
+      -0.7716,
+      -0.6214
+     ],
+     "only_a": 98,
+     "only_b": 0,
+     "mcnemar_p": 6.310887241768095e-30
+    },
+    "any failure": {
+     "n": 140,
+     "rate_a": 0.4642857142857143,
+     "rate_b": 0.014285714285714285,
+     "diff_b_minus_a": -0.45,
+     "ci95": [
+      -0.5357,
+      -0.3643
+     ],
+     "only_a": 65,
+     "only_b": 2,
+     "mcnemar_p": 3.088620938868081e-17
+    }
+   },
+   "paired_planners": [
+    "baseline",
+    "improved"
+   ]
+  },
+  "dev_random": {
+   "role": "dev",
+   "description": "300 random scenarios, faults on with p=0.5, ego_speed 6-16 m/s, generator seed 11",
+   "n": 300,
+   "summary": {
+    "baseline": {
+     "n": 300,
+     "failure": {
+      "k": 70,
+      "n": 300,
+      "rate": 0.23333333333333334,
+      "ci95": [
+       0.189,
+       0.2844
+      ]
+     },
+     "collision": {
+      "k": 62,
+      "n": 300,
+      "rate": 0.20666666666666667,
+      "ci95": [
+       0.1647,
+       0.2561
+      ]
+     },
+     "avoidable_collision": {
+      "k": 62,
+      "n": 300,
+      "rate": 0.20666666666666667,
+      "ci95": [
+       0.1647,
+       0.2561
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 300,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0126
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 300,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0126
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 6,
+      "n": 300,
+      "rate": 0.02,
+      "ci95": [
+       0.0092,
+       0.0429
+      ]
+     },
+     "margin_violation": {
+      "k": 77,
+      "n": 300,
+      "rate": 0.25666666666666665,
+      "ci95": [
+       0.2105,
+       0.309
+      ]
+     },
+     "min_gap_m": {
+      "mean": 10.769665382773729,
+      "median": 3.6877274771105206,
+      "p5": 0.0
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 7.0838709677419365,
+      "max": 15.01,
+      "n": 62
+     },
+     "mean_impact_speed_all_mps": 1.464,
+     "reaction_time_s": {
+      "mean": 0.33455882352941174,
+      "p95": 1.4000000000000004,
+      "n": 136
+     },
+     "peak_cmd_decel": {
+      "mean": 4.664,
+      "p95": 8.0
+     },
+     "transitions_per_episode": 2.1433333333333335,
+     "transitions_per_min": 12.852288626823904
+    },
+    "improved": {
+     "n": 300,
+     "failure": {
+      "k": 19,
+      "n": 300,
+      "rate": 0.06333333333333334,
+      "ci95": [
+       0.0409,
+       0.0968
+      ]
+     },
+     "collision": {
+      "k": 11,
+      "n": 300,
+      "rate": 0.03666666666666667,
+      "ci95": [
+       0.0206,
+       0.0645
+      ]
+     },
+     "avoidable_collision": {
+      "k": 11,
+      "n": 300,
+      "rate": 0.03666666666666667,
+      "ci95": [
+       0.0206,
+       0.0645
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 300,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0126
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 300,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0126
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 9,
+      "n": 300,
+      "rate": 0.03,
+      "ci95": [
+       0.0159,
+       0.056
+      ]
+     },
+     "margin_violation": {
+      "k": 13,
+      "n": 300,
+      "rate": 0.043333333333333335,
+      "ci95": [
+       0.0255,
+       0.0727
+      ]
+     },
+     "min_gap_m": {
+      "mean": 16.309556133859644,
+      "median": 8.829488027349601,
+      "p5": 1.225815793553033
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 6.9854545454545445,
+      "max": 15.04,
+      "n": 11
+     },
+     "mean_impact_speed_all_mps": 0.2561333333333333,
+     "reaction_time_s": {
+      "mean": 0.31333333333333335,
+      "p95": 0.9549999999999998,
+      "n": 30
+     },
+     "peak_cmd_decel": {
+      "mean": 3.240438536748,
+      "p95": 8.0
+     },
+     "transitions_per_episode": 3.42,
+     "transitions_per_min": 17.577020814893068
+    },
+    "baseline+EMERGENCY_DECEL=4": {
+     "n": 300,
+     "failure": {
+      "k": 62,
+      "n": 300,
+      "rate": 0.20666666666666667,
+      "ci95": [
+       0.1647,
+       0.2561
+      ]
+     },
+     "collision": {
+      "k": 30,
+      "n": 300,
+      "rate": 0.1,
+      "ci95": [
+       0.0709,
+       0.1392
+      ]
+     },
+     "avoidable_collision": {
+      "k": 30,
+      "n": 300,
+      "rate": 0.1,
+      "ci95": [
+       0.0709,
+       0.1392
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 300,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0126
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 300,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0126
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 31,
+      "n": 300,
+      "rate": 0.10333333333333333,
+      "ci95": [
+       0.0738,
+       0.1429
+      ]
+     },
+     "margin_violation": {
+      "k": 39,
+      "n": 300,
+      "rate": 0.13,
+      "ci95": [
+       0.0966,
+       0.1728
+      ]
+     },
+     "min_gap_m": {
+      "mean": 12.274417248045896,
+      "median": 6.189700052392425,
+      "p5": 0.0
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 6.9433333333333325,
+      "max": 13.89,
+      "n": 30
+     },
+     "mean_impact_speed_all_mps": 0.6943333333333334,
+     "reaction_time_s": {
+      "mean": 0.3264957264957265,
+      "p95": 1.4000000000000004,
+      "n": 117
+     },
+     "peak_cmd_decel": {
+      "mean": 5.191999999999999,
+      "p95": 8.0
+     },
+     "transitions_per_episode": 2.42,
+     "transitions_per_min": 14.116274547929223
+    },
+    "reference_rss": {
+     "n": 300,
+     "failure": {
+      "k": 124,
+      "n": 300,
+      "rate": 0.41333333333333333,
+      "ci95": [
+       0.359,
+       0.4698
+      ]
+     },
+     "collision": {
+      "k": 67,
+      "n": 300,
+      "rate": 0.22333333333333333,
+      "ci95": [
+       0.1799,
+       0.2738
+      ]
+     },
+     "avoidable_collision": {
+      "k": 67,
+      "n": 300,
+      "rate": 0.22333333333333333,
+      "ci95": [
+       0.1799,
+       0.2738
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 300,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0126
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 300,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0126
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 55,
+      "n": 300,
+      "rate": 0.18333333333333332,
+      "ci95": [
+       0.1436,
+       0.231
+      ]
+     },
+     "margin_violation": {
+      "k": 180,
+      "n": 300,
+      "rate": 0.6,
+      "ci95": [
+       0.5436,
+       0.6538
+      ]
+     },
+     "min_gap_m": {
+      "mean": 9.046052743537738,
+      "median": 0.7093215876511678,
+      "p5": 0.0
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 5.7747761194029845,
+      "max": 15.04,
+      "n": 67
+     },
+     "mean_impact_speed_all_mps": 1.2896999999999998,
+     "reaction_time_s": {
+      "mean": 0.21658031088082905,
+      "p95": 1.0399999999999978,
+      "n": 193
+     },
+     "peak_cmd_decel": {
+      "mean": 4.36,
+      "p95": 8.0
+     },
+     "transitions_per_episode": 11.153333333333334,
+     "transitions_per_min": 60.322706649439624
+    }
+   },
+   "paired": {
+    "avoidable collision": {
+     "n": 300,
+     "rate_a": 0.20666666666666667,
+     "rate_b": 0.03666666666666667,
+     "diff_b_minus_a": -0.16999999999999998,
+     "ci95": [
+      -0.2167,
+      -0.1267
+     ],
+     "only_a": 53,
+     "only_b": 2,
+     "mcnemar_p": 8.554268404736831e-14
+    },
+    "any collision": {
+     "n": 300,
+     "rate_a": 0.20666666666666667,
+     "rate_b": 0.03666666666666667,
+     "diff_b_minus_a": -0.16999999999999998,
+     "ci95": [
+      -0.2167,
+      -0.1267
+     ],
+     "only_a": 53,
+     "only_b": 2,
+     "mcnemar_p": 8.554268404736831e-14
+    },
+    "unnecessary braking": {
+     "n": 300,
+     "rate_a": 0.02,
+     "rate_b": 0.03,
+     "diff_b_minus_a": 0.009999999999999998,
+     "ci95": [
+      -0.0133,
+      0.0333
+     ],
+     "only_a": 5,
+     "only_b": 8,
+     "mcnemar_p": 0.5810546875
+    },
+    "margin violation (<1 m)": {
+     "n": 300,
+     "rate_a": 0.25666666666666665,
+     "rate_b": 0.043333333333333335,
+     "diff_b_minus_a": -0.21333333333333332,
+     "ci95": [
+      -0.2633,
+      -0.17
+     ],
+     "only_a": 65,
+     "only_b": 1,
+     "mcnemar_p": 1.81603863891322e-18
+    },
+    "any failure": {
+     "n": 300,
+     "rate_a": 0.23333333333333334,
+     "rate_b": 0.06333333333333334,
+     "diff_b_minus_a": -0.16999999999999998,
+     "ci95": [
+      -0.22,
+      -0.1233
+     ],
+     "only_a": 58,
+     "only_b": 7,
+     "mcnemar_p": 4.2705216207923607e-11
+    }
+   },
+   "paired_planners": [
+    "baseline",
+    "improved"
+   ]
+  },
+  "dev_near_boundary": {
+   "role": "dev",
+   "description": "100 fault-free scenarios the RSS reference only just handles (min gap 0.5-3 m), ego 6-16 m/s, seed 12",
+   "n": 100,
+   "summary": {
+    "baseline": {
+     "n": 100,
+     "failure": {
+      "k": 9,
+      "n": 100,
+      "rate": 0.09,
+      "ci95": [
+       0.0481,
+       0.1623
+      ]
+     },
+     "collision": {
+      "k": 5,
+      "n": 100,
+      "rate": 0.05,
+      "ci95": [
+       0.0215,
+       0.1118
+      ]
+     },
+     "avoidable_collision": {
+      "k": 5,
+      "n": 100,
+      "rate": 0.05,
+      "ci95": [
+       0.0215,
+       0.1118
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 100,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.037
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 100,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.037
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 0,
+      "n": 100,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.037
+      ]
+     },
+     "margin_violation": {
+      "k": 11,
+      "n": 100,
+      "rate": 0.11,
+      "ci95": [
+       0.0625,
+       0.1863
+      ]
+     },
+     "min_gap_m": {
+      "mean": 3.8082683561504145,
+      "median": 3.2129109374985703,
+      "p5": 0.1237845939462819
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 2.8280000000000003,
+      "max": 5.65,
+      "n": 5
+     },
+     "mean_impact_speed_all_mps": 0.1414,
+     "reaction_time_s": {
+      "mean": 0.005263157894736847,
+      "p95": 0.0,
+      "n": 57
+     },
+     "peak_cmd_decel": {
+      "mean": 5.592,
+      "p95": 8.0
+     },
+     "transitions_per_episode": 2.23,
+     "transitions_per_min": 14.661406969099277
+    },
+    "improved": {
+     "n": 100,
+     "failure": {
+      "k": 0,
+      "n": 100,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.037
+      ]
+     },
+     "collision": {
+      "k": 0,
+      "n": 100,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.037
+      ]
+     },
+     "avoidable_collision": {
+      "k": 0,
+      "n": 100,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.037
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 100,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.037
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 100,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.037
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 0,
+      "n": 100,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.037
+      ]
+     },
+     "margin_violation": {
+      "k": 0,
+      "n": 100,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.037
+      ]
+     },
+     "min_gap_m": {
+      "mean": 9.285582953919205,
+      "median": 6.870807421159868,
+      "p5": 6.11315927490406
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 0.0,
+      "max": 0.0,
+      "n": 0
+     },
+     "mean_impact_speed_all_mps": 0.0,
+     "reaction_time_s": {
+      "mean": 0.0,
+      "p95": 0.0,
+      "n": 1
+     },
+     "peak_cmd_decel": {
+      "mean": 2.867962262909235,
+      "p95": 4.110203167417152
+     },
+     "transitions_per_episode": 4.11,
+     "transitions_per_min": 21.111206232343118
+    },
+    "baseline+EMERGENCY_DECEL=4": {
+     "n": 100,
+     "failure": {
+      "k": 3,
+      "n": 100,
+      "rate": 0.03,
+      "ci95": [
+       0.0103,
+       0.0845
+      ]
+     },
+     "collision": {
+      "k": 0,
+      "n": 100,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.037
+      ]
+     },
+     "avoidable_collision": {
+      "k": 0,
+      "n": 100,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.037
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 100,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.037
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 100,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.037
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 3,
+      "n": 100,
+      "rate": 0.03,
+      "ci95": [
+       0.0103,
+       0.0845
+      ]
+     },
+     "margin_violation": {
+      "k": 0,
+      "n": 100,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.037
+      ]
+     },
+     "min_gap_m": {
+      "mean": 5.313824765706311,
+      "median": 5.812442736727029,
+      "p5": 2.1483969999989774
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 0.0,
+      "max": 0.0,
+      "n": 0
+     },
+     "mean_impact_speed_all_mps": 0.0,
+     "reaction_time_s": {
+      "mean": 0.0053571428571428615,
+      "p95": 0.0,
+      "n": 56
+     },
+     "peak_cmd_decel": {
+      "mean": 5.703999999999999,
+      "p95": 8.0
+     },
+     "transitions_per_episode": 2.65,
+     "transitions_per_min": 17.181759239247892
+    },
+    "reference_rss": {
+     "n": 100,
+     "failure": {
+      "k": 29,
+      "n": 100,
+      "rate": 0.29,
+      "ci95": [
+       0.2101,
+       0.3854
+      ]
+     },
+     "collision": {
+      "k": 0,
+      "n": 100,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.037
+      ]
+     },
+     "avoidable_collision": {
+      "k": 0,
+      "n": 100,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.037
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 100,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.037
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 100,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.037
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 29,
+      "n": 100,
+      "rate": 0.29,
+      "ci95": [
+       0.2101,
+       0.3854
+      ]
+     },
+     "margin_violation": {
+      "k": 82,
+      "n": 100,
+      "rate": 0.82,
+      "ci95": [
+       0.7333,
+       0.883
+      ]
+     },
+     "min_gap_m": {
+      "mean": 0.8957844576978516,
+      "median": 0.6477104057006287,
+      "p5": 0.5376833057964703
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 0.0,
+      "max": 0.0,
+      "n": 0
+     },
+     "mean_impact_speed_all_mps": 0.0,
+     "reaction_time_s": {
+      "mean": 0.05684210526315784,
+      "p95": 0.19999999999999957,
+      "n": 95
+     },
+     "peak_cmd_decel": {
+      "mean": 4.12,
+      "p95": 4.0
+     },
+     "transitions_per_episode": 27.0,
+     "transitions_per_min": 142.64330368935458
+    }
+   },
+   "paired": {
+    "avoidable collision": {
+     "n": 100,
+     "rate_a": 0.05,
+     "rate_b": 0.0,
+     "diff_b_minus_a": -0.05,
+     "ci95": [
+      -0.1,
+      -0.01
+     ],
+     "only_a": 5,
+     "only_b": 0,
+     "mcnemar_p": 0.0625
+    },
+    "any collision": {
+     "n": 100,
+     "rate_a": 0.05,
+     "rate_b": 0.0,
+     "diff_b_minus_a": -0.05,
+     "ci95": [
+      -0.1,
+      -0.01
+     ],
+     "only_a": 5,
+     "only_b": 0,
+     "mcnemar_p": 0.0625
+    },
+    "unnecessary braking": {
+     "n": 100,
+     "rate_a": 0.0,
+     "rate_b": 0.0,
+     "diff_b_minus_a": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "only_a": 0,
+     "only_b": 0,
+     "mcnemar_p": 1.0
+    },
+    "margin violation (<1 m)": {
+     "n": 100,
+     "rate_a": 0.11,
+     "rate_b": 0.0,
+     "diff_b_minus_a": -0.11,
+     "ci95": [
+      -0.17,
+      -0.0598
+     ],
+     "only_a": 11,
+     "only_b": 0,
+     "mcnemar_p": 0.0009765625
+    },
+    "any failure": {
+     "n": 100,
+     "rate_a": 0.09,
+     "rate_b": 0.0,
+     "diff_b_minus_a": -0.09,
+     "ci95": [
+      -0.15,
+      -0.04
+     ],
+     "only_a": 9,
+     "only_b": 0,
+     "mcnemar_p": 0.00390625
+    }
+   },
+   "paired_planners": [
+    "baseline",
+    "improved"
+   ]
+  },
+  "dev_faults": {
+   "role": "dev",
+   "description": "150 scenarios with dropout 0.2-0.5 and latency 0-0.4 s, ego 6-16 m/s, seed 13",
+   "n": 150,
+   "summary": {
+    "baseline": {
+     "n": 150,
+     "failure": {
+      "k": 20,
+      "n": 150,
+      "rate": 0.13333333333333333,
+      "ci95": [
+       0.088,
+       0.197
+      ]
+     },
+     "collision": {
+      "k": 16,
+      "n": 150,
+      "rate": 0.10666666666666667,
+      "ci95": [
+       0.0667,
+       0.1662
+      ]
+     },
+     "avoidable_collision": {
+      "k": 16,
+      "n": 150,
+      "rate": 0.10666666666666667,
+      "ci95": [
+       0.0667,
+       0.1662
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 150,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.025
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 150,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.025
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 0,
+      "n": 150,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.025
+      ]
+     },
+     "margin_violation": {
+      "k": 23,
+      "n": 150,
+      "rate": 0.15333333333333332,
+      "ci95": [
+       0.1044,
+       0.2196
+      ]
+     },
+     "min_gap_m": {
+      "mean": 14.421697884712428,
+      "median": 6.295903304137674,
+      "p5": 0.0
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 6.243125,
+      "max": 13.13,
+      "n": 16
+     },
+     "mean_impact_speed_all_mps": 0.6659333333333333,
+     "reaction_time_s": {
+      "mean": 0.11818181818181817,
+      "p95": 0.5299999999999997,
+      "n": 55
+     },
+     "peak_cmd_decel": {
+      "mean": 3.7599999999999993,
+      "p95": 8.0
+     },
+     "transitions_per_episode": 1.7266666666666666,
+     "transitions_per_min": 9.780966767371602
+    },
+    "improved": {
+     "n": 150,
+     "failure": {
+      "k": 3,
+      "n": 150,
+      "rate": 0.02,
+      "ci95": [
+       0.0068,
+       0.0571
+      ]
+     },
+     "collision": {
+      "k": 3,
+      "n": 150,
+      "rate": 0.02,
+      "ci95": [
+       0.0068,
+       0.0571
+      ]
+     },
+     "avoidable_collision": {
+      "k": 3,
+      "n": 150,
+      "rate": 0.02,
+      "ci95": [
+       0.0068,
+       0.0571
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 150,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.025
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 150,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.025
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 0,
+      "n": 150,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.025
+      ]
+     },
+     "margin_violation": {
+      "k": 3,
+      "n": 150,
+      "rate": 0.02,
+      "ci95": [
+       0.0068,
+       0.0571
+      ]
+     },
+     "min_gap_m": {
+      "mean": 19.49583075261288,
+      "median": 9.03208000286104,
+      "p5": 4.522996727750963
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 4.726666666666667,
+      "max": 4.83,
+      "n": 3
+     },
+     "mean_impact_speed_all_mps": 0.09453333333333334,
+     "reaction_time_s": {
+      "mean": 0.14285714285714285,
+      "p95": 0.6199999999999997,
+      "n": 7
+     },
+     "peak_cmd_decel": {
+      "mean": 2.5464906867050003,
+      "p95": 4.7149480226283265
+     },
+     "transitions_per_episode": 2.8066666666666666,
+     "transitions_per_min": 14.007652636832475
+    },
+    "baseline+EMERGENCY_DECEL=4": {
+     "n": 150,
+     "failure": {
+      "k": 13,
+      "n": 150,
+      "rate": 0.08666666666666667,
+      "ci95": [
+       0.0513,
+       0.1426
+      ]
+     },
+     "collision": {
+      "k": 7,
+      "n": 150,
+      "rate": 0.04666666666666667,
+      "ci95": [
+       0.0228,
+       0.0932
+      ]
+     },
+     "avoidable_collision": {
+      "k": 7,
+      "n": 150,
+      "rate": 0.04666666666666667,
+      "ci95": [
+       0.0228,
+       0.0932
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 150,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.025
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 150,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.025
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 4,
+      "n": 150,
+      "rate": 0.02666666666666667,
+      "ci95": [
+       0.0104,
+       0.0666
+      ]
+     },
+     "margin_violation": {
+      "k": 13,
+      "n": 150,
+      "rate": 0.08666666666666667,
+      "ci95": [
+       0.0513,
+       0.1426
+      ]
+     },
+     "min_gap_m": {
+      "mean": 15.17757482141805,
+      "median": 6.381649816891718,
+      "p5": 0.04573625835419755
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 6.112857142857143,
+      "max": 12.13,
+      "n": 7
+     },
+     "mean_impact_speed_all_mps": 0.2852666666666667,
+     "reaction_time_s": {
+      "mean": 0.11428571428571428,
+      "p95": 0.4599999999999996,
+      "n": 49
+     },
+     "peak_cmd_decel": {
+      "mean": 4.133333333333333,
+      "p95": 8.0
+     },
+     "transitions_per_episode": 1.9466666666666668,
+     "transitions_per_min": 10.84493964716806
+    },
+    "reference_rss": {
+     "n": 150,
+     "failure": {
+      "k": 57,
+      "n": 150,
+      "rate": 0.38,
+      "ci95": [
+       0.3062,
+       0.4598
+      ]
+     },
+     "collision": {
+      "k": 12,
+      "n": 150,
+      "rate": 0.08,
+      "ci95": [
+       0.0464,
+       0.1346
+      ]
+     },
+     "avoidable_collision": {
+      "k": 12,
+      "n": 150,
+      "rate": 0.08,
+      "ci95": [
+       0.0464,
+       0.1346
+      ]
+     },
+     "hard_collision": {
+      "k": 0,
+      "n": 150,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.025
+      ]
+     },
+     "unavoidable_collision": {
+      "k": 0,
+      "n": 150,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.025
+      ]
+     },
+     "unnecessary_braking": {
+      "k": 34,
+      "n": 150,
+      "rate": 0.22666666666666666,
+      "ci95": [
+       0.167,
+       0.3
+      ]
+     },
+     "margin_violation": {
+      "k": 81,
+      "n": 150,
+      "rate": 0.54,
+      "ci95": [
+       0.4602,
+       0.6178
+      ]
+     },
+     "min_gap_m": {
+      "mean": 12.775142123616613,
+      "median": 0.6367253556959014,
+      "p5": 0.0
+     },
+     "impact_speed_given_collision_mps": {
+      "mean": 3.8258333333333336,
+      "max": 12.38,
+      "n": 12
+     },
+     "mean_impact_speed_all_mps": 0.3060666666666667,
+     "reaction_time_s": {
+      "mean": 0.12150537634408601,
+      "p95": 0.539999999999999,
+      "n": 93
+     },
+     "peak_cmd_decel": {
+      "mean": 3.6,
+      "p95": 8.0
+     },
+     "transitions_per_episode": 11.673333333333334,
+     "transitions_per_min": 60.42793051880823
+    }
+   },
+   "paired": {
+    "avoidable collision": {
+     "n": 150,
+     "rate_a": 0.10666666666666667,
+     "rate_b": 0.02,
+     "diff_b_minus_a": -0.08666666666666667,
+     "ci95": [
+      -0.14,
+      -0.04
+     ],
+     "only_a": 14,
+     "only_b": 1,
+     "mcnemar_p": 0.0009765625
+    },
+    "any collision": {
+     "n": 150,
+     "rate_a": 0.10666666666666667,
+     "rate_b": 0.02,
+     "diff_b_minus_a": -0.08666666666666667,
+     "ci95": [
+      -0.14,
+      -0.04
+     ],
+     "only_a": 14,
+     "only_b": 1,
+     "mcnemar_p": 0.0009765625
+    },
+    "unnecessary braking": {
+     "n": 150,
+     "rate_a": 0.0,
+     "rate_b": 0.0,
+     "diff_b_minus_a": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "only_a": 0,
+     "only_b": 0,
+     "mcnemar_p": 1.0
+    },
+    "margin violation (<1 m)": {
+     "n": 150,
+     "rate_a": 0.15333333333333332,
+     "rate_b": 0.02,
+     "diff_b_minus_a": -0.13333333333333333,
+     "ci95": [
+      -0.1933,
+      -0.08
+     ],
+     "only_a": 21,
+     "only_b": 1,
+     "mcnemar_p": 1.0967254638671875e-05
+    },
+    "any failure": {
+     "n": 150,
+     "rate_a": 0.13333333333333333,
+     "rate_b": 0.02,
+     "diff_b_minus_a": -0.11333333333333333,
+     "ci95": [
+      -0.1733,
+      -0.06
+     ],
+     "only_a": 18,
+     "only_b": 1,
+     "mcnemar_p": 7.62939453125e-05
+    }
+   },
+   "paired_planners": [
+    "baseline",
+    "improved"
+   ]
+  }
+ },
+ "created_unix": 1792904214,
+ "margin_violation_gap_m": 1.0,
+ "seconds": 15.5
+}

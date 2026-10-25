@@ -1,0 +1,24 @@
+{
+  "scenario": {
+    "ego_speed": 19.5,
+    "lead_speed": 20.0,
+    "initial_gap": 80.0,
+    "lead_decel": 2.0,
+    "brake_onset_s": 1.5,
+    "perception_latency_s": 0.0,
+    "distance_noise_std_m": 0.0,
+    "dropout_prob": 0.0,
+    "detection_loss_start_s": 0.0,
+    "detection_loss_duration_s": 0.0,
+    "ttc_error_factor": 1.0,
+    "ghost_prob": 0.0,
+    "duration_s": 14.0,
+    "seed": 1577662154,
+    "name": "known_failure_gentle_lead_braking",
+    "schema_version": 1
+  },
+  "meta": {
+    "role": "fixed failure: contract for the improved planner; tripwire (known failure) for the original planner",
+    "origin": "autonomy_redteam fix-demo --seed 42 --budget 100"
+  }
+}

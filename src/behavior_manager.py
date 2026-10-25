@@ -47,6 +47,7 @@ class Decision:
     lead_closing: Optional[float] = None   # m/s, > 0 means closing
     lead_speed: Optional[float] = None     # m/s, estimated object forward speed
     raw_state: str = BehaviorState.GO      # state before hysteresis
+    demand_decel: float = 0.0              # m/s^2, braking the safe-stop rule asked for (improved planner; 0 for baseline)
 
 
 class _Smoother:
@@ -122,6 +123,28 @@ class BehaviorManager:
         self._lidar = None       # _Smoother for the in-path LiDAR minimum
         self._esc = 0
         self._rel = 0
+        self._demand = 0.0       # m/s^2, set by _classify (used by subclasses that brake proportionally)
+
+    # -- policy hooks: the baseline implementations below are the original behaviour, unchanged ---------
+    def _classify(self, entities, slow_dist, v):
+        """Raw (pre-hysteresis) state for the in-path entities.
+
+        entities: list of (distance, stop_zone, ttc, closing_speed or None if not yet observed). Returns (raw_state, immediate).
+        """
+        raw = BehaviorState.GO
+        immediate = False
+        for dist, zone, e_ttc, _closing in entities:
+            if dist < zone or e_ttc < config.TTC_STOP:
+                raw = BehaviorState.STOP
+            elif (dist < slow_dist or e_ttc < config.TTC_SLOW) and raw == BehaviorState.GO:
+                raw = BehaviorState.SLOW
+            if dist < 0.5 * zone or e_ttc < 0.5 * config.TTC_STOP:
+                immediate = True
+        return raw, immediate
+
+    def _brake_command(self, state):
+        """Brake fraction (0..1 of the vehicle's maximum deceleration) for the current state."""
+        return _BRAKE[state]
 
     # -- helpers ---------------------------------------------------------------
     def _forget_stale(self):
@@ -170,7 +193,7 @@ class BehaviorManager:
             else:
                 sm.update(obs['dist'], self.dt, self.frame)
             if obs.get('in_path', True):
-                in_path.append((obs['id'], sm, obs.get('ttc_learned'), obs.get('ttc_3d')))
+                in_path.append((obs['id'], sm, obs.get('ttc_learned'), obs.get('ttc_3d'), obs.get('closing_3d'), obs.get('track_hits')))
         self._forget_stale()
 
         # --- LiDAR in-path minimum, handled like one more track -----------------
@@ -196,40 +219,44 @@ class BehaviorManager:
         # --- per-entity checks over in-path obstacles --------------------------------
         # The in-path LiDAR range-rate TTC always applies (in every mode) as the
         # rule-based safety layer; per-track TTC follows ``ttc_mode``.
-        entities = []        # (distance, stop_zone, ttc)
+        entities = []        # (distance, stop_zone, ttc, closing speed)
         ttc = ttc_analytic = math.inf
         ttc_learned = None
         lead = None
-        for oid, sm, learned, kin in in_path:
+        for oid, sm, learned, kin, kin_closing, hits in in_path:
             analytic = _ttc(sm.dist, sm.closing)
             ttc_analytic = min(ttc_analytic, analytic)
             if learned is not None:
                 ttc_learned = learned if ttc_learned is None else min(ttc_learned, learned)
             used = combine_ttc(analytic, learned, self.ttc_mode, kin)
             closing = sm.closing if sm.has_closing else v
-            entities.append((sm.dist, stop_zone(closing), used))
+            zone = stop_zone(closing)                      # baseline zone: smoothed range-rate closing, as before
+            # closing speed offered to planners that opt in: Kalman estimate, else smoothed range-rate, else None (unknown)
+            if self.ttc_mode == 'kalman' and kin_closing is not None:
+                closing = kin_closing
+                if hits is not None and hits < config.SAFE_MIN_TRACK_HITS:
+                    closing = None                         # young track: Kalman velocity still dominated by its prior
+            elif not sm.has_closing:
+                closing = None
+            entities.append((sm.dist, zone, used, closing))
             if lead is None or sm.dist < lead[1].dist:
                 lead = (oid, sm)
         if lidar_dist < 99.0:
             if self._lidar is not None:
                 lidar_ttc = _ttc(self._lidar.dist, self._lidar.closing)
                 closing = self._lidar.closing if self._lidar.has_closing else v
+                known = self._lidar.has_closing
             else:
-                lidar_ttc, closing = math.inf, v
+                lidar_ttc, closing, known = math.inf, v, False
             ttc_analytic = min(ttc_analytic, lidar_ttc)
-            entities.append((lidar_dist, stop_zone(closing), lidar_ttc))
+            # raw LiDAR-minimum range-rate is noisier than the Kalman track's velocity: in kalman mode it is not offered
+            entities.append((lidar_dist, stop_zone(closing), lidar_ttc,
+                             closing if (known and self.ttc_mode != 'kalman') else None))
         ttc = min([e[2] for e in entities], default=math.inf)
         min_dist = min([e[0] for e in entities], default=99.0)
 
-        raw = BehaviorState.GO
-        immediate = False
-        for dist, zone, e_ttc in entities:
-            if dist < zone or e_ttc < config.TTC_STOP:
-                raw = BehaviorState.STOP
-            elif (dist < slow_dist or e_ttc < config.TTC_SLOW) and raw == BehaviorState.GO:
-                raw = BehaviorState.SLOW
-            if dist < 0.5 * zone or e_ttc < 0.5 * config.TTC_STOP:
-                immediate = True
+        self._demand = 0.0
+        raw, immediate = self._classify(entities, slow_dist, v)
         if raw == BehaviorState.GO:
             for adv in advisories:
                 if adv['dist'] < slow_dist or adv.get('ttc_3d', math.inf) < config.TTC_SLOW:
@@ -252,10 +279,11 @@ class BehaviorManager:
         else:
             text = "DRIVING"
 
-        dec = Decision(state=self.state, text=text, brake=_BRAKE[self.state],
+        dec = Decision(state=self.state, text=text, brake=self._brake_command(self.state),
                        ttc=ttc, min_dist=min_dist, stop_dist=stop_dist,
                        slow_dist=slow_dist, ttc_analytic=ttc_analytic,
-                       ttc_learned=ttc_learned, ego_speed=ego_speed, raw_state=raw)
+                       ttc_learned=ttc_learned, ego_speed=ego_speed, raw_state=raw,
+                       demand_decel=self._demand)
         if lead is not None:
             dec.lead_id, dec.lead_dist, dec.lead_closing = lead[0], lead[1].dist, lead[1].closing
             if ego_speed is not None:

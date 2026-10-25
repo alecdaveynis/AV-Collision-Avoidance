@@ -1,0 +1,137 @@
+{
+  "kind": "collision",
+  "original": {
+    "ego_speed": 19.909,
+    "lead_speed": 7.955,
+    "initial_gap": 30.581,
+    "lead_decel": 5.414,
+    "brake_onset_s": 1.601,
+    "perception_latency_s": 0.304,
+    "distance_noise_std_m": 0.456,
+    "dropout_prob": 0.0,
+    "detection_loss_start_s": 1.375,
+    "detection_loss_duration_s": 1.387,
+    "ttc_error_factor": 1.0,
+    "ghost_prob": 0.0,
+    "duration_s": 14.0,
+    "seed": 1577662154,
+    "name": "top_finding",
+    "schema_version": 1
+  },
+  "minimized": {
+    "ego_speed": 19.5,
+    "lead_speed": 20.0,
+    "initial_gap": 80.0,
+    "lead_decel": 2.0,
+    "brake_onset_s": 1.5,
+    "perception_latency_s": 0.0,
+    "distance_noise_std_m": 0.0,
+    "dropout_prob": 0.0,
+    "detection_loss_start_s": 0.0,
+    "detection_loss_duration_s": 0.0,
+    "ttc_error_factor": 1.0,
+    "ghost_prob": 0.0,
+    "duration_s": 14.0,
+    "seed": 1577662154,
+    "name": "top_finding-min",
+    "schema_version": 1
+  },
+  "necessary_faults": [],
+  "removed_faults": [
+    "perception_latency",
+    "distance_noise",
+    "detection_loss"
+  ],
+  "changes": [
+    {
+      "phase": "fault_removal",
+      "param": "perception_latency_s",
+      "old": 0.304,
+      "new": 0.0,
+      "note": "perception_latency not needed"
+    },
+    {
+      "phase": "fault_removal",
+      "param": "distance_noise_std_m",
+      "old": 0.456,
+      "new": 0.0,
+      "note": "distance_noise not needed"
+    },
+    {
+      "phase": "fault_removal",
+      "param": "detection_loss_start_s",
+      "old": 1.375,
+      "new": 0.0,
+      "note": "detection_loss not needed"
+    },
+    {
+      "phase": "fault_removal",
+      "param": "detection_loss_duration_s",
+      "old": 1.387,
+      "new": 0.0,
+      "note": "detection_loss not needed"
+    },
+    {
+      "phase": "physical",
+      "param": "lead_decel",
+      "old": 5.414,
+      "new": 2.0303,
+      "note": "moved towards benign bound 0.0"
+    },
+    {
+      "phase": "physical",
+      "param": "ego_speed",
+      "old": 19.909,
+      "new": 19.6917,
+      "note": "moved towards benign bound 6.0"
+    },
+    {
+      "phase": "physical",
+      "param": "initial_gap",
+      "old": 30.581,
+      "new": 80.0,
+      "note": "moved towards benign bound 80.0"
+    },
+    {
+      "phase": "physical",
+      "param": "lead_speed",
+      "old": 7.955,
+      "new": 20.0,
+      "note": "moved towards benign bound 20.0"
+    },
+    {
+      "phase": "rounding",
+      "param": "ego_speed",
+      "old": 19.6917,
+      "new": 19.5,
+      "note": "snapped to a round value"
+    },
+    {
+      "phase": "rounding",
+      "param": "lead_decel",
+      "old": 2.0303,
+      "new": 2.0,
+      "note": "snapped to a round value"
+    },
+    {
+      "phase": "rounding",
+      "param": "brake_onset_s",
+      "old": 1.601,
+      "new": 1.5,
+      "note": "snapped to a round value"
+    }
+  ],
+  "replays": 30,
+  "distance_before": 4.1184,
+  "distance_after": 1.1865,
+  "reproducibility": {
+    "status": "reproducible",
+    "deterministic_replay": true,
+    "fails_with_its_seed": true,
+    "seed_failure_rate_minimized": 1.0,
+    "seed_failure_rate_original": 1.0,
+    "n_seeds": 20
+  },
+  "predicate_seeds": 3,
+  "predicate_fallback_to_single_seed": false
+}

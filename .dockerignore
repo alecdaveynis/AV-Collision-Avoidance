@@ -3,6 +3,9 @@
 data
 output
 results
-docs
+docs/**
+# the unit tests read these two committed artifacts
+!docs/redteam/known_failure/minimized_scenario.json
+!docs/redteam/diagnosis_eval/nominal_calibration.json
 *.mp4
 __pycache__

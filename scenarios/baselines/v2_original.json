@@ -1,0 +1,2332 @@
+{
+  "baseline_format": 2,
+  "baseline_version": "v2-original",
+  "note": "format-2 baseline recorded on the original planner",
+  "created_utc": "2026-10-25T05:37:54+00:00",
+  "git_commit": "aeba567",
+  "framework_version": "0.1.0",
+  "sut": {
+    "name": "safety_sim",
+    "planner": "baseline",
+    "planner_mode": "kalman",
+    "config_overrides": {},
+    "dt": 0.1,
+    "max_decel": 8.0,
+    "actuator_lag": 0.2
+  },
+  "policy": {
+    "n_seeds": 12,
+    "contract_margin_m": 1.5,
+    "known_failure_rate": 0.75,
+    "known_worse_abs": 3.0,
+    "known_worse_rel": 0.25,
+    "alpha_scenario_family": 0.02,
+    "alpha_suite": 0.005,
+    "min_extra_failures": 2,
+    "suite_min_net": 3,
+    "pooled_min_net": 4,
+    "gap_tol": 0.5,
+    "impact_tol": 1.0,
+    "unnecessary_tol": 0.5,
+    "reaction_tol": 0.2,
+    "decel_tol": 1.0,
+    "bootstrap": 2000,
+    "strict": false
+  },
+  "scenarios": {
+    "fail_01_collision_lead_braking": {
+      "fingerprint": "313751220949",
+      "role": "known_failure",
+      "seeds": [
+        1787828773,
+        1787941421,
+        1787949340,
+        1787957259,
+        1787965178,
+        1787973097,
+        1787981016,
+        1787988935,
+        1787996854,
+        1788004773,
+        1788012692,
+        1788020611
+      ],
+      "runs": [
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 0.34,
+          "min_ttc": 0.018140412305097567,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 0.34,
+          "min_ttc": 0.018140412305097567,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 0.34,
+          "min_ttc": 0.018140412305097567,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "near_miss"
+          ],
+          "collision": false,
+          "min_gap": 0.050361624061395105,
+          "impact_speed": 0.0,
+          "min_ttc": 0.07975625808258738,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "near_miss"
+          ],
+          "collision": false,
+          "min_gap": 0.050361624061395105,
+          "impact_speed": 0.0,
+          "min_ttc": 0.07975625808258738,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 3.78,
+          "min_ttc": 0.06768740815253133,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 0.34,
+          "min_ttc": 0.018140412305097567,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "near_miss"
+          ],
+          "collision": false,
+          "min_gap": 0.050361624061395105,
+          "impact_speed": 0.0,
+          "min_ttc": 0.07975625808258738,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 3.3,
+          "min_ttc": 0.024327176830713157,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 3.3,
+          "min_ttc": 0.024327176830713157,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 0.34,
+          "min_ttc": 0.018140412305097567,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 0.34,
+          "min_ttc": 0.018140412305097567,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        }
+      ],
+      "summary": {
+        "safety_failures": 12,
+        "collisions": 9,
+        "worst_min_gap": 0.0,
+        "worst_impact_speed": 3.78
+      }
+    },
+    "fail_02_collision_lead_braking": {
+      "fingerprint": "ace6f149090d",
+      "role": "known_failure",
+      "seeds": [
+        1530297784,
+        1530410432,
+        1530418351,
+        1530426270,
+        1530434189,
+        1530442108,
+        1530450027,
+        1530457946,
+        1530465865,
+        1530473784,
+        1530481703,
+        1530489622
+      ],
+      "runs": [
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 2.6,
+          "min_ttc": 0.007957000489127413,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 2.92,
+          "min_ttc": 0.024472490795213315,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 2.6,
+          "min_ttc": 0.007957000489127413,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "near_miss"
+          ],
+          "collision": false,
+          "min_gap": 0.18307555200874503,
+          "impact_speed": 0.0,
+          "min_ttc": 0.16607915843549453,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 2.6,
+          "min_ttc": 0.007957000489127413,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 2.6,
+          "min_ttc": 0.007957000489127413,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "near_miss"
+          ],
+          "collision": false,
+          "min_gap": 0.18307555200874503,
+          "impact_speed": 0.0,
+          "min_ttc": 0.16607915843549453,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "near_miss"
+          ],
+          "collision": false,
+          "min_gap": 0.18307555200874503,
+          "impact_speed": 0.0,
+          "min_ttc": 0.16607915843549453,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 2.6,
+          "min_ttc": 0.007957000489127413,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 2.92,
+          "min_ttc": 0.024472490795213315,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "near_miss"
+          ],
+          "collision": false,
+          "min_gap": 0.18307555200874503,
+          "impact_speed": 0.0,
+          "min_ttc": 0.16607915843549453,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 2.92,
+          "min_ttc": 0.024472490795213315,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        }
+      ],
+      "summary": {
+        "safety_failures": 12,
+        "collisions": 8,
+        "worst_min_gap": 0.0,
+        "worst_impact_speed": 2.92
+      }
+    },
+    "fail_03_collision_lead_braking": {
+      "fingerprint": "0f89253ac902",
+      "role": "marginal",
+      "seeds": [
+        1942674916,
+        1942787564,
+        1942795483,
+        1942803402,
+        1942811321,
+        1942819240,
+        1942827159,
+        1942835078,
+        1942842997,
+        1942850916,
+        1942858835,
+        1942866754
+      ],
+      "runs": [
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 1.7,
+          "min_ttc": 0.056084116327729236,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 1.7,
+          "min_ttc": 0.056084116327729236,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 0.5519868440401012,
+          "impact_speed": 0.0,
+          "min_ttc": 0.32630418244940146,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 0.5519868440401012,
+          "impact_speed": 0.0,
+          "min_ttc": 0.32630418244940146,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 1.38,
+          "min_ttc": 0.02397578187367423,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 1.7,
+          "min_ttc": 0.056084116327729236,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 1.7,
+          "min_ttc": 0.056084116327729236,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 0.5999800081137892,
+          "impact_speed": 0.0,
+          "min_ttc": 0.33927768558568727,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 0.5999800081137892,
+          "impact_speed": 0.0,
+          "min_ttc": 0.33927768558568727,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 0.5519868440401012,
+          "impact_speed": 0.0,
+          "min_ttc": 0.32630418244940146,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 1.38,
+          "min_ttc": 0.02397578187367423,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 1.7,
+          "min_ttc": 0.056084116327729236,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        }
+      ],
+      "summary": {
+        "safety_failures": 7,
+        "collisions": 7,
+        "worst_min_gap": 0.0,
+        "worst_impact_speed": 1.7
+      }
+    },
+    "fail_04_collision_lead_braking": {
+      "fingerprint": "3f5fe1d12add",
+      "role": "marginal",
+      "seeds": [
+        1230239153,
+        1230351801,
+        1230359720,
+        1230367639,
+        1230375558,
+        1230383477,
+        1230391396,
+        1230399315,
+        1230407234,
+        1230415153,
+        1230423072,
+        1230430991
+      ],
+      "runs": [
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 3.08,
+          "min_ttc": 0.02955871840962726,
+          "brake_reaction_time": 0.6000000000000005,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 1.1907652158202353,
+          "impact_speed": 0.0,
+          "min_ttc": 0.4978764086076416,
+          "brake_reaction_time": 0.5,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 5.4,
+          "min_ttc": 0.06363576185669846,
+          "brake_reaction_time": 0.9000000000000004,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 2,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 3.0,
+          "min_ttc": 0.03018801562819269,
+          "brake_reaction_time": 0.8000000000000007,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 2,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 0.46276179785149907,
+          "impact_speed": 0.0,
+          "min_ttc": 0.2944418934903515,
+          "brake_reaction_time": 0.5,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 4.2,
+          "min_ttc": 0.07493157135427306,
+          "brake_reaction_time": 0.5,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 6.99,
+          "min_ttc": 0.07874842443729142,
+          "brake_reaction_time": 1.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 2,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 2.04,
+          "min_ttc": 0.041808564839869576,
+          "brake_reaction_time": 0.5,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 4.12,
+          "min_ttc": 0.0533853872428193,
+          "brake_reaction_time": 0.7000000000000002,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 1.1907652158202353,
+          "impact_speed": 0.0,
+          "min_ttc": 0.4978764086076416,
+          "brake_reaction_time": 0.5,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 1.1907652158202353,
+          "impact_speed": 0.0,
+          "min_ttc": 0.4978764086076416,
+          "brake_reaction_time": 0.5,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 1.1907652158202353,
+          "impact_speed": 0.0,
+          "min_ttc": 0.4978764086076416,
+          "brake_reaction_time": 0.5,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        }
+      ],
+      "summary": {
+        "safety_failures": 7,
+        "collisions": 7,
+        "worst_min_gap": 0.0,
+        "worst_impact_speed": 6.99
+      }
+    },
+    "known_failure_gentle_lead_braking": {
+      "fingerprint": "4df3ec6c3519",
+      "role": "known_failure",
+      "seeds": [
+        1577662154,
+        1577774802,
+        1577782721,
+        1577790640,
+        1577798559,
+        1577806478,
+        1577814397,
+        1577822316,
+        1577830235,
+        1577838154,
+        1577846073,
+        1577853992
+      ],
+      "runs": [
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 6.98,
+          "min_ttc": 0.03983734808658552,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 6.14,
+          "min_ttc": 0.0445081344853108,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 6.14,
+          "min_ttc": 0.0445081344853108,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 6.14,
+          "min_ttc": 0.0445081344853108,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 6.98,
+          "min_ttc": 0.03983734808658552,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 5.82,
+          "min_ttc": 0.03426651292380486,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 6.14,
+          "min_ttc": 0.0445081344853108,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 6.14,
+          "min_ttc": 0.0445081344853108,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 7.3,
+          "min_ttc": 0.05948806203165945,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 7.3,
+          "min_ttc": 0.05948806203165945,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 6.98,
+          "min_ttc": 0.03983734808658552,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 6.98,
+          "min_ttc": 0.03983734808658552,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        }
+      ],
+      "summary": {
+        "safety_failures": 12,
+        "collisions": 12,
+        "worst_min_gap": 0.0,
+        "worst_impact_speed": 7.3
+      }
+    },
+    "pass_01_lead_braking": {
+      "fingerprint": "b1ba5c1f45d9",
+      "role": "marginal",
+      "seeds": [
+        1807036349,
+        1807148997,
+        1807156916,
+        1807164835,
+        1807172754,
+        1807180673,
+        1807188592,
+        1807196511,
+        1807204430,
+        1807212349,
+        1807220268,
+        1807228187
+      ],
+      "runs": [
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 0.035769977111755225,
+          "impact_speed": 0.0,
+          "min_ttc": 0.05134018067037609,
+          "brake_reaction_time": 0.10000000000000053,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 3.050719914169214,
+          "impact_speed": 0.0,
+          "min_ttc": 1.555351148867375,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 0.441769977133994,
+          "impact_speed": 0.0,
+          "min_ttc": 0.29702259845791185,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 2.9015199996869825,
+          "impact_speed": 0.0,
+          "min_ttc": 1.5057191509074441,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 2.119919999295817,
+          "impact_speed": 0.0,
+          "min_ttc": 1.2806493645171724,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 1.6827199993070252,
+          "impact_speed": 0.0,
+          "min_ttc": 1.1282628344766248,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 1.6743199943225733,
+          "impact_speed": 0.0,
+          "min_ttc": 1.0143444058240838,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 2.205519999664645,
+          "impact_speed": 0.0,
+          "min_ttc": 1.3008272343170662,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.1,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 0.8229199774692759,
+          "impact_speed": 0.0,
+          "min_ttc": 0.4784855804489165,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [
+            "unnecessary_braking"
+          ],
+          "collision": false,
+          "min_gap": 3.3531199971389185,
+          "impact_speed": 0.0,
+          "min_ttc": 1.6237668270694714,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.5,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 0.6409685351568442,
+          "impact_speed": 0.0,
+          "min_ttc": 0.3669772775228636,
+          "brake_reaction_time": 0.20000000000000018,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "collision"
+          ],
+          "collision": true,
+          "min_gap": 0.0,
+          "impact_speed": 3.57,
+          "min_ttc": 0.031485098477687275,
+          "brake_reaction_time": 0.09999999999999964,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "avoidable"
+        }
+      ],
+      "summary": {
+        "safety_failures": 1,
+        "collisions": 1,
+        "worst_min_gap": 0.0,
+        "worst_impact_speed": 3.57
+      }
+    },
+    "pass_02_steady": {
+      "fingerprint": "6e781cd9a36a",
+      "role": "marginal",
+      "seeds": [
+        475699764,
+        475812412,
+        475820331,
+        475828250,
+        475836169,
+        475844088,
+        475852007,
+        475859926,
+        475867845,
+        475875764,
+        475883683,
+        475891602
+      ],
+      "runs": [
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 0.8046453124971009,
+          "impact_speed": 0.0,
+          "min_ttc": 0.40193361054177484,
+          "brake_reaction_time": 0.10000000000000009,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 1.3646726562470803,
+          "impact_speed": 0.0,
+          "min_ttc": 0.5363938169478645,
+          "brake_reaction_time": 0.10000000000000009,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 0.8046453124971009,
+          "impact_speed": 0.0,
+          "min_ttc": 0.40193361054177484,
+          "brake_reaction_time": 0.10000000000000009,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 0.5966726562442943,
+          "impact_speed": 0.0,
+          "min_ttc": 0.3418343472779568,
+          "brake_reaction_time": 0.20000000000000007,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 0.8046453124971009,
+          "impact_speed": 0.0,
+          "min_ttc": 0.40193361054177484,
+          "brake_reaction_time": 0.10000000000000009,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 0.5966726562442943,
+          "impact_speed": 0.0,
+          "min_ttc": 0.3418343472779568,
+          "brake_reaction_time": 0.20000000000000007,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 0.8046453124971009,
+          "impact_speed": 0.0,
+          "min_ttc": 0.40193361054177484,
+          "brake_reaction_time": 0.10000000000000009,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "near_miss"
+          ],
+          "collision": false,
+          "min_gap": 0.2649453124984831,
+          "impact_speed": 0.0,
+          "min_ttc": 0.21290085366560718,
+          "brake_reaction_time": 0.10000000000000009,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "near_miss"
+          ],
+          "collision": false,
+          "min_gap": 0.4643726562275319,
+          "impact_speed": 0.0,
+          "min_ttc": 0.2951938507752598,
+          "brake_reaction_time": 0.30000000000000004,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 0.8046453124971009,
+          "impact_speed": 0.0,
+          "min_ttc": 0.40193361054177484,
+          "brake_reaction_time": 0.10000000000000009,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 0.8046453124971009,
+          "impact_speed": 0.0,
+          "min_ttc": 0.40193361054177484,
+          "brake_reaction_time": 0.10000000000000009,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 0.8046453124971009,
+          "impact_speed": 0.0,
+          "min_ttc": 0.40193361054177484,
+          "brake_reaction_time": 0.10000000000000009,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        }
+      ],
+      "summary": {
+        "safety_failures": 2,
+        "collisions": 0,
+        "worst_min_gap": 0.2649453124984831,
+        "worst_impact_speed": 0.0
+      }
+    },
+    "pass_03_parked": {
+      "fingerprint": "489dbe603cad",
+      "role": "marginal",
+      "seeds": [
+        2129375286,
+        2129487934,
+        2129495853,
+        2129503772,
+        2129511691,
+        2129519610,
+        2129527529,
+        2129535448,
+        2129543367,
+        2129551286,
+        2129559205,
+        2129567124
+      ],
+      "runs": [
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 4.812099999998566,
+          "impact_speed": 0.0,
+          "min_ttc": 1.6130202002203597,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 5.399424999977612,
+          "impact_speed": 0.0,
+          "min_ttc": 1.428390975150705,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 5.146981249821149,
+          "impact_speed": 0.0,
+          "min_ttc": 1.2410682571470508,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 9.306500091551321,
+          "impact_speed": 0.0,
+          "min_ttc": 2.4215901095587498,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 1.1732906221389534,
+          "impact_speed": 0.0,
+          "min_ttc": 0.4972332814400331,
+          "brake_reaction_time": 0.20000000000000007,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 3.3740726104736076,
+          "impact_speed": 0.0,
+          "min_ttc": 0.8803656530699735,
+          "brake_reaction_time": 0.30000000000000016,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": true,
+          "failure_kinds": [
+            "near_miss"
+          ],
+          "collision": false,
+          "min_gap": 0.11444530677793097,
+          "impact_speed": 0.0,
+          "min_ttc": 0.13230621011641144,
+          "brake_reaction_time": 0.4,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 7.063606622308839,
+          "impact_speed": 0.0,
+          "min_ttc": 1.6284164322745278,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 4.7009624999776065,
+          "impact_speed": 0.0,
+          "min_ttc": 1.251864279533452,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 3.0209999999997876,
+          "impact_speed": 0.0,
+          "min_ttc": 1.3290941281424289,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 5.73586249997761,
+          "impact_speed": 0.0,
+          "min_ttc": 1.4560268374030796,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 1.6500624998211535,
+          "impact_speed": 0.0,
+          "min_ttc": 0.6098936925962948,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        }
+      ],
+      "summary": {
+        "safety_failures": 1,
+        "collisions": 0,
+        "worst_min_gap": 0.11444530677793097,
+        "worst_impact_speed": 0.0
+      }
+    },
+    "safe_gentle_brake_large_gap": {
+      "fingerprint": "7b4b66a16dff",
+      "role": "safe_contract",
+      "seeds": [
+        1027,
+        113675,
+        121594,
+        129513,
+        137432,
+        145351,
+        153270,
+        161189,
+        169108,
+        177027,
+        184946,
+        192865
+      ],
+      "runs": [
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 5.522999999999897,
+          "impact_speed": 0.0,
+          "min_ttc": 2.0959615823883806,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 4.522999999999897,
+          "impact_speed": 0.0,
+          "min_ttc": 1.8921610278122967,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 6.522999999999897,
+          "impact_speed": 0.0,
+          "min_ttc": 2.282218485728916,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 5.522999999999897,
+          "impact_speed": 0.0,
+          "min_ttc": 2.0959615823883806,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 4.522999999999897,
+          "impact_speed": 0.0,
+          "min_ttc": 1.8921610278122967,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 4.522999999999897,
+          "impact_speed": 0.0,
+          "min_ttc": 1.8921610278122967,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 3.5229999999998967,
+          "impact_speed": 0.0,
+          "min_ttc": 1.6647500013989704,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 4.522999999999897,
+          "impact_speed": 0.0,
+          "min_ttc": 1.8921610278122967,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 5.522999999999897,
+          "impact_speed": 0.0,
+          "min_ttc": 2.0959615823883806,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 4.522999999999897,
+          "impact_speed": 0.0,
+          "min_ttc": 1.8921610278122967,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 4.522999999999897,
+          "impact_speed": 0.0,
+          "min_ttc": 1.8921610278122967,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 4.522999999999897,
+          "impact_speed": 0.0,
+          "min_ttc": 1.8921610278122967,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        }
+      ],
+      "summary": {
+        "safety_failures": 0,
+        "collisions": 0,
+        "worst_min_gap": 3.5229999999998967,
+        "worst_impact_speed": 0.0
+      }
+    },
+    "safe_hard_brake_large_gap": {
+      "fingerprint": "443ecf9de625",
+      "role": "safe_contract",
+      "seeds": [
+        1025,
+        113673,
+        121592,
+        129511,
+        137430,
+        145349,
+        153268,
+        161187,
+        169106,
+        177025,
+        184944,
+        192863
+      ],
+      "runs": [
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 2.4239999999999355,
+          "impact_speed": 0.0,
+          "min_ttc": 1.371428571429217,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 3.6239999999999384,
+          "impact_speed": 0.0,
+          "min_ttc": 1.688235294123073,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 3.6239999999999384,
+          "impact_speed": 0.0,
+          "min_ttc": 1.688235294123073,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 2.4239999999999355,
+          "impact_speed": 0.0,
+          "min_ttc": 1.371428571429217,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 2.4239999999999355,
+          "impact_speed": 0.0,
+          "min_ttc": 1.371428571429217,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 2.4239999999999355,
+          "impact_speed": 0.0,
+          "min_ttc": 1.371428571429217,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 3.6239999999999384,
+          "impact_speed": 0.0,
+          "min_ttc": 1.688235294123073,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 2.4239999999999355,
+          "impact_speed": 0.0,
+          "min_ttc": 1.371428571429217,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 2.7911249999998375,
+          "impact_speed": 0.0,
+          "min_ttc": 0.9052631579045897,
+          "brake_reaction_time": 0.0,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 8.0,
+          "n_states": 3,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 2.4239999999999355,
+          "impact_speed": 0.0,
+          "min_ttc": 1.371428571429217,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 2.4239999999999355,
+          "impact_speed": 0.0,
+          "min_ttc": 1.371428571429217,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 3.6239999999999384,
+          "impact_speed": 0.0,
+          "min_ttc": 1.688235294123073,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        }
+      ],
+      "summary": {
+        "safety_failures": 0,
+        "collisions": 0,
+        "worst_min_gap": 2.4239999999999355,
+        "worst_impact_speed": 0.0
+      }
+    },
+    "safe_parked_lead_far": {
+      "fingerprint": "37e3f8e2558b",
+      "role": "safe_contract",
+      "seeds": [
+        1020,
+        113668,
+        121587,
+        129506,
+        137425,
+        145344,
+        153263,
+        161182,
+        169101,
+        177020,
+        184939,
+        192858
+      ],
+      "runs": [
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 3.823999999999927,
+          "impact_speed": 0.0,
+          "min_ttc": 1.7351851851957478,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 2.6239999999999384,
+          "impact_speed": 0.0,
+          "min_ttc": 1.4288888888901654,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 3.823999999999927,
+          "impact_speed": 0.0,
+          "min_ttc": 1.7351851851957478,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 2.6239999999999384,
+          "impact_speed": 0.0,
+          "min_ttc": 1.4288888888901654,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 2.6239999999999384,
+          "impact_speed": 0.0,
+          "min_ttc": 1.4288888888901654,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 3.823999999999927,
+          "impact_speed": 0.0,
+          "min_ttc": 1.7351851851957478,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 3.823999999999927,
+          "impact_speed": 0.0,
+          "min_ttc": 1.7351851851957478,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 3.823999999999927,
+          "impact_speed": 0.0,
+          "min_ttc": 1.7351851851957478,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 3.823999999999927,
+          "impact_speed": 0.0,
+          "min_ttc": 1.7351851851957478,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 3.823999999999927,
+          "impact_speed": 0.0,
+          "min_ttc": 1.7351851851957478,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 3.823999999999927,
+          "impact_speed": 0.0,
+          "min_ttc": 1.7351851851957478,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 5.02399999999993,
+          "impact_speed": 0.0,
+          "min_ttc": 1.9966666667108166,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        }
+      ],
+      "summary": {
+        "safety_failures": 0,
+        "collisions": 0,
+        "worst_min_gap": 2.6239999999999384,
+        "worst_impact_speed": 0.0
+      }
+    },
+    "safe_slow_lead_approach": {
+      "fingerprint": "4a160816446a",
+      "role": "safe_contract",
+      "seeds": [
+        1023,
+        113671,
+        121590,
+        129509,
+        137428,
+        145347,
+        153266,
+        161185,
+        169104,
+        177023,
+        184942,
+        192861
+      ],
+      "runs": [
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 9.763999999977813,
+          "impact_speed": 0.0,
+          "min_ttc": 2.818644067796586,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 9.063999999977824,
+          "impact_speed": 0.0,
+          "min_ttc": 2.708140462889044,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 9.063999999977824,
+          "impact_speed": 0.0,
+          "min_ttc": 2.708140462889044,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 9.063999999977824,
+          "impact_speed": 0.0,
+          "min_ttc": 2.708140462889044,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 9.763999999977813,
+          "impact_speed": 0.0,
+          "min_ttc": 2.818644067796586,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 9.063999999977824,
+          "impact_speed": 0.0,
+          "min_ttc": 2.708140462889044,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 9.763999999977813,
+          "impact_speed": 0.0,
+          "min_ttc": 2.818644067796586,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 9.063999999977824,
+          "impact_speed": 0.0,
+          "min_ttc": 2.708140462889044,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 9.063999999977824,
+          "impact_speed": 0.0,
+          "min_ttc": 2.708140462889044,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 9.763999999977813,
+          "impact_speed": 0.0,
+          "min_ttc": 2.818644067796586,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 9.763999999977813,
+          "impact_speed": 0.0,
+          "min_ttc": 2.818644067796586,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        },
+        {
+          "safety_failure": false,
+          "failure_kinds": [],
+          "collision": false,
+          "min_gap": 9.063999999977824,
+          "impact_speed": 0.0,
+          "min_ttc": 2.708140462889044,
+          "brake_reaction_time": null,
+          "unnecessary_braking_s": 0.0,
+          "peak_cmd_decel": 2.4,
+          "n_states": 2,
+          "collision_class": "none"
+        }
+      ],
+      "summary": {
+        "safety_failures": 0,
+        "collisions": 0,
+        "worst_min_gap": 9.063999999977824,
+        "worst_impact_speed": 0.0
+      }
+    }
+  }
+}

@@ -1,0 +1,366 @@
+{
+ "set": "heldout_random",
+ "n": 500,
+ "planners": [
+  "baseline",
+  "improved",
+  "baseline+EMERGENCY_DECEL=4",
+  "reference_rss"
+ ],
+ "lags": {
+  "0.3": {
+   "baseline": {
+    "n": 500,
+    "failure": {
+     "k": 209,
+     "n": 500,
+     "rate": 0.418,
+     "ci95": [
+      0.3756,
+      0.4617
+     ]
+    },
+    "collision": {
+     "k": 169,
+     "n": 500,
+     "rate": 0.338,
+     "ci95": [
+      0.2979,
+      0.3806
+     ]
+    },
+    "avoidable_collision": {
+     "k": 169,
+     "n": 500,
+     "rate": 0.338,
+     "ci95": [
+      0.2979,
+      0.3806
+     ]
+    },
+    "hard_collision": {
+     "k": 0,
+     "n": 500,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0076
+     ]
+    },
+    "unavoidable_collision": {
+     "k": 0,
+     "n": 500,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0076
+     ]
+    },
+    "unnecessary_braking": {
+     "k": 30,
+     "n": 500,
+     "rate": 0.06,
+     "ci95": [
+      0.0423,
+      0.0844
+     ]
+    },
+    "margin_violation": {
+     "k": 204,
+     "n": 500,
+     "rate": 0.408,
+     "ci95": [
+      0.3658,
+      0.4516
+     ]
+    },
+    "min_gap_m": {
+     "mean": 9.644714524511084,
+     "median": 2.4878076250994603,
+     "p5": 0.0
+    },
+    "impact_speed_given_collision_mps": {
+     "mean": 7.7249704142011835,
+     "max": 19.87,
+     "n": 169
+    },
+    "mean_impact_speed_all_mps": 2.61104,
+    "reaction_time_s": {
+     "mean": 0.30398550724637685,
+     "p95": 1.4250000000000003,
+     "n": 276
+    },
+    "peak_cmd_decel": {
+     "mean": 5.1984,
+     "p95": 8.0
+    },
+    "transitions_per_episode": 2.15,
+    "transitions_per_min": 13.690198242560596
+   },
+   "improved": {
+    "n": 500,
+    "failure": {
+     "k": 66,
+     "n": 500,
+     "rate": 0.132,
+     "ci95": [
+      0.1051,
+      0.1645
+     ]
+    },
+    "collision": {
+     "k": 43,
+     "n": 500,
+     "rate": 0.086,
+     "ci95": [
+      0.0645,
+      0.1138
+     ]
+    },
+    "avoidable_collision": {
+     "k": 43,
+     "n": 500,
+     "rate": 0.086,
+     "ci95": [
+      0.0645,
+      0.1138
+     ]
+    },
+    "hard_collision": {
+     "k": 0,
+     "n": 500,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0076
+     ]
+    },
+    "unavoidable_collision": {
+     "k": 0,
+     "n": 500,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0076
+     ]
+    },
+    "unnecessary_braking": {
+     "k": 23,
+     "n": 500,
+     "rate": 0.046,
+     "ci95": [
+      0.0308,
+      0.0681
+     ]
+    },
+    "margin_violation": {
+     "k": 48,
+     "n": 500,
+     "rate": 0.096,
+     "ci95": [
+      0.0732,
+      0.125
+     ]
+    },
+    "min_gap_m": {
+     "mean": 15.693156142580523,
+     "median": 8.139089785495504,
+     "p5": 0.0
+    },
+    "impact_speed_given_collision_mps": {
+     "mean": 7.992093023255815,
+     "max": 19.87,
+     "n": 43
+    },
+    "mean_impact_speed_all_mps": 0.6873199999999999,
+    "reaction_time_s": {
+     "mean": 0.2753246753246754,
+     "p95": 1.8000000000000003,
+     "n": 77
+    },
+    "peak_cmd_decel": {
+     "mean": 3.6010916199823186,
+     "p95": 8.0
+    },
+    "transitions_per_episode": 3.202,
+    "transitions_per_min": 16.85411000964997
+   },
+   "baseline+EMERGENCY_DECEL=4": {
+    "n": 500,
+    "failure": {
+     "k": 181,
+     "n": 500,
+     "rate": 0.362,
+     "ci95": [
+      0.3211,
+      0.405
+     ]
+    },
+    "collision": {
+     "k": 95,
+     "n": 500,
+     "rate": 0.19,
+     "ci95": [
+      0.158,
+      0.2267
+     ]
+    },
+    "avoidable_collision": {
+     "k": 95,
+     "n": 500,
+     "rate": 0.19,
+     "ci95": [
+      0.158,
+      0.2267
+     ]
+    },
+    "hard_collision": {
+     "k": 0,
+     "n": 500,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0076
+     ]
+    },
+    "unavoidable_collision": {
+     "k": 0,
+     "n": 500,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0076
+     ]
+    },
+    "unnecessary_braking": {
+     "k": 86,
+     "n": 500,
+     "rate": 0.172,
+     "ci95": [
+      0.1415,
+      0.2075
+     ]
+    },
+    "margin_violation": {
+     "k": 117,
+     "n": 500,
+     "rate": 0.234,
+     "ci95": [
+      0.199,
+      0.2731
+     ]
+    },
+    "min_gap_m": {
+     "mean": 11.21239356237709,
+     "median": 5.071726981839723,
+     "p5": 0.0
+    },
+    "impact_speed_given_collision_mps": {
+     "mean": 6.434736842105265,
+     "max": 17.61,
+     "n": 95
+    },
+    "mean_impact_speed_all_mps": 1.2226,
+    "reaction_time_s": {
+     "mean": 0.307258064516129,
+     "p95": 1.3649999999999973,
+     "n": 248
+    },
+    "peak_cmd_decel": {
+     "mean": 5.752,
+     "p95": 8.0
+    },
+    "transitions_per_episode": 2.646,
+    "transitions_per_min": 15.809599681338378
+   },
+   "reference_rss": {
+    "n": 500,
+    "failure": {
+     "k": 285,
+     "n": 500,
+     "rate": 0.57,
+     "ci95": [
+      0.5262,
+      0.6127
+     ]
+    },
+    "collision": {
+     "k": 144,
+     "n": 500,
+     "rate": 0.288,
+     "ci95": [
+      0.25,
+      0.3292
+     ]
+    },
+    "avoidable_collision": {
+     "k": 144,
+     "n": 500,
+     "rate": 0.288,
+     "ci95": [
+      0.25,
+      0.3292
+     ]
+    },
+    "hard_collision": {
+     "k": 0,
+     "n": 500,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0076
+     ]
+    },
+    "unavoidable_collision": {
+     "k": 0,
+     "n": 500,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0076
+     ]
+    },
+    "unnecessary_braking": {
+     "k": 157,
+     "n": 500,
+     "rate": 0.314,
+     "ci95": [
+      0.2749,
+      0.356
+     ]
+    },
+    "margin_violation": {
+     "k": 292,
+     "n": 500,
+     "rate": 0.584,
+     "ci95": [
+      0.5403,
+      0.6264
+     ]
+    },
+    "min_gap_m": {
+     "mean": 8.778085609140685,
+     "median": 0.7096455646942275,
+     "p5": 0.0
+    },
+    "impact_speed_given_collision_mps": {
+     "mean": 5.918125,
+     "max": 19.87,
+     "n": 144
+    },
+    "mean_impact_speed_all_mps": 1.70442,
+    "reaction_time_s": {
+     "mean": 0.2027439024390244,
+     "p95": 0.9000000000000004,
+     "n": 328
+    },
+    "peak_cmd_decel": {
+     "mean": 4.592,
+     "p95": 8.0
+    },
+    "transitions_per_episode": 9.558,
+    "transitions_per_min": 53.22418977614433
+   }
+  }
+ }
+}

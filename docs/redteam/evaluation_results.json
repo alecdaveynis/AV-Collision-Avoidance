@@ -1,0 +1,3195 @@
+{
+  "config": {
+    "budget": 150,
+    "trials": 10,
+    "min_limit": 40,
+    "plant": 12,
+    "null": 20,
+    "suite_budget": 300,
+    "holdout": 300
+  },
+  "sut": {
+    "name": "safety_sim",
+    "planner_mode": "kalman",
+    "config_overrides": {},
+    "dt": 0.1,
+    "max_decel": 8.0,
+    "actuator_lag": 0.2
+  },
+  "search": {
+    "budget": 150,
+    "trials": 10,
+    "regimes": {
+      "full_box": {
+        "bounds": null,
+        "summary": {
+          "random": {
+            "failing": {
+              "n": 10,
+              "mean": 51.3,
+              "std": 4.832,
+              "median": 49.0
+            },
+            "first_failure_sim": {
+              "n": 10,
+              "mean": 3.3,
+              "std": 1.337,
+              "median": 3.0
+            },
+            "trials_without_failure": 0,
+            "unique_reproducible": {
+              "n": 10,
+              "mean": 14.6,
+              "std": 2.875,
+              "median": 15.0
+            },
+            "worst_impact_speed": {
+              "n": 10,
+              "mean": 17.049,
+              "std": 1.792,
+              "median": 16.93
+            },
+            "search_seconds": {
+              "n": 10,
+              "mean": 0.834,
+              "std": 0.078,
+              "median": 0.814
+            },
+            "distinct_signatures_over_all_trials": 51
+          },
+          "cmaes": {
+            "failing": {
+              "n": 10,
+              "mean": 131.3,
+              "std": 13.466,
+              "median": 134.5
+            },
+            "first_failure_sim": {
+              "n": 10,
+              "mean": 2.4,
+              "std": 2.797,
+              "median": 1.0
+            },
+            "trials_without_failure": 0,
+            "unique_reproducible": {
+              "n": 10,
+              "mean": 12.8,
+              "std": 4.264,
+              "median": 12.0
+            },
+            "worst_impact_speed": {
+              "n": 10,
+              "mean": 19.975,
+              "std": 0.079,
+              "median": 20.0
+            },
+            "search_seconds": {
+              "n": 10,
+              "mean": 0.385,
+              "std": 0.091,
+              "median": 0.35
+            },
+            "distinct_signatures_over_all_trials": 43
+          }
+        },
+        "paired_cmaes_minus_random_unique_reproducible": {
+          "mean_diff": -1.8,
+          "ci95": [
+            -4.0,
+            0.2
+          ],
+          "wins_first": 3,
+          "ties": 1,
+          "wins_second": 6
+        },
+        "paired_cmaes_minus_random_failing": {
+          "mean_diff": 80.0,
+          "ci95": [
+            68.895,
+            89.1
+          ],
+          "wins_first": 10,
+          "ties": 0,
+          "wins_second": 0
+        },
+        "union_signatures": {
+          "random": 51,
+          "cmaes": 43
+        },
+        "union_both": 68,
+        "trial_rows": {
+          "random": [
+            {
+              "seed": 0,
+              "sims": 150,
+              "failing": 61,
+              "first_failure_sim": 3,
+              "unique_findings": 24,
+              "unique_reproducible": 17,
+              "worst_impact_speed": 17.52,
+              "search_seconds": 0.802,
+              "post_processing_sims": 331,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss | parked",
+                "collision | faults: detection_loss | steady",
+                "collision | faults: detection_loss, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | steady",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "unnecessary_braking | faults: distance_noise | lead_braking",
+                "unnecessary_braking | faults: distance_noise, sensor_dropout, ttc_error | steady",
+                "unnecessary_braking | faults: none | lead_braking",
+                "unnecessary_braking | faults: none | steady"
+              ]
+            },
+            {
+              "seed": 1,
+              "sims": 150,
+              "failing": 46,
+              "first_failure_sim": 3,
+              "unique_findings": 16,
+              "unique_reproducible": 14,
+              "worst_impact_speed": 17.8,
+              "search_seconds": 0.782,
+              "post_processing_sims": 219,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss | steady",
+                "collision | faults: detection_loss, sensor_dropout | steady",
+                "collision | faults: distance_noise, sensor_dropout, ttc_error | steady",
+                "collision | faults: distance_noise, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: ttc_error | lead_braking",
+                "unnecessary_braking | faults: ghost_clusters, ttc_error | lead_braking",
+                "unnecessary_braking | faults: none | lead_braking"
+              ]
+            },
+            {
+              "seed": 2,
+              "sims": 150,
+              "failing": 49,
+              "first_failure_sim": 3,
+              "unique_findings": 19,
+              "unique_reproducible": 13,
+              "worst_impact_speed": 18.69,
+              "search_seconds": 0.813,
+              "post_processing_sims": 261,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss | steady",
+                "collision | faults: distance_noise, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: distance_noise, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "near_miss | faults: detection_loss, distance_noise, perception_latency, ttc_error | lead_braking",
+                "unnecessary_braking | faults: distance_noise | lead_braking",
+                "unnecessary_braking | faults: ghost_clusters | lead_braking",
+                "unnecessary_braking | faults: none | steady"
+              ]
+            },
+            {
+              "seed": 3,
+              "sims": 150,
+              "failing": 49,
+              "first_failure_sim": 5,
+              "unique_findings": 24,
+              "unique_reproducible": 19,
+              "worst_impact_speed": 15.87,
+              "search_seconds": 0.816,
+              "post_processing_sims": 287,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: distance_noise | lead_braking",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, perception_latency, ttc_error | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: ttc_error | lead_braking",
+                "near_miss | faults: none | lead_braking",
+                "near_miss | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "unnecessary_braking | faults: distance_noise | steady",
+                "unnecessary_braking | faults: distance_noise, ttc_error | lead_braking",
+                "unnecessary_braking | faults: ghost_clusters | lead_braking",
+                "unnecessary_braking | faults: none | steady",
+                "unnecessary_braking | faults: sensor_dropout | steady"
+              ]
+            },
+            {
+              "seed": 4,
+              "sims": 150,
+              "failing": 55,
+              "first_failure_sim": 2,
+              "unique_findings": 20,
+              "unique_reproducible": 17,
+              "worst_impact_speed": 16.32,
+              "search_seconds": 0.815,
+              "post_processing_sims": 297,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss | parked",
+                "collision | faults: detection_loss | steady",
+                "collision | faults: detection_loss, ghost_clusters, ttc_error | lead_braking",
+                "collision | faults: detection_loss, perception_latency | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise | lead_braking",
+                "collision | faults: distance_noise, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: perception_latency, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "unnecessary_braking | faults: detection_loss, distance_noise | steady",
+                "unnecessary_braking | faults: distance_noise | lead_braking",
+                "unnecessary_braking | faults: ghost_clusters | lead_braking",
+                "unnecessary_braking | faults: ghost_clusters | steady"
+              ]
+            },
+            {
+              "seed": 5,
+              "sims": 150,
+              "failing": 46,
+              "first_failure_sim": 3,
+              "unique_findings": 20,
+              "unique_reproducible": 13,
+              "worst_impact_speed": 18.98,
+              "search_seconds": 0.859,
+              "post_processing_sims": 254,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, ghost_clusters | lead_braking",
+                "collision | faults: distance_noise, perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, ttc_error | steady",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency | steady",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "near_miss | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "unnecessary_braking | faults: distance_noise | lead_braking",
+                "unnecessary_braking | faults: sensor_dropout | steady"
+              ]
+            },
+            {
+              "seed": 6,
+              "sims": 150,
+              "failing": 53,
+              "first_failure_sim": 6,
+              "unique_findings": 21,
+              "unique_reproducible": 16,
+              "worst_impact_speed": 19.73,
+              "search_seconds": 0.779,
+              "post_processing_sims": 280,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss | steady",
+                "collision | faults: detection_loss, ghost_clusters | lead_braking",
+                "collision | faults: detection_loss, perception_latency | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | steady",
+                "near_miss | faults: perception_latency | steady",
+                "unnecessary_braking | faults: ghost_clusters | lead_braking"
+              ]
+            },
+            {
+              "seed": 7,
+              "sims": 150,
+              "failing": 49,
+              "first_failure_sim": 2,
+              "unique_findings": 19,
+              "unique_reproducible": 11,
+              "worst_impact_speed": 15.0,
+              "search_seconds": 0.803,
+              "post_processing_sims": 267,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, perception_latency | lead_braking",
+                "collision | faults: detection_loss, perception_latency, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "unnecessary_braking | faults: none | lead_braking",
+                "unnecessary_braking | faults: sensor_dropout | steady"
+              ]
+            },
+            {
+              "seed": 8,
+              "sims": 150,
+              "failing": 56,
+              "first_failure_sim": 2,
+              "unique_findings": 22,
+              "unique_reproducible": 16,
+              "worst_impact_speed": 16.34,
+              "search_seconds": 0.827,
+              "post_processing_sims": 292,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: detection_loss, ttc_error | steady",
+                "collision | faults: distance_noise | lead_braking",
+                "collision | faults: distance_noise, ttc_error | lead_braking",
+                "collision | faults: ghost_clusters, perception_latency | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | steady",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "near_miss | faults: detection_loss | lead_braking",
+                "unnecessary_braking | faults: distance_noise | steady",
+                "unnecessary_braking | faults: distance_noise, sensor_dropout, ttc_error | steady"
+              ]
+            },
+            {
+              "seed": 9,
+              "sims": 150,
+              "failing": 49,
+              "first_failure_sim": 4,
+              "unique_findings": 17,
+              "unique_reproducible": 10,
+              "worst_impact_speed": 14.24,
+              "search_seconds": 1.048,
+              "post_processing_sims": 220,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, ttc_error | lead_braking",
+                "collision | faults: perception_latency, ttc_error | steady",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "unnecessary_braking | faults: distance_noise | lead_braking",
+                "unnecessary_braking | faults: distance_noise, sensor_dropout | steady",
+                "unnecessary_braking | faults: ghost_clusters | lead_braking",
+                "unnecessary_braking | faults: ghost_clusters, sensor_dropout | lead_braking"
+              ]
+            }
+          ],
+          "cmaes": [
+            {
+              "seed": 0,
+              "sims": 150,
+              "failing": 100,
+              "first_failure_sim": 10,
+              "unique_findings": 21,
+              "unique_reproducible": 14,
+              "worst_impact_speed": 20.0,
+              "search_seconds": 0.548,
+              "post_processing_sims": 528,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, perception_latency, ttc_error | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: distance_noise | lead_braking",
+                "collision | faults: distance_noise, ghost_clusters, perception_latency, ttc_error | lead_braking",
+                "collision | faults: distance_noise, perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, perception_latency, ttc_error | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking"
+              ]
+            },
+            {
+              "seed": 1,
+              "sims": 150,
+              "failing": 137,
+              "first_failure_sim": 1,
+              "unique_findings": 20,
+              "unique_reproducible": 17,
+              "worst_impact_speed": 20.0,
+              "search_seconds": 0.549,
+              "post_processing_sims": 512,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, distance_noise, perception_latency | lead_braking",
+                "collision | faults: detection_loss, perception_latency, ttc_error | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: detection_loss, ttc_error | lead_braking",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "unnecessary_braking | faults: distance_noise | steady",
+                "unnecessary_braking | faults: ghost_clusters | lead_braking",
+                "unnecessary_braking | faults: ghost_clusters | steady",
+                "unnecessary_braking | faults: none | lead_braking"
+              ]
+            },
+            {
+              "seed": 2,
+              "sims": 150,
+              "failing": 143,
+              "first_failure_sim": 1,
+              "unique_findings": 11,
+              "unique_reproducible": 11,
+              "worst_impact_speed": 20.0,
+              "search_seconds": 0.335,
+              "post_processing_sims": 414,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, ttc_error | lead_braking",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout | lead_braking",
+                "collision | faults: ghost_clusters, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "unnecessary_braking | faults: distance_noise | steady",
+                "unnecessary_braking | faults: distance_noise, ghost_clusters, perception_latency, ttc_error | lead_braking"
+              ]
+            },
+            {
+              "seed": 3,
+              "sims": 150,
+              "failing": 139,
+              "first_failure_sim": 3,
+              "unique_findings": 24,
+              "unique_reproducible": 21,
+              "worst_impact_speed": 19.75,
+              "search_seconds": 0.309,
+              "post_processing_sims": 570,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, distance_noise, perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: detection_loss, perception_latency | steady",
+                "collision | faults: detection_loss, sensor_dropout | lead_braking",
+                "collision | faults: detection_loss, ttc_error | lead_braking",
+                "collision | faults: distance_noise | lead_braking",
+                "collision | faults: distance_noise | parked",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: none | parked",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency | parked",
+                "collision | faults: perception_latency | steady",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout | parked",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "unnecessary_braking | faults: distance_noise | lead_braking"
+              ]
+            },
+            {
+              "seed": 4,
+              "sims": 150,
+              "failing": 126,
+              "first_failure_sim": 2,
+              "unique_findings": 13,
+              "unique_reproducible": 10,
+              "worst_impact_speed": 20.0,
+              "search_seconds": 0.377,
+              "post_processing_sims": 355,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, perception_latency | lead_braking",
+                "collision | faults: distance_noise, perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, perception_latency, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "missed_hazard | faults: detection_loss | lead_braking",
+                "unnecessary_braking | faults: ghost_clusters | lead_braking",
+                "unnecessary_braking | faults: none | lead_braking"
+              ]
+            },
+            {
+              "seed": 5,
+              "sims": 150,
+              "failing": 143,
+              "first_failure_sim": 1,
+              "unique_findings": 12,
+              "unique_reproducible": 10,
+              "worst_impact_speed": 20.0,
+              "search_seconds": 0.396,
+              "post_processing_sims": 367,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, perception_latency, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "missed_hazard | faults: perception_latency, sensor_dropout | lead_braking",
+                "unnecessary_braking | faults: distance_noise | lead_braking",
+                "unnecessary_braking | faults: distance_noise, perception_latency, sensor_dropout | lead_braking",
+                "unnecessary_braking | faults: none | lead_braking"
+              ]
+            },
+            {
+              "seed": 6,
+              "sims": 150,
+              "failing": 123,
+              "first_failure_sim": 1,
+              "unique_findings": 17,
+              "unique_reproducible": 16,
+              "worst_impact_speed": 20.0,
+              "search_seconds": 0.322,
+              "post_processing_sims": 394,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss | steady",
+                "collision | faults: detection_loss, perception_latency | lead_braking",
+                "collision | faults: distance_noise | lead_braking",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: none | parked",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency | steady",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "unnecessary_braking | faults: distance_noise | lead_braking",
+                "unnecessary_braking | faults: none | lead_braking",
+                "unnecessary_braking | faults: sensor_dropout | lead_braking"
+              ]
+            },
+            {
+              "seed": 7,
+              "sims": 150,
+              "failing": 126,
+              "first_failure_sim": 3,
+              "unique_findings": 14,
+              "unique_reproducible": 13,
+              "worst_impact_speed": 20.0,
+              "search_seconds": 0.345,
+              "post_processing_sims": 376,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, perception_latency | lead_braking",
+                "collision | faults: distance_noise | lead_braking",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "missed_hazard | faults: detection_loss | lead_braking",
+                "unnecessary_braking | faults: none | lead_braking"
+              ]
+            },
+            {
+              "seed": 8,
+              "sims": 150,
+              "failing": 132,
+              "first_failure_sim": 1,
+              "unique_findings": 12,
+              "unique_reproducible": 9,
+              "worst_impact_speed": 20.0,
+              "search_seconds": 0.309,
+              "post_processing_sims": 376,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, ghost_clusters, ttc_error | lead_braking",
+                "collision | faults: detection_loss, perception_latency | lead_braking",
+                "collision | faults: distance_noise | lead_braking",
+                "collision | faults: distance_noise, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "missed_hazard | faults: detection_loss | lead_braking"
+              ]
+            },
+            {
+              "seed": 9,
+              "sims": 150,
+              "failing": 144,
+              "first_failure_sim": 1,
+              "unique_findings": 9,
+              "unique_reproducible": 7,
+              "worst_impact_speed": 20.0,
+              "search_seconds": 0.356,
+              "post_processing_sims": 385,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: ghost_clusters, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking"
+              ]
+            }
+          ]
+        }
+      },
+      "rare_box": {
+        "bounds": {
+          "ego_speed": [
+            6.0,
+            16.0
+          ],
+          "initial_gap": [
+            35.0,
+            80.0
+          ],
+          "lead_decel": [
+            0.0,
+            4.0
+          ],
+          "lead_speed": [
+            4.0,
+            20.0
+          ]
+        },
+        "summary": {
+          "random": {
+            "failing": {
+              "n": 10,
+              "mean": 25.0,
+              "std": 2.309,
+              "median": 25.0
+            },
+            "first_failure_sim": {
+              "n": 10,
+              "mean": 7.8,
+              "std": 6.408,
+              "median": 5.0
+            },
+            "trials_without_failure": 0,
+            "unique_reproducible": {
+              "n": 10,
+              "mean": 8.8,
+              "std": 0.919,
+              "median": 9.0
+            },
+            "worst_impact_speed": {
+              "n": 10,
+              "mean": 13.593,
+              "std": 1.221,
+              "median": 13.27
+            },
+            "search_seconds": {
+              "n": 10,
+              "mean": 0.834,
+              "std": 0.027,
+              "median": 0.839
+            },
+            "distinct_signatures_over_all_trials": 28
+          },
+          "cmaes": {
+            "failing": {
+              "n": 10,
+              "mean": 125.0,
+              "std": 13.679,
+              "median": 128.0
+            },
+            "first_failure_sim": {
+              "n": 10,
+              "mean": 3.3,
+              "std": 3.917,
+              "median": 1.0
+            },
+            "trials_without_failure": 0,
+            "unique_reproducible": {
+              "n": 10,
+              "mean": 13.3,
+              "std": 3.561,
+              "median": 13.5
+            },
+            "worst_impact_speed": {
+              "n": 10,
+              "mean": 16.0,
+              "std": 0.0,
+              "median": 16.0
+            },
+            "search_seconds": {
+              "n": 10,
+              "mean": 0.553,
+              "std": 0.096,
+              "median": 0.536
+            },
+            "distinct_signatures_over_all_trials": 36
+          }
+        },
+        "paired_cmaes_minus_random_unique_reproducible": {
+          "mean_diff": 4.5,
+          "ci95": [
+            2.0,
+            6.8
+          ],
+          "wins_first": 9,
+          "ties": 0,
+          "wins_second": 1
+        },
+        "paired_cmaes_minus_random_failing": {
+          "mean_diff": 100.0,
+          "ci95": [
+            91.3,
+            107.6
+          ],
+          "wins_first": 10,
+          "ties": 0,
+          "wins_second": 0
+        },
+        "union_signatures": {
+          "random": 28,
+          "cmaes": 36
+        },
+        "union_both": 46,
+        "trial_rows": {
+          "random": [
+            {
+              "seed": 0,
+              "sims": 150,
+              "failing": 27,
+              "first_failure_sim": 9,
+              "unique_findings": 11,
+              "unique_reproducible": 8,
+              "worst_impact_speed": 12.46,
+              "search_seconds": 0.818,
+              "post_processing_sims": 161,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: perception_latency, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "unnecessary_braking | faults: distance_noise, ghost_clusters, ttc_error | lead_braking"
+              ]
+            },
+            {
+              "seed": 1,
+              "sims": 150,
+              "failing": 24,
+              "first_failure_sim": 5,
+              "unique_findings": 12,
+              "unique_reproducible": 9,
+              "worst_impact_speed": 13.23,
+              "search_seconds": 0.784,
+              "post_processing_sims": 155,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout | steady",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "near_miss | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "unnecessary_braking | faults: distance_noise, ghost_clusters, ttc_error | lead_braking"
+              ]
+            },
+            {
+              "seed": 2,
+              "sims": 150,
+              "failing": 21,
+              "first_failure_sim": 3,
+              "unique_findings": 11,
+              "unique_reproducible": 8,
+              "worst_impact_speed": 13.21,
+              "search_seconds": 0.815,
+              "post_processing_sims": 141,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout | steady",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, perception_latency, ttc_error | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, ttc_error | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking"
+              ]
+            },
+            {
+              "seed": 3,
+              "sims": 150,
+              "failing": 26,
+              "first_failure_sim": 5,
+              "unique_findings": 14,
+              "unique_reproducible": 9,
+              "worst_impact_speed": 15.25,
+              "search_seconds": 0.867,
+              "post_processing_sims": 213,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: distance_noise | lead_braking",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, perception_latency, ttc_error | lead_braking",
+                "collision | faults: distance_noise, ttc_error | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "unnecessary_braking | faults: distance_noise, ttc_error | lead_braking"
+              ]
+            },
+            {
+              "seed": 4,
+              "sims": 150,
+              "failing": 23,
+              "first_failure_sim": 18,
+              "unique_findings": 11,
+              "unique_reproducible": 10,
+              "worst_impact_speed": 13.29,
+              "search_seconds": 0.865,
+              "post_processing_sims": 159,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout | lead_braking",
+                "collision | faults: detection_loss, ttc_error | lead_braking",
+                "collision | faults: distance_noise, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking"
+              ]
+            },
+            {
+              "seed": 5,
+              "sims": 150,
+              "failing": 23,
+              "first_failure_sim": 4,
+              "unique_findings": 10,
+              "unique_reproducible": 9,
+              "worst_impact_speed": 13.25,
+              "search_seconds": 0.814,
+              "post_processing_sims": 143,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, ghost_clusters, ttc_error | lead_braking",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking"
+              ]
+            },
+            {
+              "seed": 6,
+              "sims": 150,
+              "failing": 25,
+              "first_failure_sim": 20,
+              "unique_findings": 11,
+              "unique_reproducible": 7,
+              "worst_impact_speed": 14.37,
+              "search_seconds": 0.856,
+              "post_processing_sims": 182,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: distance_noise, perception_latency, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking"
+              ]
+            },
+            {
+              "seed": 7,
+              "sims": 150,
+              "failing": 28,
+              "first_failure_sim": 1,
+              "unique_findings": 17,
+              "unique_reproducible": 10,
+              "worst_impact_speed": 11.28,
+              "search_seconds": 0.843,
+              "post_processing_sims": 213,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, perception_latency | lead_braking",
+                "collision | faults: detection_loss, perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: detection_loss, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: perception_latency, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking"
+              ]
+            },
+            {
+              "seed": 8,
+              "sims": 150,
+              "failing": 25,
+              "first_failure_sim": 9,
+              "unique_findings": 15,
+              "unique_reproducible": 9,
+              "worst_impact_speed": 14.97,
+              "search_seconds": 0.834,
+              "post_processing_sims": 199,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "near_miss | faults: perception_latency | lead_braking",
+                "near_miss | faults: sensor_dropout | lead_braking"
+              ]
+            },
+            {
+              "seed": 9,
+              "sims": 150,
+              "failing": 28,
+              "first_failure_sim": 4,
+              "unique_findings": 12,
+              "unique_reproducible": 9,
+              "worst_impact_speed": 14.62,
+              "search_seconds": 0.848,
+              "post_processing_sims": 174,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: detection_loss, perception_latency, sensor_dropout | steady",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "near_miss | faults: detection_loss, perception_latency | lead_braking",
+                "unnecessary_braking | faults: distance_noise | lead_braking"
+              ]
+            }
+          ],
+          "cmaes": [
+            {
+              "seed": 0,
+              "sims": 150,
+              "failing": 98,
+              "first_failure_sim": 10,
+              "unique_findings": 28,
+              "unique_reproducible": 19,
+              "worst_impact_speed": 16.0,
+              "search_seconds": 0.541,
+              "post_processing_sims": 716,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss | steady",
+                "collision | faults: detection_loss, distance_noise, sensor_dropout | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: distance_noise | lead_braking",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, perception_latency, sensor_dropout | steady",
+                "collision | faults: distance_noise, perception_latency, ttc_error | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | steady",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout | steady",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "unnecessary_braking | faults: distance_noise, ghost_clusters, sensor_dropout | lead_braking"
+              ]
+            },
+            {
+              "seed": 1,
+              "sims": 150,
+              "failing": 126,
+              "first_failure_sim": 1,
+              "unique_findings": 13,
+              "unique_reproducible": 13,
+              "worst_impact_speed": 16.0,
+              "search_seconds": 0.484,
+              "post_processing_sims": 580,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: detection_loss, ttc_error | lead_braking",
+                "collision | faults: distance_noise | lead_braking",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, perception_latency, ttc_error | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking"
+              ]
+            },
+            {
+              "seed": 2,
+              "sims": 150,
+              "failing": 134,
+              "first_failure_sim": 1,
+              "unique_findings": 14,
+              "unique_reproducible": 13,
+              "worst_impact_speed": 16.0,
+              "search_seconds": 0.479,
+              "post_processing_sims": 751,
+              "signatures": [
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, ttc_error | lead_braking",
+                "collision | faults: ghost_clusters, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout | steady",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "missed_hazard | faults: distance_noise, perception_latency, ttc_error | lead_braking"
+              ]
+            },
+            {
+              "seed": 3,
+              "sims": 150,
+              "failing": 130,
+              "first_failure_sim": 1,
+              "unique_findings": 17,
+              "unique_reproducible": 15,
+              "worst_impact_speed": 16.0,
+              "search_seconds": 0.438,
+              "post_processing_sims": 762,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout | lead_braking",
+                "collision | faults: detection_loss, ttc_error | lead_braking",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | steady",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "unnecessary_braking | faults: distance_noise | lead_braking"
+              ]
+            },
+            {
+              "seed": 4,
+              "sims": 150,
+              "failing": 129,
+              "first_failure_sim": 2,
+              "unique_findings": 14,
+              "unique_reproducible": 12,
+              "worst_impact_speed": 16.0,
+              "search_seconds": 0.457,
+              "post_processing_sims": 522,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, perception_latency | lead_braking",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, perception_latency, ttc_error | lead_braking",
+                "collision | faults: distance_noise, ttc_error | lead_braking",
+                "collision | faults: ghost_clusters, perception_latency, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: perception_latency, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking"
+              ]
+            },
+            {
+              "seed": 5,
+              "sims": 150,
+              "failing": 130,
+              "first_failure_sim": 1,
+              "unique_findings": 10,
+              "unique_reproducible": 5,
+              "worst_impact_speed": 16.0,
+              "search_seconds": 0.744,
+              "post_processing_sims": 506,
+              "signatures": [
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking"
+              ]
+            },
+            {
+              "seed": 6,
+              "sims": 150,
+              "failing": 106,
+              "first_failure_sim": 11,
+              "unique_findings": 20,
+              "unique_reproducible": 15,
+              "worst_impact_speed": 16.0,
+              "search_seconds": 0.642,
+              "post_processing_sims": 600,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, distance_noise, sensor_dropout | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout | lead_braking",
+                "collision | faults: detection_loss, ttc_error | lead_braking",
+                "collision | faults: distance_noise | lead_braking",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "missed_hazard | faults: distance_noise, sensor_dropout, ttc_error | lead_braking",
+                "unnecessary_braking | faults: distance_noise | lead_braking"
+              ]
+            },
+            {
+              "seed": 7,
+              "sims": 150,
+              "failing": 127,
+              "first_failure_sim": 4,
+              "unique_findings": 14,
+              "unique_reproducible": 12,
+              "worst_impact_speed": 16.0,
+              "search_seconds": 0.604,
+              "post_processing_sims": 646,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, sensor_dropout | lead_braking",
+                "collision | faults: detection_loss, ttc_error | lead_braking",
+                "collision | faults: distance_noise | lead_braking",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking"
+              ]
+            },
+            {
+              "seed": 8,
+              "sims": 150,
+              "failing": 124,
+              "first_failure_sim": 1,
+              "unique_findings": 16,
+              "unique_reproducible": 14,
+              "worst_impact_speed": 16.0,
+              "search_seconds": 0.609,
+              "post_processing_sims": 674,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: distance_noise | lead_braking",
+                "collision | faults: distance_noise, ghost_clusters, ttc_error | lead_braking",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, perception_latency, ttc_error | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: ttc_error | lead_braking"
+              ]
+            },
+            {
+              "seed": 9,
+              "sims": 150,
+              "failing": 146,
+              "first_failure_sim": 1,
+              "unique_findings": 18,
+              "unique_reproducible": 15,
+              "worst_impact_speed": 16.0,
+              "search_seconds": 0.532,
+              "post_processing_sims": 821,
+              "signatures": [
+                "collision | faults: detection_loss | lead_braking",
+                "collision | faults: detection_loss, distance_noise, ttc_error | lead_braking",
+                "collision | faults: detection_loss, ghost_clusters, sensor_dropout, ttc_error | lead_braking",
+                "collision | faults: detection_loss, ttc_error | lead_braking",
+                "collision | faults: distance_noise | lead_braking",
+                "collision | faults: distance_noise, ghost_clusters | lead_braking",
+                "collision | faults: distance_noise, perception_latency | lead_braking",
+                "collision | faults: distance_noise, perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, sensor_dropout | lead_braking",
+                "collision | faults: distance_noise, ttc_error | lead_braking",
+                "collision | faults: none | lead_braking",
+                "collision | faults: perception_latency | lead_braking",
+                "collision | faults: perception_latency, sensor_dropout | lead_braking",
+                "collision | faults: sensor_dropout, ttc_error | lead_braking",
+                "unnecessary_braking | faults: detection_loss, distance_noise | lead_braking"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "seconds": 90.2
+  },
+  "minimization": {
+    "n": 40,
+    "still_fails_fresh_sut": 1.0,
+    "deterministic_replay": 1.0,
+    "faults_before": {
+      "n": 40,
+      "mean": 3.475,
+      "std": 1.012,
+      "median": 3.0
+    },
+    "faults_after": {
+      "n": 40,
+      "mean": 1.85,
+      "std": 1.027,
+      "median": 2.0
+    },
+    "distance_before": {
+      "n": 40,
+      "mean": 3.997,
+      "std": 0.852,
+      "median": 3.926
+    },
+    "distance_after": {
+      "n": 40,
+      "mean": 2.391,
+      "std": 0.611,
+      "median": 2.486
+    },
+    "replays": {
+      "n": 40,
+      "mean": 75.375,
+      "std": 25.999,
+      "median": 72.5
+    },
+    "seconds": {
+      "n": 40,
+      "mean": 0.559,
+      "std": 0.245,
+      "median": 0.55
+    },
+    "seed_rate_original": {
+      "n": 40,
+      "mean": 0.761,
+      "std": 0.255,
+      "median": 0.875
+    },
+    "seed_rate_minimized": {
+      "n": 40,
+      "mean": 0.505,
+      "std": 0.295,
+      "median": 0.425
+    },
+    "seed_fragile_after": 0.225,
+    "seed_fragile_before": 0.05,
+    "status_counts": {
+      "reproducible": 31,
+      "reproducible for its seed only (seed-fragile)": 9
+    },
+    "kinds": {
+      "collision": 26,
+      "unnecessary_braking": 11,
+      "near_miss": 3
+    },
+    "rows": [
+      {
+        "kind": "collision",
+        "faults_before": 4,
+        "faults_after": 1,
+        "distance_before": 5.188,
+        "distance_after": 1.88,
+        "replays": 56,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 1.0,
+        "seed_rate_minimized": 1.0,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.542
+      },
+      {
+        "kind": "collision",
+        "faults_before": 4,
+        "faults_after": 1,
+        "distance_before": 4.696,
+        "distance_after": 1.729,
+        "replays": 72,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 1.0,
+        "seed_rate_minimized": 0.75,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.736
+      },
+      {
+        "kind": "collision",
+        "faults_before": 4,
+        "faults_after": 1,
+        "distance_before": 4.364,
+        "distance_after": 2.919,
+        "replays": 66,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 1.0,
+        "seed_rate_minimized": 0.2,
+        "status": "reproducible for its seed only (seed-fragile)",
+        "predicate_fallback": false,
+        "seconds": 0.577
+      },
+      {
+        "kind": "collision",
+        "faults_before": 3,
+        "faults_after": 1,
+        "distance_before": 4.332,
+        "distance_after": 1.573,
+        "replays": 69,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 1.0,
+        "seed_rate_minimized": 0.75,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.437
+      },
+      {
+        "kind": "collision",
+        "faults_before": 3,
+        "faults_after": 1,
+        "distance_before": 3.541,
+        "distance_after": 2.455,
+        "replays": 59,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.95,
+        "seed_rate_minimized": 0.35,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.253
+      },
+      {
+        "kind": "collision",
+        "faults_before": 3,
+        "faults_after": 1,
+        "distance_before": 3.016,
+        "distance_after": 1.641,
+        "replays": 73,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.9,
+        "seed_rate_minimized": 0.6,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.705
+      },
+      {
+        "kind": "collision",
+        "faults_before": 4,
+        "faults_after": 2,
+        "distance_before": 3.913,
+        "distance_after": 2.567,
+        "replays": 74,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.95,
+        "seed_rate_minimized": 0.4,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.652
+      },
+      {
+        "kind": "collision",
+        "faults_before": 3,
+        "faults_after": 3,
+        "distance_before": 3.917,
+        "distance_after": 1.908,
+        "replays": 99,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.55,
+        "seed_rate_minimized": 0.15,
+        "status": "reproducible for its seed only (seed-fragile)",
+        "predicate_fallback": false,
+        "seconds": 0.558
+      },
+      {
+        "kind": "collision",
+        "faults_before": 3,
+        "faults_after": 1,
+        "distance_before": 3.856,
+        "distance_after": 2.575,
+        "replays": 56,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 1.0,
+        "seed_rate_minimized": 0.95,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.315
+      },
+      {
+        "kind": "collision",
+        "faults_before": 4,
+        "faults_after": 3,
+        "distance_before": 4.603,
+        "distance_after": 2.311,
+        "replays": 113,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.5,
+        "seed_rate_minimized": 0.3,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 1.0
+      },
+      {
+        "kind": "collision",
+        "faults_before": 3,
+        "faults_after": 2,
+        "distance_before": 3.935,
+        "distance_after": 2.815,
+        "replays": 80,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.9,
+        "seed_rate_minimized": 1.0,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.228
+      },
+      {
+        "kind": "collision",
+        "faults_before": 5,
+        "faults_after": 3,
+        "distance_before": 3.584,
+        "distance_after": 2.82,
+        "replays": 92,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.9,
+        "seed_rate_minimized": 0.35,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.361
+      },
+      {
+        "kind": "collision",
+        "faults_before": 4,
+        "faults_after": 3,
+        "distance_before": 3.749,
+        "distance_after": 2.518,
+        "replays": 81,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.9,
+        "seed_rate_minimized": 0.7,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.61
+      },
+      {
+        "kind": "unnecessary_braking",
+        "faults_before": 3,
+        "faults_after": 0,
+        "distance_before": 5.236,
+        "distance_after": 1.536,
+        "replays": 32,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.95,
+        "seed_rate_minimized": 1.0,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.295
+      },
+      {
+        "kind": "unnecessary_braking",
+        "faults_before": 1,
+        "faults_after": 0,
+        "distance_before": 2.395,
+        "distance_after": 1.515,
+        "replays": 35,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 1.0,
+        "seed_rate_minimized": 1.0,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.348
+      },
+      {
+        "kind": "unnecessary_braking",
+        "faults_before": 4,
+        "faults_after": 2,
+        "distance_before": 4.006,
+        "distance_after": 2.852,
+        "replays": 122,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.7,
+        "seed_rate_minimized": 0.2,
+        "status": "reproducible for its seed only (seed-fragile)",
+        "predicate_fallback": false,
+        "seconds": 1.166
+      },
+      {
+        "kind": "unnecessary_braking",
+        "faults_before": 4,
+        "faults_after": 3,
+        "distance_before": 3.374,
+        "distance_after": 2.756,
+        "replays": 95,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.6,
+        "seed_rate_minimized": 0.35,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.767
+      },
+      {
+        "kind": "collision",
+        "faults_before": 5,
+        "faults_after": 1,
+        "distance_before": 4.423,
+        "distance_after": 2.83,
+        "replays": 57,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 1.0,
+        "seed_rate_minimized": 1.0,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.331
+      },
+      {
+        "kind": "collision",
+        "faults_before": 4,
+        "faults_after": 2,
+        "distance_before": 4.676,
+        "distance_after": 2.589,
+        "replays": 77,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 1.0,
+        "seed_rate_minimized": 0.4,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.345
+      },
+      {
+        "kind": "collision",
+        "faults_before": 4,
+        "faults_after": 3,
+        "distance_before": 3.532,
+        "distance_after": 2.549,
+        "replays": 118,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.6,
+        "seed_rate_minimized": 0.2,
+        "status": "reproducible for its seed only (seed-fragile)",
+        "predicate_fallback": false,
+        "seconds": 0.597
+      },
+      {
+        "kind": "collision",
+        "faults_before": 2,
+        "faults_after": 1,
+        "distance_before": 2.811,
+        "distance_after": 2.019,
+        "replays": 65,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.85,
+        "seed_rate_minimized": 0.5,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.335
+      },
+      {
+        "kind": "unnecessary_braking",
+        "faults_before": 3,
+        "faults_after": 2,
+        "distance_before": 2.783,
+        "distance_after": 1.349,
+        "replays": 58,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.5,
+        "seed_rate_minimized": 0.15,
+        "status": "reproducible for its seed only (seed-fragile)",
+        "predicate_fallback": false,
+        "seconds": 0.375
+      },
+      {
+        "kind": "collision",
+        "faults_before": 3,
+        "faults_after": 3,
+        "distance_before": 3.069,
+        "distance_after": 2.27,
+        "replays": 88,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.85,
+        "seed_rate_minimized": 0.45,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.664
+      },
+      {
+        "kind": "collision",
+        "faults_before": 3,
+        "faults_after": 2,
+        "distance_before": 3.897,
+        "distance_after": 3.188,
+        "replays": 63,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.95,
+        "seed_rate_minimized": 0.7,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.289
+      },
+      {
+        "kind": "near_miss",
+        "faults_before": 4,
+        "faults_after": 4,
+        "distance_before": 5.01,
+        "distance_after": 3.963,
+        "replays": 145,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.3,
+        "seed_rate_minimized": 0.15,
+        "status": "reproducible for its seed only (seed-fragile)",
+        "predicate_fallback": false,
+        "seconds": 0.825
+      },
+      {
+        "kind": "unnecessary_braking",
+        "faults_before": 4,
+        "faults_after": 1,
+        "distance_before": 4.06,
+        "distance_after": 1.392,
+        "replays": 34,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.7,
+        "seed_rate_minimized": 0.6,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.383
+      },
+      {
+        "kind": "collision",
+        "faults_before": 3,
+        "faults_after": 2,
+        "distance_before": 3.582,
+        "distance_after": 2.407,
+        "replays": 83,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 1.0,
+        "seed_rate_minimized": 0.85,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.372
+      },
+      {
+        "kind": "collision",
+        "faults_before": 5,
+        "faults_after": 3,
+        "distance_before": 3.973,
+        "distance_after": 2.19,
+        "replays": 77,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 1.0,
+        "seed_rate_minimized": 0.35,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.646
+      },
+      {
+        "kind": "near_miss",
+        "faults_before": 1,
+        "faults_after": 0,
+        "distance_before": 3.085,
+        "distance_after": 2.659,
+        "replays": 35,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.2,
+        "seed_rate_minimized": 0.9,
+        "status": "reproducible",
+        "predicate_fallback": true,
+        "seconds": 0.384
+      },
+      {
+        "kind": "near_miss",
+        "faults_before": 4,
+        "faults_after": 3,
+        "distance_before": 4.316,
+        "distance_after": 2.988,
+        "replays": 103,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.2,
+        "seed_rate_minimized": 0.25,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.786
+      },
+      {
+        "kind": "unnecessary_braking",
+        "faults_before": 4,
+        "faults_after": 1,
+        "distance_before": 4.146,
+        "distance_after": 2.354,
+        "replays": 67,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.75,
+        "seed_rate_minimized": 0.5,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.995
+      },
+      {
+        "kind": "unnecessary_braking",
+        "faults_before": 2,
+        "faults_after": 1,
+        "distance_before": 3.573,
+        "distance_after": 2.713,
+        "replays": 65,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.4,
+        "seed_rate_minimized": 0.2,
+        "status": "reproducible for its seed only (seed-fragile)",
+        "predicate_fallback": false,
+        "seconds": 0.567
+      },
+      {
+        "kind": "unnecessary_braking",
+        "faults_before": 3,
+        "faults_after": 3,
+        "distance_before": 4.485,
+        "distance_after": 2.701,
+        "replays": 94,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.25,
+        "seed_rate_minimized": 0.25,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.993
+      },
+      {
+        "kind": "collision",
+        "faults_before": 3,
+        "faults_after": 3,
+        "distance_before": 3.363,
+        "distance_after": 3.171,
+        "replays": 100,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.6,
+        "seed_rate_minimized": 0.65,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.608
+      },
+      {
+        "kind": "collision",
+        "faults_before": 5,
+        "faults_after": 2,
+        "distance_before": 5.216,
+        "distance_after": 2.935,
+        "replays": 68,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.75,
+        "seed_rate_minimized": 0.7,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.53
+      },
+      {
+        "kind": "unnecessary_braking",
+        "faults_before": 3,
+        "faults_after": 1,
+        "distance_before": 3.785,
+        "distance_after": 1.052,
+        "replays": 44,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.6,
+        "seed_rate_minimized": 0.1,
+        "status": "reproducible for its seed only (seed-fragile)",
+        "predicate_fallback": false,
+        "seconds": 0.386
+      },
+      {
+        "kind": "unnecessary_braking",
+        "faults_before": 3,
+        "faults_after": 2,
+        "distance_before": 4.078,
+        "distance_after": 3.251,
+        "replays": 83,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.5,
+        "seed_rate_minimized": 0.15,
+        "status": "reproducible for its seed only (seed-fragile)",
+        "predicate_fallback": false,
+        "seconds": 1.056
+      },
+      {
+        "kind": "collision",
+        "faults_before": 3,
+        "faults_after": 1,
+        "distance_before": 3.097,
+        "distance_after": 2.15,
+        "replays": 37,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 1.0,
+        "seed_rate_minimized": 0.25,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.262
+      },
+      {
+        "kind": "collision",
+        "faults_before": 3,
+        "faults_after": 3,
+        "distance_before": 4.081,
+        "distance_after": 2.183,
+        "replays": 70,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 0.65,
+        "seed_rate_minimized": 0.45,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.514
+      },
+      {
+        "kind": "collision",
+        "faults_before": 6,
+        "faults_after": 2,
+        "distance_before": 7.145,
+        "distance_after": 2.353,
+        "replays": 110,
+        "still_fails_fresh_sut": true,
+        "deterministic": true,
+        "seed_rate_original": 1.0,
+        "seed_rate_minimized": 0.4,
+        "status": "reproducible",
+        "predicate_fallback": false,
+        "seconds": 0.57
+      }
+    ],
+    "phase_seconds": 22.5
+  },
+  "diagnosis": {
+    "planted_cases": 49,
+    "by_fault": {
+      "perception_latency": {
+        "cases": 12,
+        "top1_accuracy": 0.25,
+        "expected_supported_rate": 0.917,
+        "planner_logic_false_flag_rate": 0.0,
+        "could_not_construct": 0
+      },
+      "detection_loss": {
+        "cases": 12,
+        "top1_accuracy": 1.0,
+        "expected_supported_rate": 1.0,
+        "planner_logic_false_flag_rate": 0.0,
+        "could_not_construct": 0
+      },
+      "sensor_dropout": {
+        "cases": 12,
+        "top1_accuracy": 0.917,
+        "expected_supported_rate": 1.0,
+        "planner_logic_false_flag_rate": 0.0,
+        "could_not_construct": 0
+      },
+      "distance_noise": {
+        "cases": 11,
+        "top1_accuracy": 1.0,
+        "expected_supported_rate": 1.0,
+        "planner_logic_false_flag_rate": 0.0,
+        "could_not_construct": 1
+      },
+      "ttc_error": {
+        "cases": 2,
+        "top1_accuracy": 0.0,
+        "expected_supported_rate": 0.5,
+        "planner_logic_false_flag_rate": 0.0,
+        "could_not_construct": 10
+      }
+    },
+    "top1_accuracy": 0.755,
+    "expected_component_supported_rate": 0.959,
+    "precision_of_supported_labels": 0.81,
+    "planner_logic_false_flag_rate": 0.0,
+    "null_cases": 20,
+    "null_planner_logic_supported_rate": 0.7,
+    "null_perception_false_support_rate": 0.3,
+    "cases": [
+      {
+        "planted": "perception_latency",
+        "expected": "reaction_latency",
+        "severity": 0.5,
+        "kind": "collision",
+        "top_shapley": "reaction_latency",
+        "supported": [
+          "reaction_latency"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "perception_latency",
+        "expected": "reaction_latency",
+        "severity": 0.2,
+        "kind": "near_miss",
+        "top_shapley": "ttc_estimation",
+        "supported": [
+          "ttc_estimation",
+          "reaction_latency"
+        ],
+        "weak": [],
+        "top1_correct": false,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "perception_latency",
+        "expected": "reaction_latency",
+        "severity": 0.4,
+        "kind": "collision",
+        "top_shapley": "ttc_estimation",
+        "supported": [
+          "ttc_estimation",
+          "reaction_latency"
+        ],
+        "weak": [],
+        "top1_correct": false,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "perception_latency",
+        "expected": "reaction_latency",
+        "severity": 0.3,
+        "kind": "near_miss",
+        "top_shapley": "ttc_estimation",
+        "supported": [
+          "ttc_estimation",
+          "reaction_latency"
+        ],
+        "weak": [],
+        "top1_correct": false,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "perception_latency",
+        "expected": "reaction_latency",
+        "severity": 0.2,
+        "kind": "collision",
+        "top_shapley": "reaction_latency",
+        "supported": [
+          "reaction_latency"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "perception_latency",
+        "expected": "reaction_latency",
+        "severity": 0.2,
+        "kind": "collision",
+        "top_shapley": "ttc_estimation",
+        "supported": [
+          "ttc_estimation",
+          "reaction_latency"
+        ],
+        "weak": [],
+        "top1_correct": false,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "perception_latency",
+        "expected": "reaction_latency",
+        "severity": 0.3,
+        "kind": "collision",
+        "top_shapley": "ttc_estimation",
+        "supported": [
+          "ttc_estimation",
+          "reaction_latency"
+        ],
+        "weak": [],
+        "top1_correct": false,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "perception_latency",
+        "expected": "reaction_latency",
+        "severity": 0.2,
+        "kind": "collision",
+        "top_shapley": "ttc_estimation",
+        "supported": [
+          "ttc_estimation",
+          "reaction_latency"
+        ],
+        "weak": [],
+        "top1_correct": false,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "perception_latency",
+        "expected": "reaction_latency",
+        "severity": 0.5,
+        "kind": "near_miss",
+        "top_shapley": "reaction_latency",
+        "supported": [
+          "reaction_latency"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "perception_latency",
+        "expected": "reaction_latency",
+        "severity": 0.6,
+        "kind": "collision",
+        "top_shapley": "ttc_estimation",
+        "supported": [
+          "ttc_estimation",
+          "reaction_latency"
+        ],
+        "weak": [],
+        "top1_correct": false,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "perception_latency",
+        "expected": "reaction_latency",
+        "severity": 0.5,
+        "kind": "collision",
+        "top_shapley": "distance_estimation",
+        "supported": [],
+        "weak": [
+          "distance_estimation",
+          "ttc_estimation",
+          "reaction_latency"
+        ],
+        "top1_correct": false,
+        "expected_supported": false,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "perception_latency",
+        "expected": "reaction_latency",
+        "severity": 0.2,
+        "kind": "collision",
+        "top_shapley": "ttc_estimation",
+        "supported": [
+          "ttc_estimation",
+          "reaction_latency"
+        ],
+        "weak": [],
+        "top1_correct": false,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "detection_loss",
+        "expected": "object_detection",
+        "severity": 1.0,
+        "kind": "near_miss",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "detection_loss",
+        "expected": "object_detection",
+        "severity": 1.5,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "detection_loss",
+        "expected": "object_detection",
+        "severity": 1.5,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "detection_loss",
+        "expected": "object_detection",
+        "severity": 1.5,
+        "kind": "near_miss",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "detection_loss",
+        "expected": "object_detection",
+        "severity": 1.5,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "detection_loss",
+        "expected": "object_detection",
+        "severity": 1.5,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "detection_loss",
+        "expected": "object_detection",
+        "severity": 1.0,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "detection_loss",
+        "expected": "object_detection",
+        "severity": 2.5,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "detection_loss",
+        "expected": "object_detection",
+        "severity": 1.5,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "detection_loss",
+        "expected": "object_detection",
+        "severity": 1.0,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "detection_loss",
+        "expected": "object_detection",
+        "severity": 2.5,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "detection_loss",
+        "expected": "object_detection",
+        "severity": 2.5,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "sensor_dropout",
+        "expected": "object_detection",
+        "severity": 0.7,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "sensor_dropout",
+        "expected": "object_detection",
+        "severity": 0.7,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "sensor_dropout",
+        "expected": "object_detection",
+        "severity": 0.3,
+        "kind": "near_miss",
+        "top_shapley": "ttc_estimation",
+        "supported": [
+          "object_detection",
+          "ttc_estimation"
+        ],
+        "weak": [
+          "distance_estimation"
+        ],
+        "top1_correct": false,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "sensor_dropout",
+        "expected": "object_detection",
+        "severity": 0.7,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "sensor_dropout",
+        "expected": "object_detection",
+        "severity": 0.7,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "sensor_dropout",
+        "expected": "object_detection",
+        "severity": 0.3,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "sensor_dropout",
+        "expected": "object_detection",
+        "severity": 0.3,
+        "kind": "near_miss",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "sensor_dropout",
+        "expected": "object_detection",
+        "severity": 0.7,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "sensor_dropout",
+        "expected": "object_detection",
+        "severity": 0.5,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "sensor_dropout",
+        "expected": "object_detection",
+        "severity": 0.7,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "sensor_dropout",
+        "expected": "object_detection",
+        "severity": 0.7,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "sensor_dropout",
+        "expected": "object_detection",
+        "severity": 0.7,
+        "kind": "collision",
+        "top_shapley": "object_detection",
+        "supported": [
+          "object_detection"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "distance_noise",
+        "expected": "distance_estimation",
+        "severity": 2.0,
+        "kind": "unnecessary_braking",
+        "top_shapley": "distance_estimation",
+        "supported": [
+          "distance_estimation"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "distance_noise",
+        "expected": "distance_estimation",
+        "severity": 1.5,
+        "kind": "unnecessary_braking",
+        "top_shapley": "distance_estimation",
+        "supported": [
+          "distance_estimation"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "distance_noise",
+        "expected": "distance_estimation",
+        "severity": 1.5,
+        "kind": "unnecessary_braking",
+        "top_shapley": "distance_estimation",
+        "supported": [
+          "distance_estimation"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "distance_noise",
+        "expected": "distance_estimation",
+        "severity": 1.5,
+        "kind": "unnecessary_braking",
+        "top_shapley": "distance_estimation",
+        "supported": [
+          "distance_estimation"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "distance_noise",
+        "expected": "distance_estimation",
+        "severity": 1.0,
+        "kind": "unnecessary_braking",
+        "top_shapley": "distance_estimation",
+        "supported": [
+          "distance_estimation"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "distance_noise",
+        "expected": "distance_estimation",
+        "severity": 0.5,
+        "kind": "collision",
+        "top_shapley": "distance_estimation",
+        "supported": [
+          "distance_estimation"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "distance_noise",
+        "expected": "distance_estimation",
+        "severity": 0.5,
+        "kind": "collision",
+        "top_shapley": "distance_estimation",
+        "supported": [
+          "distance_estimation"
+        ],
+        "weak": [
+          "ttc_estimation"
+        ],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "distance_noise",
+        "expected": "distance_estimation",
+        "severity": 0.5,
+        "kind": "collision",
+        "top_shapley": "distance_estimation",
+        "supported": [
+          "distance_estimation"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "distance_noise",
+        "expected": "distance_estimation",
+        "severity": 1.5,
+        "kind": "unnecessary_braking",
+        "top_shapley": "distance_estimation",
+        "supported": [
+          "distance_estimation"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "distance_noise",
+        "expected": "distance_estimation",
+        "severity": 2.0,
+        "kind": "unnecessary_braking",
+        "top_shapley": "distance_estimation",
+        "supported": [
+          "distance_estimation",
+          "ttc_estimation"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "distance_noise",
+        "expected": "distance_estimation",
+        "severity": 1.0,
+        "kind": "unnecessary_braking",
+        "top_shapley": "distance_estimation",
+        "supported": [
+          "distance_estimation"
+        ],
+        "weak": [],
+        "top1_correct": true,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "ttc_error",
+        "expected": "ttc_estimation",
+        "severity": 1.5,
+        "kind": "collision",
+        "top_shapley": "distance_estimation",
+        "supported": [
+          "distance_estimation",
+          "ttc_estimation"
+        ],
+        "weak": [],
+        "top1_correct": false,
+        "expected_supported": true,
+        "planner_logic_supported": false
+      },
+      {
+        "planted": "ttc_error",
+        "expected": "ttc_estimation",
+        "severity": 1.5,
+        "kind": "near_miss",
+        "top_shapley": "distance_estimation",
+        "supported": [],
+        "weak": [
+          "distance_estimation",
+          "ttc_estimation"
+        ],
+        "top1_correct": false,
+        "expected_supported": false,
+        "planner_logic_supported": false
+      }
+    ],
+    "null_rows": [
+      {
+        "supported": [
+          "planner_logic"
+        ],
+        "planner_logic_supported": true,
+        "perception_falsely_supported": []
+      },
+      {
+        "supported": [
+          "ttc_estimation"
+        ],
+        "planner_logic_supported": false,
+        "perception_falsely_supported": [
+          "ttc_estimation"
+        ]
+      },
+      {
+        "supported": [
+          "ttc_estimation"
+        ],
+        "planner_logic_supported": false,
+        "perception_falsely_supported": [
+          "ttc_estimation"
+        ]
+      },
+      {
+        "supported": [
+          "planner_logic"
+        ],
+        "planner_logic_supported": true,
+        "perception_falsely_supported": []
+      },
+      {
+        "supported": [
+          "planner_logic"
+        ],
+        "planner_logic_supported": true,
+        "perception_falsely_supported": []
+      },
+      {
+        "supported": [
+          "planner_logic"
+        ],
+        "planner_logic_supported": true,
+        "perception_falsely_supported": []
+      },
+      {
+        "supported": [
+          "planner_logic"
+        ],
+        "planner_logic_supported": true,
+        "perception_falsely_supported": []
+      },
+      {
+        "supported": [
+          "ttc_estimation"
+        ],
+        "planner_logic_supported": false,
+        "perception_falsely_supported": [
+          "ttc_estimation"
+        ]
+      },
+      {
+        "supported": [
+          "planner_logic"
+        ],
+        "planner_logic_supported": true,
+        "perception_falsely_supported": []
+      },
+      {
+        "supported": [
+          "distance_estimation",
+          "ttc_estimation"
+        ],
+        "planner_logic_supported": false,
+        "perception_falsely_supported": [
+          "distance_estimation",
+          "ttc_estimation"
+        ]
+      },
+      {
+        "supported": [
+          "planner_logic"
+        ],
+        "planner_logic_supported": true,
+        "perception_falsely_supported": []
+      },
+      {
+        "supported": [
+          "planner_logic"
+        ],
+        "planner_logic_supported": true,
+        "perception_falsely_supported": []
+      },
+      {
+        "supported": [
+          "distance_estimation"
+        ],
+        "planner_logic_supported": false,
+        "perception_falsely_supported": [
+          "distance_estimation"
+        ]
+      },
+      {
+        "supported": [
+          "ttc_estimation"
+        ],
+        "planner_logic_supported": false,
+        "perception_falsely_supported": [
+          "ttc_estimation"
+        ]
+      },
+      {
+        "supported": [
+          "planner_logic"
+        ],
+        "planner_logic_supported": true,
+        "perception_falsely_supported": []
+      },
+      {
+        "supported": [
+          "planner_logic"
+        ],
+        "planner_logic_supported": true,
+        "perception_falsely_supported": []
+      },
+      {
+        "supported": [
+          "planner_logic"
+        ],
+        "planner_logic_supported": true,
+        "perception_falsely_supported": []
+      },
+      {
+        "supported": [
+          "planner_logic"
+        ],
+        "planner_logic_supported": true,
+        "perception_falsely_supported": []
+      },
+      {
+        "supported": [
+          "planner_logic"
+        ],
+        "planner_logic_supported": true,
+        "perception_falsely_supported": []
+      },
+      {
+        "supported": [
+          "planner_logic"
+        ],
+        "planner_logic_supported": true,
+        "perception_falsely_supported": []
+      }
+    ],
+    "phase_seconds": 217.2
+  },
+  "regression": {
+    "suite": {
+      "suite": "output/redteam/evaluation/regression_eval/suite",
+      "files": [
+        "fail_01_collision_lead_braking.json",
+        "fail_02_collision_lead_braking.json",
+        "fail_03_collision_lead_braking.json",
+        "fail_04_collision_lead_braking.json",
+        "fail_05_collision_steady.json",
+        "fail_06_collision_lead_braking.json",
+        "fail_07_collision_steady.json",
+        "fail_08_collision_lead_braking.json",
+        "pass_01_lead_braking.json",
+        "pass_02_lead_braking.json",
+        "pass_03_steady.json",
+        "pass_04_steady.json",
+        "pass_05_parked.json",
+        "pass_06_parked.json"
+      ],
+      "n_failures": 8,
+      "n_passing": 6
+    },
+    "holdout_n": 300,
+    "holdout_baseline": {
+      "failing": 101,
+      "collisions": 89,
+      "avoidable_collisions": 89
+    },
+    "label_threshold_scenarios": 6,
+    "mutants": [
+      {
+        "mutant": "identity",
+        "intent": "none",
+        "holdout_failing": 101,
+        "holdout_delta": 0,
+        "label": "neutral",
+        "flagged": false,
+        "violations": [],
+        "counts": {
+          "unchanged": 14
+        }
+      },
+      {
+        "mutant": "TTC_SLOW=1.5",
+        "intent": "harmful",
+        "holdout_failing": 120,
+        "holdout_delta": 19,
+        "label": "harmful",
+        "flagged": true,
+        "violations": [
+          "fail_01_collision_lead_braking",
+          "fail_02_collision_lead_braking",
+          "fail_03_collision_lead_braking",
+          "fail_04_collision_lead_braking",
+          "fail_05_collision_steady",
+          "fail_07_collision_steady",
+          "pass_05_parked",
+          "pass_06_parked"
+        ],
+        "counts": {
+          "worsened": 7,
+          "unchanged": 6,
+          "new_failure": 1
+        }
+      },
+      {
+        "mutant": "TTC_STOP=0.5",
+        "intent": "harmful",
+        "holdout_failing": 105,
+        "holdout_delta": 4,
+        "label": "neutral",
+        "flagged": true,
+        "violations": [
+          "fail_04_collision_lead_braking",
+          "fail_05_collision_steady",
+          "fail_06_collision_lead_braking",
+          "fail_07_collision_steady",
+          "pass_03_steady",
+          "pass_04_steady",
+          "pass_05_parked"
+        ],
+        "counts": {
+          "unchanged": 7,
+          "worsened": 5,
+          "new_failure": 2
+        }
+      },
+      {
+        "mutant": "STOP_BASE_DIST=0.5",
+        "intent": "harmful",
+        "holdout_failing": 106,
+        "holdout_delta": 5,
+        "label": "neutral",
+        "flagged": true,
+        "violations": [
+          "pass_01_lead_braking",
+          "pass_02_lead_braking"
+        ],
+        "counts": {
+          "unchanged": 12,
+          "new_failure": 2
+        }
+      },
+      {
+        "mutant": "SLOW_HEADWAY=0.3",
+        "intent": "harmful",
+        "holdout_failing": 119,
+        "holdout_delta": 18,
+        "label": "harmful",
+        "flagged": true,
+        "violations": [
+          "pass_01_lead_braking",
+          "pass_02_lead_braking",
+          "pass_03_steady"
+        ],
+        "counts": {
+          "unchanged": 11,
+          "new_failure": 3
+        }
+      },
+      {
+        "mutant": "ESCALATE_FRAMES=5",
+        "intent": "harmful",
+        "holdout_failing": 141,
+        "holdout_delta": 40,
+        "label": "harmful",
+        "flagged": true,
+        "violations": [
+          "fail_01_collision_lead_braking",
+          "fail_02_collision_lead_braking",
+          "fail_03_collision_lead_braking",
+          "fail_04_collision_lead_braking",
+          "fail_05_collision_steady",
+          "fail_06_collision_lead_braking",
+          "fail_07_collision_steady",
+          "fail_08_collision_lead_braking",
+          "pass_01_lead_braking",
+          "pass_02_lead_braking",
+          "pass_03_steady",
+          "pass_04_steady",
+          "pass_05_parked",
+          "pass_06_parked"
+        ],
+        "counts": {
+          "worsened": 9,
+          "new_failure": 5
+        }
+      },
+      {
+        "mutant": "EMERGENCY_DECEL=20",
+        "intent": "harmful",
+        "holdout_failing": 106,
+        "holdout_delta": 5,
+        "label": "neutral",
+        "flagged": true,
+        "violations": [
+          "pass_01_lead_braking",
+          "pass_02_lead_braking"
+        ],
+        "counts": {
+          "unchanged": 12,
+          "new_failure": 2
+        }
+      },
+      {
+        "mutant": "SLOW_BASE_DIST=2",
+        "intent": "harmful",
+        "holdout_failing": 108,
+        "holdout_delta": 7,
+        "label": "harmful",
+        "flagged": true,
+        "violations": [
+          "pass_02_lead_braking",
+          "pass_03_steady"
+        ],
+        "counts": {
+          "unchanged": 12,
+          "new_failure": 2
+        }
+      },
+      {
+        "mutant": "MIN_CLOSING_SPEED=3",
+        "intent": "harmful",
+        "holdout_failing": 101,
+        "holdout_delta": 0,
+        "label": "neutral",
+        "flagged": false,
+        "violations": [],
+        "counts": {
+          "unchanged": 14
+        }
+      },
+      {
+        "mutant": "DIST_EMA_ALPHA=0.45",
+        "intent": "benign",
+        "holdout_failing": 100,
+        "holdout_delta": -1,
+        "label": "neutral",
+        "flagged": true,
+        "violations": [
+          "fail_08_collision_lead_braking"
+        ],
+        "counts": {
+          "unchanged": 13,
+          "worsened": 1
+        }
+      },
+      {
+        "mutant": "RELEASE_FRAMES=6",
+        "intent": "benign",
+        "holdout_failing": 96,
+        "holdout_delta": -5,
+        "label": "neutral",
+        "flagged": true,
+        "violations": [
+          "fail_05_collision_steady"
+        ],
+        "counts": {
+          "unchanged": 13,
+          "new_failure": 1
+        }
+      },
+      {
+        "mutant": "TRACK_MAX_AGE=6",
+        "intent": "benign",
+        "holdout_failing": 101,
+        "holdout_delta": 0,
+        "label": "neutral",
+        "flagged": false,
+        "violations": [],
+        "counts": {
+          "unchanged": 14
+        }
+      },
+      {
+        "mutant": "TTC_STOP=1.05",
+        "intent": "benign",
+        "holdout_failing": 101,
+        "holdout_delta": 0,
+        "label": "neutral",
+        "flagged": false,
+        "violations": [],
+        "counts": {
+          "fixed": 3,
+          "unchanged": 10,
+          "improved": 1
+        }
+      },
+      {
+        "mutant": "STOP_BASE_DIST=2.1",
+        "intent": "benign",
+        "holdout_failing": 101,
+        "holdout_delta": 0,
+        "label": "neutral",
+        "flagged": false,
+        "violations": [],
+        "counts": {
+          "unchanged": 14
+        }
+      },
+      {
+        "mutant": "SLOW_BASE_DIST=6.2",
+        "intent": "benign",
+        "holdout_failing": 101,
+        "holdout_delta": 0,
+        "label": "neutral",
+        "flagged": false,
+        "violations": [],
+        "counts": {
+          "unchanged": 14
+        }
+      },
+      {
+        "mutant": "TTC_SLOW=4.0",
+        "intent": "improvement",
+        "holdout_failing": 92,
+        "holdout_delta": -9,
+        "label": "improvement",
+        "flagged": true,
+        "violations": [
+          "fail_05_collision_steady"
+        ],
+        "counts": {
+          "unchanged": 4,
+          "fixed": 6,
+          "worsened": 1,
+          "improved": 3
+        }
+      },
+      {
+        "mutant": "STOP_BASE_DIST=4",
+        "intent": "improvement",
+        "holdout_failing": 103,
+        "holdout_delta": 2,
+        "label": "neutral",
+        "flagged": true,
+        "violations": [
+          "fail_05_collision_steady"
+        ],
+        "counts": {
+          "fixed": 5,
+          "new_failure": 1,
+          "unchanged": 5,
+          "improved": 3
+        }
+      },
+      {
+        "mutant": "SLOW_HEADWAY=1.5",
+        "intent": "improvement",
+        "holdout_failing": 90,
+        "holdout_delta": -11,
+        "label": "improvement",
+        "flagged": true,
+        "violations": [
+          "fail_08_collision_lead_braking"
+        ],
+        "counts": {
+          "fixed": 2,
+          "unchanged": 10,
+          "new_failure": 1,
+          "improved": 1
+        }
+      },
+      {
+        "mutant": "TTC_STOP=1.5",
+        "intent": "improvement",
+        "holdout_failing": 90,
+        "holdout_delta": -11,
+        "label": "improvement",
+        "flagged": false,
+        "violations": [],
+        "counts": {
+          "fixed": 7,
+          "unchanged": 3,
+          "improved": 4
+        }
+      }
+    ],
+    "harmful_n": 4,
+    "harmful_detected": 4,
+    "recall_on_harmful": 1.0,
+    "nonharmful_n": 15,
+    "nonharmful_flagged": 8,
+    "false_alarm_rate": 0.533,
+    "identity_flagged": false,
+    "phase_seconds": 34.5
+  },
+  "agent_guided": {
+    "status": "not run",
+    "reason": "no API key configured; the deterministic investigator is exercised in tests, not compared as a search method"
+  },
+  "total_seconds": 364.5
+}

@@ -1,0 +1,3085 @@
+{
+ "split": "heldout",
+ "config": {
+  "suite_search_seed": 321,
+  "suite_budget": 300,
+  "safe_seed": 56,
+  "label_seed": 4242,
+  "label_n": 600,
+  "legacy_seed": null,
+  "legacy_n": 0
+ },
+ "policy": {
+  "n_seeds": 12,
+  "contract_margin_m": 1.5,
+  "known_failure_rate": 0.75,
+  "known_worse_abs": 3.0,
+  "known_worse_rel": 0.25,
+  "alpha_scenario_family": 0.02,
+  "alpha_suite": 0.005,
+  "min_extra_failures": 2,
+  "suite_min_net": 3,
+  "pooled_min_net": 4,
+  "gap_tol": 0.5,
+  "impact_tol": 1.0,
+  "unnecessary_tol": 0.5,
+  "reaction_tol": 0.2,
+  "decel_tol": 1.0,
+  "bootstrap": 2000,
+  "strict": false
+ },
+ "suite": {
+  "suite": "output/redteam/reg_work/heldout/suite",
+  "files": [
+   "fail_01_collision_lead_braking.json",
+   "fail_02_collision_steady.json",
+   "fail_03_collision_lead_braking.json",
+   "fail_04_collision_steady.json",
+   "fail_05_collision_lead_braking.json",
+   "fail_06_collision_parked.json",
+   "fail_07_collision_lead_braking.json",
+   "fail_08_collision_steady.json",
+   "pass_01_lead_braking.json",
+   "pass_02_lead_braking.json",
+   "pass_03_steady.json",
+   "pass_04_steady.json"
+  ],
+  "n_failures": 8,
+  "n_passing": 4
+ },
+ "n_safe_added": 6,
+ "rows": [
+  {
+   "mutant": "identity",
+   "intent": "none",
+   "label": "neutral",
+   "label_detail": {
+    "label": "neutral",
+    "worse": 0,
+    "better": 0,
+    "net_failing": 0,
+    "p_harm": 1.0,
+    "p_improve": 1.0
+   },
+   "old_suite": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "unchanged": 12
+    }
+   },
+   "new_suite": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "within_tolerance": 12
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 0,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 1.0,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "unchanged": 18
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "within_tolerance": 18
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 0,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 1.0,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "TTC_SLOW=1.2",
+   "intent": "harmful",
+   "label": "harmful",
+   "label_detail": {
+    "label": "harmful",
+    "worse": 57,
+    "better": 7,
+    "net_failing": 50,
+    "p_harm": 0.0,
+    "p_improve": 1.0
+   },
+   "old_suite": {
+    "flagged": true,
+    "violations": [
+     "fail_01_collision_lead_braking",
+     "fail_02_collision_steady",
+     "fail_03_collision_lead_braking",
+     "fail_04_collision_steady",
+     "fail_05_collision_lead_braking",
+     "fail_06_collision_parked",
+     "fail_07_collision_lead_braking",
+     "pass_04_steady"
+    ],
+    "counts": {
+     "worsened": 7,
+     "unchanged": 4,
+     "new_failure": 1
+    }
+   },
+   "new_suite": {
+    "flagged": true,
+    "tier": "hard_violation",
+    "trigger": "contract+pooled+statistical+suite-level",
+    "counts": {
+     "hard_violation": 4,
+     "informational": 4,
+     "within_tolerance": 3,
+     "degraded": 1
+    },
+    "violations": [
+     "fail_01_collision_lead_braking",
+     "fail_03_collision_lead_braking",
+     "fail_04_collision_steady",
+     "fail_06_collision_parked",
+     "pass_04_steady"
+    ],
+    "suite_level": {
+     "pairs_worse": 27,
+     "pairs_better": 0,
+     "p_one_sided": 0.0,
+     "p_one_sided_improvement": 1.0,
+     "degraded": true,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 27,
+       "better": 1,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 87,
+       "better": 0,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": true,
+    "violations": [
+     "fail_01_collision_lead_braking",
+     "fail_02_collision_steady",
+     "fail_03_collision_lead_braking",
+     "fail_04_collision_steady",
+     "fail_05_collision_lead_braking",
+     "fail_06_collision_parked",
+     "fail_07_collision_lead_braking",
+     "pass_04_steady",
+     "safe_04",
+     "safe_05",
+     "safe_06"
+    ],
+    "counts": {
+     "worsened": 9,
+     "unchanged": 7,
+     "new_failure": 2
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": true,
+    "tier": "hard_violation",
+    "trigger": "contract+pooled+statistical+suite-level",
+    "counts": {
+     "hard_violation": 5,
+     "informational": 7,
+     "within_tolerance": 5,
+     "degraded": 1
+    },
+    "violations": [
+     "fail_01_collision_lead_braking",
+     "fail_03_collision_lead_braking",
+     "fail_04_collision_steady",
+     "fail_06_collision_parked",
+     "pass_04_steady",
+     "safe_06"
+    ],
+    "suite_level": {
+     "pairs_worse": 31,
+     "pairs_better": 0,
+     "p_one_sided": 0.0,
+     "p_one_sided_improvement": 1.0,
+     "degraded": true,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 67,
+       "better": 1,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 91,
+       "better": 0,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "TTC_STOP=0.6",
+   "intent": "harmful",
+   "label": "harmful",
+   "label_detail": {
+    "label": "harmful",
+    "worse": 31,
+    "better": 4,
+    "net_failing": 27,
+    "p_harm": 0.0,
+    "p_improve": 1.0
+   },
+   "old_suite": {
+    "flagged": true,
+    "violations": [
+     "fail_01_collision_lead_braking",
+     "fail_02_collision_steady",
+     "fail_04_collision_steady",
+     "pass_02_lead_braking",
+     "pass_03_steady",
+     "pass_04_steady"
+    ],
+    "counts": {
+     "worsened": 3,
+     "unchanged": 6,
+     "new_failure": 3
+    }
+   },
+   "new_suite": {
+    "flagged": true,
+    "tier": "hard_violation",
+    "trigger": "contract+pooled+suite-level",
+    "counts": {
+     "informational": 7,
+     "within_tolerance": 4,
+     "hard_violation": 1
+    },
+    "violations": [
+     "fail_04_collision_steady"
+    ],
+    "suite_level": {
+     "pairs_worse": 19,
+     "pairs_better": 0,
+     "p_one_sided": 2e-06,
+     "p_one_sided_improvement": 1.0,
+     "degraded": true,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 24,
+       "better": 0,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 52,
+       "better": 0,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": true,
+    "violations": [
+     "fail_01_collision_lead_braking",
+     "fail_02_collision_steady",
+     "fail_04_collision_steady",
+     "pass_02_lead_braking",
+     "pass_03_steady",
+     "pass_04_steady",
+     "safe_06"
+    ],
+    "counts": {
+     "worsened": 4,
+     "unchanged": 11,
+     "new_failure": 3
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": true,
+    "tier": "hard_violation",
+    "trigger": "contract+pooled+suite-level",
+    "counts": {
+     "informational": 7,
+     "within_tolerance": 9,
+     "hard_violation": 2
+    },
+    "violations": [
+     "fail_04_collision_steady",
+     "safe_06"
+    ],
+    "suite_level": {
+     "pairs_worse": 21,
+     "pairs_better": 0,
+     "p_one_sided": 0.0,
+     "p_one_sided_improvement": 1.0,
+     "degraded": true,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 35,
+       "better": 0,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 52,
+       "better": 0,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "STOP_BASE_DIST=0.8",
+   "intent": "harmful",
+   "label": "neutral",
+   "label_detail": {
+    "label": "neutral",
+    "worse": 5,
+    "better": 5,
+    "net_failing": 0,
+    "p_harm": 0.62305,
+    "p_improve": 0.62305
+   },
+   "old_suite": {
+    "flagged": true,
+    "violations": [
+     "fail_07_collision_lead_braking",
+     "pass_01_lead_braking"
+    ],
+    "counts": {
+     "unchanged": 10,
+     "worsened": 1,
+     "new_failure": 1
+    }
+   },
+   "new_suite": {
+    "flagged": true,
+    "tier": "degraded",
+    "trigger": "pooled+suite-level",
+    "counts": {
+     "within_tolerance": 7,
+     "informational": 5
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 13,
+     "pairs_better": 0,
+     "p_one_sided": 0.000122,
+     "p_one_sided_improvement": 1.0,
+     "degraded": true,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 17,
+       "better": 0,
+       "p_one_sided": 8e-06,
+       "degraded": true
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 23,
+       "better": 0,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": true,
+    "violations": [
+     "fail_07_collision_lead_braking",
+     "pass_01_lead_braking"
+    ],
+    "counts": {
+     "unchanged": 16,
+     "worsened": 1,
+     "new_failure": 1
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": true,
+    "tier": "degraded",
+    "trigger": "pooled+suite-level",
+    "counts": {
+     "within_tolerance": 13,
+     "informational": 5
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 13,
+     "pairs_better": 0,
+     "p_one_sided": 0.000122,
+     "p_one_sided_improvement": 1.0,
+     "degraded": true,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 17,
+       "better": 0,
+       "p_one_sided": 8e-06,
+       "degraded": true
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 23,
+       "better": 0,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "SLOW_HEADWAY=0.4",
+   "intent": "harmful",
+   "label": "harmful",
+   "label_detail": {
+    "label": "harmful",
+    "worse": 23,
+    "better": 6,
+    "net_failing": 17,
+    "p_harm": 0.00116,
+    "p_improve": 0.99973
+   },
+   "old_suite": {
+    "flagged": true,
+    "violations": [
+     "pass_01_lead_braking",
+     "pass_02_lead_braking",
+     "pass_03_steady"
+    ],
+    "counts": {
+     "unchanged": 9,
+     "new_failure": 3
+    }
+   },
+   "new_suite": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "within_tolerance": 10,
+     "informational": 2
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 6,
+     "pairs_better": 3,
+     "p_one_sided": 0.253906,
+     "p_one_sided_improvement": 0.910156,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 7,
+       "better": 4,
+       "p_one_sided": 0.274414,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 10,
+       "better": 4,
+       "p_one_sided": 0.089783,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": true,
+    "violations": [
+     "pass_01_lead_braking",
+     "pass_02_lead_braking",
+     "pass_03_steady",
+     "safe_05"
+    ],
+    "counts": {
+     "unchanged": 14,
+     "new_failure": 3,
+     "worsened": 1
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": true,
+    "tier": "degraded",
+    "trigger": "pooled",
+    "counts": {
+     "within_tolerance": 15,
+     "informational": 3
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 6,
+     "pairs_better": 3,
+     "p_one_sided": 0.253906,
+     "p_one_sided_improvement": 0.910156,
+     "degraded": true,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 18,
+       "better": 4,
+       "p_one_sided": 0.002172,
+       "degraded": true
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 10,
+       "better": 4,
+       "p_one_sided": 0.089783,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "ESCALATE_FRAMES=4",
+   "intent": "harmful",
+   "label": "harmful",
+   "label_detail": {
+    "label": "harmful",
+    "worse": 62,
+    "better": 13,
+    "net_failing": 49,
+    "p_harm": 0.0,
+    "p_improve": 1.0
+   },
+   "old_suite": {
+    "flagged": true,
+    "violations": [
+     "fail_01_collision_lead_braking",
+     "fail_02_collision_steady",
+     "fail_03_collision_lead_braking",
+     "fail_04_collision_steady",
+     "fail_05_collision_lead_braking",
+     "fail_06_collision_parked",
+     "fail_07_collision_lead_braking",
+     "pass_01_lead_braking",
+     "pass_02_lead_braking",
+     "pass_03_steady",
+     "pass_04_steady"
+    ],
+    "counts": {
+     "worsened": 7,
+     "unchanged": 1,
+     "new_failure": 4
+    }
+   },
+   "new_suite": {
+    "flagged": true,
+    "tier": "hard_violation",
+    "trigger": "contract+pooled+statistical+suite-level",
+    "counts": {
+     "hard_violation": 5,
+     "informational": 5,
+     "degraded": 1,
+     "within_tolerance": 1
+    },
+    "violations": [
+     "fail_01_collision_lead_braking",
+     "fail_03_collision_lead_braking",
+     "fail_04_collision_steady",
+     "fail_05_collision_lead_braking",
+     "fail_06_collision_parked",
+     "fail_07_collision_lead_braking"
+    ],
+    "suite_level": {
+     "pairs_worse": 38,
+     "pairs_better": 0,
+     "p_one_sided": 0.0,
+     "p_one_sided_improvement": 1.0,
+     "degraded": true,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 41,
+       "better": 0,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 117,
+       "better": 1,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": true,
+    "violations": [
+     "fail_01_collision_lead_braking",
+     "fail_02_collision_steady",
+     "fail_03_collision_lead_braking",
+     "fail_04_collision_steady",
+     "fail_05_collision_lead_braking",
+     "fail_06_collision_parked",
+     "fail_07_collision_lead_braking",
+     "pass_01_lead_braking",
+     "pass_02_lead_braking",
+     "pass_03_steady",
+     "pass_04_steady",
+     "safe_04",
+     "safe_05",
+     "safe_06"
+    ],
+    "counts": {
+     "worsened": 9,
+     "unchanged": 4,
+     "new_failure": 5
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": true,
+    "tier": "hard_violation",
+    "trigger": "contract+pooled+statistical+suite-level",
+    "counts": {
+     "hard_violation": 6,
+     "informational": 6,
+     "degraded": 1,
+     "within_tolerance": 5
+    },
+    "violations": [
+     "fail_01_collision_lead_braking",
+     "fail_03_collision_lead_braking",
+     "fail_04_collision_steady",
+     "fail_05_collision_lead_braking",
+     "fail_06_collision_parked",
+     "fail_07_collision_lead_braking",
+     "safe_06"
+    ],
+    "suite_level": {
+     "pairs_worse": 49,
+     "pairs_better": 0,
+     "p_one_sided": 0.0,
+     "p_one_sided_improvement": 1.0,
+     "degraded": true,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 75,
+       "better": 0,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 117,
+       "better": 1,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "EMERGENCY_DECEL=14",
+   "intent": "harmful",
+   "label": "neutral",
+   "label_detail": {
+    "label": "neutral",
+    "worse": 7,
+    "better": 14,
+    "net_failing": -7,
+    "p_harm": 0.96082,
+    "p_improve": 0.09462
+   },
+   "old_suite": {
+    "flagged": true,
+    "violations": [
+     "fail_07_collision_lead_braking",
+     "fail_08_collision_steady",
+     "pass_01_lead_braking",
+     "pass_02_lead_braking",
+     "pass_04_steady"
+    ],
+    "counts": {
+     "unchanged": 7,
+     "worsened": 2,
+     "new_failure": 3
+    }
+   },
+   "new_suite": {
+    "flagged": true,
+    "tier": "degraded",
+    "trigger": "pooled+suite-level",
+    "counts": {
+     "within_tolerance": 6,
+     "informational": 6
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 23,
+     "pairs_better": 0,
+     "p_one_sided": 0.0,
+     "p_one_sided_improvement": 1.0,
+     "degraded": true,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 23,
+       "better": 0,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 49,
+       "better": 0,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": true,
+    "violations": [
+     "fail_07_collision_lead_braking",
+     "fail_08_collision_steady",
+     "pass_01_lead_braking",
+     "pass_02_lead_braking",
+     "pass_04_steady"
+    ],
+    "counts": {
+     "unchanged": 13,
+     "worsened": 2,
+     "new_failure": 3
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": true,
+    "tier": "degraded",
+    "trigger": "pooled+suite-level",
+    "counts": {
+     "within_tolerance": 12,
+     "informational": 6
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 23,
+     "pairs_better": 0,
+     "p_one_sided": 0.0,
+     "p_one_sided_improvement": 1.0,
+     "degraded": true,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 23,
+       "better": 0,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 49,
+       "better": 0,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "SLOW_BASE_DIST=3",
+   "intent": "harmful",
+   "label": "neutral",
+   "label_detail": {
+    "label": "neutral",
+    "worse": 14,
+    "better": 5,
+    "net_failing": 9,
+    "p_harm": 0.03178,
+    "p_improve": 0.99039
+   },
+   "old_suite": {
+    "flagged": true,
+    "violations": [
+     "pass_01_lead_braking",
+     "pass_02_lead_braking"
+    ],
+    "counts": {
+     "unchanged": 10,
+     "new_failure": 2
+    }
+   },
+   "new_suite": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "within_tolerance": 9,
+     "informational": 3
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 4,
+     "pairs_better": 0,
+     "p_one_sided": 0.0625,
+     "p_one_sided_improvement": 1.0,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 3,
+       "better": 2,
+       "p_one_sided": 0.5,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 6,
+       "better": 0,
+       "p_one_sided": 0.015625,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": true,
+    "violations": [
+     "pass_01_lead_braking",
+     "pass_02_lead_braking",
+     "safe_04",
+     "safe_05"
+    ],
+    "counts": {
+     "unchanged": 14,
+     "new_failure": 2,
+     "worsened": 2
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": true,
+    "tier": "degraded",
+    "trigger": "pooled",
+    "counts": {
+     "within_tolerance": 14,
+     "informational": 4
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 4,
+     "pairs_better": 0,
+     "p_one_sided": 0.0625,
+     "p_one_sided_improvement": 1.0,
+     "degraded": true,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 16,
+       "better": 2,
+       "p_one_sided": 0.000656,
+       "degraded": true
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 6,
+       "better": 0,
+       "p_one_sided": 0.015625,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "DIST_EMA_ALPHA=0.2",
+   "intent": "harmful",
+   "label": "harmful",
+   "label_detail": {
+    "label": "harmful",
+    "worse": 18,
+    "better": 3,
+    "net_failing": 15,
+    "p_harm": 0.00074,
+    "p_improve": 0.99989
+   },
+   "old_suite": {
+    "flagged": true,
+    "violations": [
+     "fail_01_collision_lead_braking",
+     "fail_04_collision_steady",
+     "fail_07_collision_lead_braking",
+     "pass_01_lead_braking"
+    ],
+    "counts": {
+     "worsened": 2,
+     "unchanged": 8,
+     "new_failure": 2
+    }
+   },
+   "new_suite": {
+    "flagged": true,
+    "tier": "degraded",
+    "trigger": "pooled",
+    "counts": {
+     "informational": 3,
+     "within_tolerance": 7,
+     "improved": 2
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 13,
+     "pairs_better": 3,
+     "p_one_sided": 0.010635,
+     "p_one_sided_improvement": 0.99791,
+     "degraded": true,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 13,
+       "better": 5,
+       "p_one_sided": 0.048126,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 34,
+       "better": 7,
+       "p_one_sided": 1.3e-05,
+       "degraded": true
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": true,
+    "violations": [
+     "fail_01_collision_lead_braking",
+     "fail_04_collision_steady",
+     "fail_07_collision_lead_braking",
+     "pass_01_lead_braking"
+    ],
+    "counts": {
+     "worsened": 2,
+     "unchanged": 12,
+     "new_failure": 2,
+     "improved": 2
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": true,
+    "tier": "degraded",
+    "trigger": "pooled",
+    "counts": {
+     "informational": 3,
+     "within_tolerance": 12,
+     "improved": 3
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 13,
+     "pairs_better": 3,
+     "p_one_sided": 0.010635,
+     "p_one_sided_improvement": 0.99791,
+     "degraded": true,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 14,
+       "better": 19,
+       "p_one_sided": 0.851897,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 34,
+       "better": 7,
+       "p_one_sided": 1.3e-05,
+       "degraded": true
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "MIN_CLOSING_SPEED=2",
+   "intent": "harmful",
+   "label": "neutral",
+   "label_detail": {
+    "label": "neutral",
+    "worse": 0,
+    "better": 0,
+    "net_failing": 0,
+    "p_harm": 1.0,
+    "p_improve": 1.0
+   },
+   "old_suite": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "unchanged": 12
+    }
+   },
+   "new_suite": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "within_tolerance": 12
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 0,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 1.0,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "unchanged": 18
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "within_tolerance": 18
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 0,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 1.0,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "DIST_EMA_ALPHA=0.55",
+   "intent": "benign",
+   "label": "neutral",
+   "label_detail": {
+    "label": "neutral",
+    "worse": 3,
+    "better": 10,
+    "net_failing": -7,
+    "p_harm": 0.98877,
+    "p_improve": 0.04614
+   },
+   "old_suite": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "unchanged": 12
+    }
+   },
+   "new_suite": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "improved": 1,
+     "within_tolerance": 11
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 1,
+     "pairs_better": 4,
+     "p_one_sided": 0.96875,
+     "p_one_sided_improvement": 0.1875,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 3,
+       "better": 6,
+       "p_one_sided": 0.910156,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 5,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "unchanged": 18
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "improved": 1,
+     "within_tolerance": 17
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 1,
+     "pairs_better": 4,
+     "p_one_sided": 0.96875,
+     "p_one_sided_improvement": 0.1875,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 3,
+       "better": 8,
+       "p_one_sided": 0.967285,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 5,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "RELEASE_FRAMES=7",
+   "intent": "benign",
+   "label": "improvement",
+   "label_detail": {
+    "label": "improvement",
+    "worse": 5,
+    "better": 21,
+    "net_failing": -16,
+    "p_harm": 0.99973,
+    "p_improve": 0.00125
+   },
+   "old_suite": {
+    "flagged": true,
+    "violations": [
+     "fail_02_collision_steady"
+    ],
+    "counts": {
+     "unchanged": 11,
+     "new_failure": 1
+    }
+   },
+   "new_suite": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "within_tolerance": 9,
+     "improved": 3
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 6,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 0.015625,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 0,
+       "better": 15,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 7,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 2,
+       "better": 0,
+       "p_one_sided": 0.25,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": true,
+    "violations": [
+     "fail_02_collision_steady"
+    ],
+    "counts": {
+     "unchanged": 17,
+     "new_failure": 1
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "within_tolerance": 15,
+     "improved": 3
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 6,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 0.015625,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 0,
+       "better": 17,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 7,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 2,
+       "better": 0,
+       "p_one_sided": 0.25,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "TRACK_MAX_AGE=7",
+   "intent": "benign",
+   "label": "neutral",
+   "label_detail": {
+    "label": "neutral",
+    "worse": 0,
+    "better": 0,
+    "net_failing": 0,
+    "p_harm": 1.0,
+    "p_improve": 1.0
+   },
+   "old_suite": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "unchanged": 12
+    }
+   },
+   "new_suite": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "within_tolerance": 12
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 0,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 1.0,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "unchanged": 18
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "within_tolerance": 18
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 0,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 1.0,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "TTC_STOP=0.95",
+   "intent": "benign",
+   "label": "harmful",
+   "label_detail": {
+    "label": "harmful",
+    "worse": 10,
+    "better": 1,
+    "net_failing": 9,
+    "p_harm": 0.00586,
+    "p_improve": 0.99951
+   },
+   "old_suite": {
+    "flagged": true,
+    "violations": [
+     "fail_04_collision_steady",
+     "pass_04_steady"
+    ],
+    "counts": {
+     "unchanged": 10,
+     "worsened": 1,
+     "new_failure": 1
+    }
+   },
+   "new_suite": {
+    "flagged": true,
+    "tier": "degraded",
+    "trigger": "pooled",
+    "counts": {
+     "within_tolerance": 9,
+     "informational": 3
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 5,
+     "pairs_better": 0,
+     "p_one_sided": 0.03125,
+     "p_one_sided_improvement": 1.0,
+     "degraded": true,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 7,
+       "better": 0,
+       "p_one_sided": 0.007812,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 21,
+       "better": 0,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": true,
+    "violations": [
+     "fail_04_collision_steady",
+     "pass_04_steady",
+     "safe_06"
+    ],
+    "counts": {
+     "unchanged": 15,
+     "worsened": 2,
+     "new_failure": 1
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": true,
+    "tier": "degraded",
+    "trigger": "pooled",
+    "counts": {
+     "within_tolerance": 15,
+     "informational": 3
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 5,
+     "pairs_better": 0,
+     "p_one_sided": 0.03125,
+     "p_one_sided_improvement": 1.0,
+     "degraded": true,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 14,
+       "better": 0,
+       "p_one_sided": 6.1e-05,
+       "degraded": true
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 21,
+       "better": 0,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "STOP_BASE_DIST=2.2",
+   "intent": "benign",
+   "label": "neutral",
+   "label_detail": {
+    "label": "neutral",
+    "worse": 0,
+    "better": 2,
+    "net_failing": -2,
+    "p_harm": 1.0,
+    "p_improve": 0.25
+   },
+   "old_suite": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "unchanged": 12
+    }
+   },
+   "new_suite": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "within_tolerance": 10,
+     "improved": 2
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 1,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 0.5,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 0,
+       "better": 2,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 2,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "unchanged": 18
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "within_tolerance": 16,
+     "improved": 2
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 1,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 0.5,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 0,
+       "better": 2,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 2,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "SLOW_BASE_DIST=5.8",
+   "intent": "benign",
+   "label": "neutral",
+   "label_detail": {
+    "label": "neutral",
+    "worse": 3,
+    "better": 0,
+    "net_failing": 3,
+    "p_harm": 0.125,
+    "p_improve": 1.0
+   },
+   "old_suite": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "unchanged": 12
+    }
+   },
+   "new_suite": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "within_tolerance": 12
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 0,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 1.0,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "unchanged": 18
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "within_tolerance": 18
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 0,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 1.0,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "SLOW_HEADWAY=1.05",
+   "intent": "benign",
+   "label": "neutral",
+   "label_detail": {
+    "label": "neutral",
+    "worse": 2,
+    "better": 6,
+    "net_failing": -4,
+    "p_harm": 0.96484,
+    "p_improve": 0.14453
+   },
+   "old_suite": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "unchanged": 12
+    }
+   },
+   "new_suite": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "within_tolerance": 12
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 0,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 1.0,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "unchanged": 18
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "within_tolerance": 18
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 0,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 1.0,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "MIN_CLOSING_SPEED=0.6",
+   "intent": "benign",
+   "label": "neutral",
+   "label_detail": {
+    "label": "neutral",
+    "worse": 0,
+    "better": 0,
+    "net_failing": 0,
+    "p_harm": 1.0,
+    "p_improve": 1.0
+   },
+   "old_suite": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "unchanged": 12
+    }
+   },
+   "new_suite": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "within_tolerance": 12
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 0,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 1.0,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "unchanged": 18
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "within_tolerance": 18
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 0,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 1.0,
+     "degraded": false,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "ESCALATE_FRAMES=3",
+   "intent": "benign",
+   "label": "harmful",
+   "label_detail": {
+    "label": "harmful",
+    "worse": 41,
+    "better": 12,
+    "net_failing": 29,
+    "p_harm": 4e-05,
+    "p_improve": 0.99999
+   },
+   "old_suite": {
+    "flagged": true,
+    "violations": [
+     "fail_01_collision_lead_braking",
+     "fail_02_collision_steady",
+     "fail_03_collision_lead_braking",
+     "fail_04_collision_steady",
+     "fail_05_collision_lead_braking",
+     "fail_06_collision_parked",
+     "fail_07_collision_lead_braking",
+     "pass_01_lead_braking",
+     "pass_02_lead_braking",
+     "pass_03_steady",
+     "pass_04_steady"
+    ],
+    "counts": {
+     "worsened": 7,
+     "unchanged": 1,
+     "new_failure": 4
+    }
+   },
+   "new_suite": {
+    "flagged": true,
+    "tier": "hard_violation",
+    "trigger": "contract+pooled+suite-level",
+    "counts": {
+     "hard_violation": 1,
+     "informational": 9,
+     "within_tolerance": 1,
+     "improved": 1
+    },
+    "violations": [
+     "fail_01_collision_lead_braking"
+    ],
+    "suite_level": {
+     "pairs_worse": 23,
+     "pairs_better": 2,
+     "p_one_sided": 1e-05,
+     "p_one_sided_improvement": 0.999999,
+     "degraded": true,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 34,
+       "better": 4,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 92,
+       "better": 3,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": true,
+    "violations": [
+     "fail_01_collision_lead_braking",
+     "fail_02_collision_steady",
+     "fail_03_collision_lead_braking",
+     "fail_04_collision_steady",
+     "fail_05_collision_lead_braking",
+     "fail_06_collision_parked",
+     "fail_07_collision_lead_braking",
+     "pass_01_lead_braking",
+     "pass_02_lead_braking",
+     "pass_03_steady",
+     "pass_04_steady",
+     "safe_04",
+     "safe_06"
+    ],
+    "counts": {
+     "worsened": 9,
+     "unchanged": 5,
+     "new_failure": 4
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": true,
+    "tier": "hard_violation",
+    "trigger": "contract+pooled+suite-level",
+    "counts": {
+     "hard_violation": 1,
+     "informational": 11,
+     "within_tolerance": 5,
+     "improved": 1
+    },
+    "violations": [
+     "fail_01_collision_lead_braking"
+    ],
+    "suite_level": {
+     "pairs_worse": 23,
+     "pairs_better": 2,
+     "p_one_sided": 1e-05,
+     "p_one_sided_improvement": 0.999999,
+     "degraded": true,
+     "improved": false,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 59,
+       "better": 4,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 92,
+       "better": 3,
+       "p_one_sided": 0.0,
+       "degraded": true
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "TTC_SLOW=3.8",
+   "intent": "improvement",
+   "label": "improvement",
+   "label_detail": {
+    "label": "improvement",
+    "worse": 6,
+    "better": 33,
+    "net_failing": -27,
+    "p_harm": 1.0,
+    "p_improve": 1e-05
+   },
+   "old_suite": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "fixed": 5,
+     "unchanged": 7
+    }
+   },
+   "new_suite": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "improved": 8,
+     "informational": 2,
+     "within_tolerance": 2
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 1,
+     "pairs_better": 49,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 0.0,
+     "degraded": false,
+     "improved": true,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 6,
+       "better": 58,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 4,
+       "better": 55,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "fixed": 5,
+     "unchanged": 10,
+     "improved": 3
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "improved": 10,
+     "informational": 2,
+     "within_tolerance": 6
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 1,
+     "pairs_better": 49,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 0.0,
+     "degraded": false,
+     "improved": true,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 7,
+       "better": 84,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 4,
+       "better": 55,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "STOP_BASE_DIST=3.5",
+   "intent": "improvement",
+   "label": "improvement",
+   "label_detail": {
+    "label": "improvement",
+    "worse": 9,
+    "better": 25,
+    "net_failing": -16,
+    "p_harm": 0.99853,
+    "p_improve": 0.00452
+   },
+   "old_suite": {
+    "flagged": true,
+    "violations": [
+     "fail_04_collision_steady"
+    ],
+    "counts": {
+     "unchanged": 9,
+     "new_failure": 1,
+     "fixed": 1,
+     "improved": 1
+    }
+   },
+   "new_suite": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "improved": 7,
+     "within_tolerance": 4,
+     "informational": 1
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 23,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 0.0,
+     "degraded": false,
+     "improved": true,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 1,
+       "better": 39,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 35,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 1,
+       "better": 0,
+       "p_one_sided": 0.5,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": true,
+    "violations": [
+     "fail_04_collision_steady"
+    ],
+    "counts": {
+     "unchanged": 15,
+     "new_failure": 1,
+     "fixed": 1,
+     "improved": 1
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "improved": 7,
+     "within_tolerance": 10,
+     "informational": 1
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 23,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 0.0,
+     "degraded": false,
+     "improved": true,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 1,
+       "better": 46,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 35,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 1,
+       "better": 0,
+       "p_one_sided": 0.5,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "SLOW_HEADWAY=1.4",
+   "intent": "improvement",
+   "label": "improvement",
+   "label_detail": {
+    "label": "improvement",
+    "worse": 4,
+    "better": 27,
+    "net_failing": -23,
+    "p_harm": 1.0,
+    "p_improve": 2e-05
+   },
+   "old_suite": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "fixed": 1,
+     "unchanged": 10,
+     "improved": 1
+    }
+   },
+   "new_suite": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "improved": 2,
+     "within_tolerance": 10
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 1,
+     "pairs_better": 13,
+     "p_one_sided": 0.999939,
+     "p_one_sided_improvement": 0.000916,
+     "degraded": false,
+     "improved": true,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 1,
+       "better": 17,
+       "p_one_sided": 0.999996,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 1,
+       "better": 12,
+       "p_one_sided": 0.999878,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "fixed": 1,
+     "unchanged": 15,
+     "improved": 2
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "improved": 3,
+     "within_tolerance": 15
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 1,
+     "pairs_better": 13,
+     "p_one_sided": 0.999939,
+     "p_one_sided_improvement": 0.000916,
+     "degraded": false,
+     "improved": true,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 2,
+       "better": 36,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 1,
+       "better": 12,
+       "p_one_sided": 0.999878,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "TTC_STOP=1.4",
+   "intent": "improvement",
+   "label": "improvement",
+   "label_detail": {
+    "label": "improvement",
+    "worse": 17,
+    "better": 57,
+    "net_failing": -40,
+    "p_harm": 1.0,
+    "p_improve": 0.0
+   },
+   "old_suite": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "fixed": 6,
+     "unchanged": 4,
+     "improved": 2
+    }
+   },
+   "new_suite": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "improved": 10,
+     "within_tolerance": 2
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 64,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 0.0,
+     "degraded": false,
+     "improved": true,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 0,
+       "better": 94,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 62,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": false,
+    "violations": [],
+    "counts": {
+     "fixed": 6,
+     "unchanged": 9,
+     "improved": 3
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "improved": 11,
+     "within_tolerance": 7
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 64,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 0.0,
+     "degraded": false,
+     "improved": true,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 0,
+       "better": 106,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 62,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  },
+  {
+   "mutant": "EMERGENCY_DECEL=6",
+   "intent": "improvement",
+   "label": "improvement",
+   "label_detail": {
+    "label": "improvement",
+    "worse": 15,
+    "better": 37,
+    "net_failing": -22,
+    "p_harm": 0.9994,
+    "p_improve": 0.00159
+   },
+   "old_suite": {
+    "flagged": true,
+    "violations": [
+     "fail_03_collision_lead_braking"
+    ],
+    "counts": {
+     "fixed": 4,
+     "unchanged": 6,
+     "new_failure": 1,
+     "improved": 1
+    }
+   },
+   "new_suite": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "improved": 9,
+     "within_tolerance": 3
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 44,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 0.0,
+     "degraded": false,
+     "improved": true,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 2,
+       "better": 67,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 46,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   },
+   "old_suite_plus_safe": {
+    "flagged": true,
+    "violations": [
+     "fail_03_collision_lead_braking"
+    ],
+    "counts": {
+     "fixed": 4,
+     "unchanged": 11,
+     "new_failure": 1,
+     "improved": 2
+    }
+   },
+   "new_suite_plus_safe": {
+    "flagged": false,
+    "tier": "ok",
+    "trigger": "-",
+    "counts": {
+     "improved": 10,
+     "within_tolerance": 8
+    },
+    "violations": [],
+    "suite_level": {
+     "pairs_worse": 0,
+     "pairs_better": 44,
+     "p_one_sided": 1.0,
+     "p_one_sided_improvement": 0.0,
+     "degraded": false,
+     "improved": true,
+     "pooled": {
+      "min_gap": {
+       "label": "minimum gap",
+       "worse": 3,
+       "better": 78,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "impact_speed": {
+       "label": "impact speed",
+       "worse": 0,
+       "better": 46,
+       "p_one_sided": 1.0,
+       "degraded": false
+      },
+      "unnecessary_braking_s": {
+       "label": "unnecessary braking time",
+       "worse": 0,
+       "better": 0,
+       "p_one_sided": 1.0,
+       "degraded": false
+      }
+     }
+    },
+    "tradeoff": null
+   }
+  }
+ ],
+ "summary": {
+  "old_suite": {
+   "harmful_n": 7,
+   "harmful_detected": 7,
+   "false_negatives": [],
+   "nonharmful_n": 17,
+   "nonharmful_flagged": 6,
+   "false_positives": [
+    "STOP_BASE_DIST=0.8",
+    "EMERGENCY_DECEL=14",
+    "SLOW_BASE_DIST=3",
+    "RELEASE_FRAMES=7",
+    "STOP_BASE_DIST=3.5",
+    "EMERGENCY_DECEL=6"
+   ],
+   "neutral_n": 11,
+   "neutral_flagged": 3,
+   "improvement_n": 6,
+   "improvement_flagged": 3,
+   "identity_flagged": false
+  },
+  "new_suite": {
+   "harmful_n": 7,
+   "harmful_detected": 6,
+   "false_negatives": [
+    "SLOW_HEADWAY=0.4"
+   ],
+   "nonharmful_n": 17,
+   "nonharmful_flagged": 2,
+   "false_positives": [
+    "STOP_BASE_DIST=0.8",
+    "EMERGENCY_DECEL=14"
+   ],
+   "neutral_n": 11,
+   "neutral_flagged": 2,
+   "improvement_n": 6,
+   "improvement_flagged": 0,
+   "identity_flagged": false
+  },
+  "old_suite_plus_safe": {
+   "harmful_n": 7,
+   "harmful_detected": 7,
+   "false_negatives": [],
+   "nonharmful_n": 17,
+   "nonharmful_flagged": 6,
+   "false_positives": [
+    "STOP_BASE_DIST=0.8",
+    "EMERGENCY_DECEL=14",
+    "SLOW_BASE_DIST=3",
+    "RELEASE_FRAMES=7",
+    "STOP_BASE_DIST=3.5",
+    "EMERGENCY_DECEL=6"
+   ],
+   "neutral_n": 11,
+   "neutral_flagged": 3,
+   "improvement_n": 6,
+   "improvement_flagged": 3,
+   "identity_flagged": false
+  },
+  "new_suite_plus_safe": {
+   "harmful_n": 7,
+   "harmful_detected": 7,
+   "false_negatives": [],
+   "nonharmful_n": 17,
+   "nonharmful_flagged": 3,
+   "false_positives": [
+    "STOP_BASE_DIST=0.8",
+    "EMERGENCY_DECEL=14",
+    "SLOW_BASE_DIST=3"
+   ],
+   "neutral_n": 11,
+   "neutral_flagged": 3,
+   "improvement_n": 6,
+   "improvement_flagged": 0,
+   "identity_flagged": false
+  }
+ },
+ "noise_only": {
+  "suite": {
+   "trials": 40,
+   "scenarios": 12,
+   "seeds_per_scenario": 12,
+   "new_flagged": 0,
+   "new_false_alarm_rate": 0.0,
+   "new_tiers": {
+    "ok": 40
+   },
+   "old_flagged_approx": 40,
+   "old_false_alarm_rate_approx": 1.0,
+   "note": "old = the same checks as regress.run_regression restricted to the metrics available per seed (new failure, min gap, impact speed, unnecessary braking), using one seed per scenario; an approximation of the exact old code path"
+  },
+  "suite_plus_safe": {
+   "trials": 40,
+   "scenarios": 18,
+   "seeds_per_scenario": 12,
+   "new_flagged": 0,
+   "new_false_alarm_rate": 0.0,
+   "new_tiers": {
+    "ok": 40
+   },
+   "old_flagged_approx": 40,
+   "old_false_alarm_rate_approx": 1.0,
+   "note": "old = the same checks as regress.run_regression restricted to the metrics available per seed (new failure, min gap, impact speed, unnecessary braking), using one seed per scenario; an approximation of the exact old code path"
+  }
+ },
+ "seconds": 247.4
+}

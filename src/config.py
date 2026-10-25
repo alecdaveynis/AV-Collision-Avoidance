@@ -100,6 +100,17 @@ ESCALATE_FRAMES = 2         # consecutive frames needed to move to a worse state
 RELEASE_FRAMES = 5          # consecutive frames needed to move to a better state
 TRACK_MAX_AGE = 5           # frames before a vanished track is forgotten
 
+# --- Improved braking policy (src/safe_braking.py; the baseline planner above ignores these) ----------
+# Values were fixed from vehicle-dynamics reasoning *before* any held-out evaluation (see docs/redteam/planner_improvement.md).
+SAFE_ACTUATOR_LAG = 0.25    # s, assumed brake-actuator response (simulator: 0.2 s) + 25 % margin
+SAFE_MARGIN_FACTOR = 1.25   # demanded deceleration = factor * deceleration needed for a margin-keeping stop
+SAFE_A_SLOW = 1.5           # m/s^2, comfortable-braking demand at which SLOWING starts
+SAFE_A_STOP = 4.0           # m/s^2, demand (half of EMERGENCY_DECEL) at which STOPPED starts
+SAFE_A_IMMEDIATE = 6.0      # m/s^2, demand (75 % of EMERGENCY_DECEL) that skips the escalation confirmation
+SAFE_MIN_TRACK_HITS = 5     # Kalman closing speed is trusted from this many hits on (the prior dominates a 3-hit track)
+SAFE_A_UNCONFIRMED = 3.0    # m/s^2, cap on the demand from an obstacle whose closing speed is not yet measured
+SAFE_RELEASE_RATIO = 0.7    # a state is kept until the demand falls below ratio * its entry threshold (Schmitt band)
+
 # --- Learned TTC ----------------------------------------------------------------
 TTC_SEQ_LEN = 8             # frames of track history fed to the network (~0.8 s)
 TTC_MIN = 0.3               # s, labels / predictions are clipped to [TTC_MIN, TTC_MAX]

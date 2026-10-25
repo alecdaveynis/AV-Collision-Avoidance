@@ -13,6 +13,9 @@ COPY src ./src
 COPY tests ./tests
 COPY models ./models
 COPY scripts ./scripts
+COPY autonomy_redteam ./autonomy_redteam
+COPY scenarios ./scenarios
+COPY docs ./docs
 
 # KITTI data is mounted, not baked in:
 #   docker run --rm -v $PWD/data:/app/data -v $PWD/output:/app/output lanedet python src/main.py --profile

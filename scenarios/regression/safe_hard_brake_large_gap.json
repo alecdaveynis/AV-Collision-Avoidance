@@ -1,0 +1,24 @@
+{
+  "scenario": {
+    "ego_speed": 12.0,
+    "lead_speed": 12.0,
+    "initial_gap": 60.0,
+    "lead_decel": 5.0,
+    "brake_onset_s": 1.0,
+    "perception_latency_s": 0.0,
+    "distance_noise_std_m": 0.0,
+    "dropout_prob": 0.1,
+    "detection_loss_start_s": 0.0,
+    "detection_loss_duration_s": 0.0,
+    "ttc_error_factor": 1.0,
+    "ghost_prob": 0.04,
+    "duration_s": 14.0,
+    "seed": 1025,
+    "name": "safe_hard_brake_large_gap",
+    "schema_version": 1
+  },
+  "meta": {
+    "role": "robust safe scenario: contract",
+    "origin": "hand-designed, verified safe in 12/12 seeds with margin >= 1.5 m for both planners"
+  }
+}

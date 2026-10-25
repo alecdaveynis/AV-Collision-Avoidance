@@ -1,0 +1,27 @@
+{
+  "scenario": {
+    "ego_speed": 11.0,
+    "lead_speed": 4.319,
+    "initial_gap": 60.462969,
+    "lead_decel": 2.5,
+    "brake_onset_s": 5.5,
+    "perception_latency_s": 0.0,
+    "distance_noise_std_m": 0.0,
+    "dropout_prob": 0.27,
+    "detection_loss_start_s": 5.744,
+    "detection_loss_duration_s": 1.073,
+    "ttc_error_factor": 1.0,
+    "ghost_prob": 0.0,
+    "duration_s": 14.0,
+    "seed": 1230239153,
+    "name": "fail_04_collision_lead_braking",
+    "schema_version": 1
+  },
+  "meta": {
+    "origin": "search",
+    "method": "random",
+    "search_seed": 7,
+    "signature": "collision | faults: detection_loss | lead_braking",
+    "role": "known failure (tripwire)"
+  }
+}

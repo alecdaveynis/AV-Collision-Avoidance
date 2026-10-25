@@ -1,0 +1,935 @@
+{
+  "scenario": {
+    "ego_speed": 19.5,
+    "lead_speed": 20.0,
+    "initial_gap": 80.0,
+    "lead_decel": 2.0,
+    "brake_onset_s": 1.5,
+    "perception_latency_s": 0.0,
+    "distance_noise_std_m": 0.0,
+    "dropout_prob": 0.0,
+    "detection_loss_start_s": 0.0,
+    "detection_loss_duration_s": 0.0,
+    "ttc_error_factor": 1.0,
+    "ghost_prob": 0.0,
+    "duration_s": 14.0,
+    "seed": 1577662154,
+    "name": "top_finding-min",
+    "schema_version": 1
+  },
+  "failure_kind": "collision",
+  "n_seeds": 8,
+  "testable_components": [
+    "object_detection",
+    "distance_estimation",
+    "ttc_estimation",
+    "reaction_latency"
+  ],
+  "untestable_components": {},
+  "original_outcome": {
+    "collision": true,
+    "initial_required_decel": 0.0,
+    "impact_speed": 6.98,
+    "min_gap": 0.0,
+    "min_ttc": 0.03983734808658552,
+    "brake_reaction_time": 0.0,
+    "hazard_count": 1,
+    "hazard_onset": 8.700000000000001,
+    "missed_hazards": 0,
+    "unnecessary_braking_s": 0.0,
+    "near_miss": false,
+    "states_visited": [
+      "DRIVE",
+      "SLOWING",
+      "STOPPED"
+    ],
+    "max_state": "STOPPED",
+    "peak_cmd_decel": 8.0,
+    "first_brake_t": 8.5,
+    "lead_lost_steps": 0,
+    "max_range_error": 0.34855978796790765,
+    "mean_abs_range_error": 0.2012478899679787,
+    "perception_anomaly": false,
+    "oracle_max_brake_collides": false,
+    "oracle_reference_collides": false,
+    "oracle_reference_min_gap": 1.446532430010535,
+    "collision_class": "avoidable",
+    "failure_kinds": [
+      "collision"
+    ],
+    "primary_kind": "collision",
+    "severity": 169.8,
+    "robustness": -6.98,
+    "objective": -6.98,
+    "failed": true
+  },
+  "variants": [
+    {
+      "name": "original",
+      "fixed_components": [],
+      "interventions": [],
+      "policy": "planner",
+      "n_seeds": 8,
+      "failures": 8,
+      "failure_rate": 1.0,
+      "ci90": [
+        0.7472,
+        1.0
+      ],
+      "mean_min_gap": 0.0,
+      "collision_rate": 1.0,
+      "mean_impact_speed": 6.31
+    },
+    {
+      "name": "fix object_detection",
+      "fixed_components": [
+        "object_detection"
+      ],
+      "interventions": [
+        "ideal_detection"
+      ],
+      "policy": "planner",
+      "n_seeds": 8,
+      "failures": 8,
+      "failure_rate": 1.0,
+      "ci90": [
+        0.7472,
+        1.0
+      ],
+      "mean_min_gap": 0.0,
+      "collision_rate": 1.0,
+      "mean_impact_speed": 6.31
+    },
+    {
+      "name": "fix distance_estimation",
+      "fixed_components": [
+        "distance_estimation"
+      ],
+      "interventions": [
+        "oracle_distance"
+      ],
+      "policy": "planner",
+      "n_seeds": 8,
+      "failures": 8,
+      "failure_rate": 1.0,
+      "ci90": [
+        0.7472,
+        1.0
+      ],
+      "mean_min_gap": 0.0,
+      "collision_rate": 1.0,
+      "mean_impact_speed": 6.98
+    },
+    {
+      "name": "fix ttc_estimation",
+      "fixed_components": [
+        "ttc_estimation"
+      ],
+      "interventions": [
+        "oracle_ttc"
+      ],
+      "policy": "planner",
+      "n_seeds": 8,
+      "failures": 8,
+      "failure_rate": 1.0,
+      "ci90": [
+        0.7472,
+        1.0
+      ],
+      "mean_min_gap": 0.0,
+      "collision_rate": 1.0,
+      "mean_impact_speed": 5.95
+    },
+    {
+      "name": "fix reaction_latency",
+      "fixed_components": [
+        "reaction_latency"
+      ],
+      "interventions": [
+        "no_latency"
+      ],
+      "policy": "planner",
+      "n_seeds": 8,
+      "failures": 8,
+      "failure_rate": 1.0,
+      "ci90": [
+        0.7472,
+        1.0
+      ],
+      "mean_min_gap": 0.0,
+      "collision_rate": 1.0,
+      "mean_impact_speed": 6.31
+    },
+    {
+      "name": "fix object_detection+distance_estimation",
+      "fixed_components": [
+        "object_detection",
+        "distance_estimation"
+      ],
+      "interventions": [
+        "ideal_detection",
+        "oracle_distance"
+      ],
+      "policy": "planner",
+      "n_seeds": 8,
+      "failures": 8,
+      "failure_rate": 1.0,
+      "ci90": [
+        0.7472,
+        1.0
+      ],
+      "mean_min_gap": 0.0,
+      "collision_rate": 1.0,
+      "mean_impact_speed": 6.98
+    },
+    {
+      "name": "fix object_detection+ttc_estimation",
+      "fixed_components": [
+        "object_detection",
+        "ttc_estimation"
+      ],
+      "interventions": [
+        "ideal_detection",
+        "oracle_ttc"
+      ],
+      "policy": "planner",
+      "n_seeds": 8,
+      "failures": 8,
+      "failure_rate": 1.0,
+      "ci90": [
+        0.7472,
+        1.0
+      ],
+      "mean_min_gap": 0.0,
+      "collision_rate": 1.0,
+      "mean_impact_speed": 5.95
+    },
+    {
+      "name": "fix object_detection+reaction_latency",
+      "fixed_components": [
+        "object_detection",
+        "reaction_latency"
+      ],
+      "interventions": [
+        "ideal_detection",
+        "no_latency"
+      ],
+      "policy": "planner",
+      "n_seeds": 8,
+      "failures": 8,
+      "failure_rate": 1.0,
+      "ci90": [
+        0.7472,
+        1.0
+      ],
+      "mean_min_gap": 0.0,
+      "collision_rate": 1.0,
+      "mean_impact_speed": 6.31
+    },
+    {
+      "name": "fix distance_estimation+ttc_estimation",
+      "fixed_components": [
+        "distance_estimation",
+        "ttc_estimation"
+      ],
+      "interventions": [
+        "oracle_distance",
+        "oracle_ttc"
+      ],
+      "policy": "planner",
+      "n_seeds": 8,
+      "failures": 8,
+      "failure_rate": 1.0,
+      "ci90": [
+        0.7472,
+        1.0
+      ],
+      "mean_min_gap": 0.0,
+      "collision_rate": 1.0,
+      "mean_impact_speed": 6.46
+    },
+    {
+      "name": "fix distance_estimation+reaction_latency",
+      "fixed_components": [
+        "distance_estimation",
+        "reaction_latency"
+      ],
+      "interventions": [
+        "oracle_distance",
+        "no_latency"
+      ],
+      "policy": "planner",
+      "n_seeds": 8,
+      "failures": 8,
+      "failure_rate": 1.0,
+      "ci90": [
+        0.7472,
+        1.0
+      ],
+      "mean_min_gap": 0.0,
+      "collision_rate": 1.0,
+      "mean_impact_speed": 6.98
+    },
+    {
+      "name": "fix ttc_estimation+reaction_latency",
+      "fixed_components": [
+        "ttc_estimation",
+        "reaction_latency"
+      ],
+      "interventions": [
+        "oracle_ttc",
+        "no_latency"
+      ],
+      "policy": "planner",
+      "n_seeds": 8,
+      "failures": 8,
+      "failure_rate": 1.0,
+      "ci90": [
+        0.7472,
+        1.0
+      ],
+      "mean_min_gap": 0.0,
+      "collision_rate": 1.0,
+      "mean_impact_speed": 5.95
+    },
+    {
+      "name": "fix object_detection+distance_estimation+ttc_estimation",
+      "fixed_components": [
+        "object_detection",
+        "distance_estimation",
+        "ttc_estimation"
+      ],
+      "interventions": [
+        "ideal_detection",
+        "oracle_distance",
+        "oracle_ttc"
+      ],
+      "policy": "planner",
+      "n_seeds": 8,
+      "failures": 8,
+      "failure_rate": 1.0,
+      "ci90": [
+        0.7472,
+        1.0
+      ],
+      "mean_min_gap": 0.0,
+      "collision_rate": 1.0,
+      "mean_impact_speed": 6.46
+    },
+    {
+      "name": "fix object_detection+distance_estimation+reaction_latency",
+      "fixed_components": [
+        "object_detection",
+        "distance_estimation",
+        "reaction_latency"
+      ],
+      "interventions": [
+        "ideal_detection",
+        "oracle_distance",
+        "no_latency"
+      ],
+      "policy": "planner",
+      "n_seeds": 8,
+      "failures": 8,
+      "failure_rate": 1.0,
+      "ci90": [
+        0.7472,
+        1.0
+      ],
+      "mean_min_gap": 0.0,
+      "collision_rate": 1.0,
+      "mean_impact_speed": 6.98
+    },
+    {
+      "name": "fix object_detection+ttc_estimation+reaction_latency",
+      "fixed_components": [
+        "object_detection",
+        "ttc_estimation",
+        "reaction_latency"
+      ],
+      "interventions": [
+        "ideal_detection",
+        "oracle_ttc",
+        "no_latency"
+      ],
+      "policy": "planner",
+      "n_seeds": 8,
+      "failures": 8,
+      "failure_rate": 1.0,
+      "ci90": [
+        0.7472,
+        1.0
+      ],
+      "mean_min_gap": 0.0,
+      "collision_rate": 1.0,
+      "mean_impact_speed": 5.95
+    },
+    {
+      "name": "fix distance_estimation+ttc_estimation+reaction_latency",
+      "fixed_components": [
+        "distance_estimation",
+        "ttc_estimation",
+        "reaction_latency"
+      ],
+      "interventions": [
+        "oracle_distance",
+        "oracle_ttc",
+        "no_latency"
+      ],
+      "policy": "planner",
+      "n_seeds": 8,
+      "failures": 8,
+      "failure_rate": 1.0,
+      "ci90": [
+        0.7472,
+        1.0
+      ],
+      "mean_min_gap": 0.0,
+      "collision_rate": 1.0,
+      "mean_impact_speed": 6.46
+    },
+    {
+      "name": "ideal perception (all)",
+      "fixed_components": [
+        "object_detection",
+        "distance_estimation",
+        "ttc_estimation",
+        "reaction_latency"
+      ],
+      "interventions": [
+        "ideal_detection",
+        "oracle_distance",
+        "oracle_ttc",
+        "no_latency"
+      ],
+      "policy": "planner",
+      "n_seeds": 8,
+      "failures": 8,
+      "failure_rate": 1.0,
+      "ci90": [
+        0.7472,
+        1.0
+      ],
+      "mean_min_gap": 0.0,
+      "collision_rate": 1.0,
+      "mean_impact_speed": 6.46
+    },
+    {
+      "name": "reference policy (original perception)",
+      "fixed_components": [],
+      "interventions": [],
+      "policy": "reference",
+      "n_seeds": 8,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "ci90": [
+        0.0,
+        0.2528
+      ],
+      "mean_min_gap": 2.115,
+      "collision_rate": 0.0,
+      "mean_impact_speed": 0.0
+    },
+    {
+      "name": "reference policy (ideal perception)",
+      "fixed_components": [
+        "object_detection",
+        "distance_estimation",
+        "ttc_estimation",
+        "reaction_latency"
+      ],
+      "interventions": [
+        "ideal_detection",
+        "oracle_distance",
+        "oracle_ttc",
+        "no_latency"
+      ],
+      "policy": "reference",
+      "n_seeds": 8,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "ci90": [
+        0.0,
+        0.2528
+      ],
+      "mean_min_gap": 2.136,
+      "collision_rate": 0.0,
+      "mean_impact_speed": 0.0
+    }
+  ],
+  "shapley_failure_probability": {
+    "object_detection": {
+      "value": 0.0,
+      "ci90": [
+        0.0,
+        0.0
+      ]
+    },
+    "distance_estimation": {
+      "value": 0.0,
+      "ci90": [
+        0.0,
+        0.0
+      ]
+    },
+    "ttc_estimation": {
+      "value": 0.0,
+      "ci90": [
+        0.0,
+        0.0
+      ]
+    },
+    "reaction_latency": {
+      "value": 0.0,
+      "ci90": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "hypotheses": [
+    {
+      "component": "object_detection",
+      "label": "Object detection",
+      "status": "not supported",
+      "share": 0.0,
+      "evidence": [
+        "Shapley share of failure probability +0.00 (90% CI +0.00..+0.00)",
+        "fixing only this component changes the failure rate by -0.00 (1.00 -> 1.00)",
+        "with every other component ideal, this component alone yields a failure rate of 1.00 (ideal-perception baseline 1.00)"
+      ]
+    },
+    {
+      "component": "distance_estimation",
+      "label": "Distance estimation",
+      "status": "not supported",
+      "share": 0.0,
+      "evidence": [
+        "Shapley share of failure probability +0.00 (90% CI +0.00..+0.00)",
+        "fixing only this component changes the failure rate by -0.00 (1.00 -> 1.00)",
+        "with every other component ideal, this component alone yields a failure rate of 1.00 (ideal-perception baseline 1.00)"
+      ]
+    },
+    {
+      "component": "ttc_estimation",
+      "label": "TTC estimation",
+      "status": "not supported",
+      "share": 0.0,
+      "evidence": [
+        "Shapley share of failure probability +0.00 (90% CI +0.00..+0.00)",
+        "fixing only this component changes the failure rate by -0.00 (1.00 -> 1.00)",
+        "with every other component ideal, this component alone yields a failure rate of 1.00 (ideal-perception baseline 1.00)"
+      ]
+    },
+    {
+      "component": "reaction_latency",
+      "label": "Reaction latency (perception)",
+      "status": "not supported",
+      "share": 0.0,
+      "evidence": [
+        "Shapley share of failure probability +0.00 (90% CI +0.00..+0.00)",
+        "fixing only this component changes the failure rate by -0.00 (1.00 -> 1.00)",
+        "with every other component ideal, this component alone yields a failure rate of 1.00 (ideal-perception baseline 1.00)"
+      ]
+    },
+    {
+      "component": "planner_logic",
+      "label": "Planner decision logic / thresholds",
+      "status": "supported",
+      "share": 1.0,
+      "evidence": [
+        "with ideal perception the production planner still fails in 8/8 seeds (rate 1.00, 90% CI 0.75..1.00)",
+        "the reference RSS rule on ideal perception fails in 0/8 seeds",
+        "kinematic oracle: collision class = avoidable (max-brake from t=0 collides: False; reference policy with perfect information collides: False)"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "component": "object_detection",
+      "intervention": "ideal_detection",
+      "description": "restore ideal object detection: no dropout, no detection loss, no ghosts",
+      "original_outcome_seed0": {
+        "collision": true,
+        "impact_speed": 6.98,
+        "min_gap": 0.0,
+        "min_ttc": 0.03983734808658552,
+        "brake_reaction_time": 0.0,
+        "missed_hazards": 0,
+        "unnecessary_braking_s": 0.0,
+        "max_state": "STOPPED",
+        "first_brake_t": 8.5
+      },
+      "with_intervention_seed0": {
+        "collision": true,
+        "impact_speed": 6.98,
+        "min_gap": 0.0,
+        "min_ttc": 0.03983734808658552,
+        "brake_reaction_time": 0.0,
+        "missed_hazards": 0,
+        "unnecessary_braking_s": 0.0,
+        "max_state": "STOPPED",
+        "first_brake_t": 8.5
+      },
+      "changed_metrics_seed0": {},
+      "failure_rate_original": 1.0,
+      "failure_rate_with_intervention": 1.0,
+      "paired_fixed_by_intervention": 0,
+      "paired_broken_by_intervention": 0,
+      "n_seeds": 8
+    },
+    {
+      "component": "distance_estimation",
+      "intervention": "oracle_distance",
+      "description": "replace measured LiDAR ranges by ground truth (no range noise at all)",
+      "original_outcome_seed0": {
+        "collision": true,
+        "impact_speed": 6.98,
+        "min_gap": 0.0,
+        "min_ttc": 0.03983734808658552,
+        "brake_reaction_time": 0.0,
+        "missed_hazards": 0,
+        "unnecessary_braking_s": 0.0,
+        "max_state": "STOPPED",
+        "first_brake_t": 8.5
+      },
+      "with_intervention_seed0": {
+        "collision": true,
+        "impact_speed": 6.98,
+        "min_gap": 0.0,
+        "min_ttc": 0.03983734808658552,
+        "brake_reaction_time": 0.0,
+        "missed_hazards": 0,
+        "unnecessary_braking_s": 0.0,
+        "max_state": "STOPPED",
+        "first_brake_t": 8.5
+      },
+      "changed_metrics_seed0": {},
+      "failure_rate_original": 1.0,
+      "failure_rate_with_intervention": 1.0,
+      "paired_fixed_by_intervention": 0,
+      "paired_broken_by_intervention": 0,
+      "n_seeds": 8
+    },
+    {
+      "component": "ttc_estimation",
+      "intervention": "oracle_ttc",
+      "description": "replace the per-track TTC by the ground-truth TTC",
+      "original_outcome_seed0": {
+        "collision": true,
+        "impact_speed": 6.98,
+        "min_gap": 0.0,
+        "min_ttc": 0.03983734808658552,
+        "brake_reaction_time": 0.0,
+        "missed_hazards": 0,
+        "unnecessary_braking_s": 0.0,
+        "max_state": "STOPPED",
+        "first_brake_t": 8.5
+      },
+      "with_intervention_seed0": {
+        "collision": true,
+        "impact_speed": 6.46,
+        "min_gap": 0.0,
+        "min_ttc": 0.06515310808817204,
+        "brake_reaction_time": 0.0,
+        "missed_hazards": 0,
+        "unnecessary_braking_s": 0.0,
+        "max_state": "STOPPED",
+        "first_brake_t": 8.3
+      },
+      "changed_metrics_seed0": {
+        "impact_speed": [
+          6.98,
+          6.46
+        ],
+        "min_ttc": [
+          0.04,
+          0.065
+        ],
+        "first_brake_t": [
+          8.5,
+          8.3
+        ]
+      },
+      "failure_rate_original": 1.0,
+      "failure_rate_with_intervention": 1.0,
+      "paired_fixed_by_intervention": 0,
+      "paired_broken_by_intervention": 0,
+      "n_seeds": 8
+    },
+    {
+      "component": "reaction_latency",
+      "intervention": "no_latency",
+      "description": "remove perception latency",
+      "original_outcome_seed0": {
+        "collision": true,
+        "impact_speed": 6.98,
+        "min_gap": 0.0,
+        "min_ttc": 0.03983734808658552,
+        "brake_reaction_time": 0.0,
+        "missed_hazards": 0,
+        "unnecessary_braking_s": 0.0,
+        "max_state": "STOPPED",
+        "first_brake_t": 8.5
+      },
+      "with_intervention_seed0": {
+        "collision": true,
+        "impact_speed": 6.98,
+        "min_gap": 0.0,
+        "min_ttc": 0.03983734808658552,
+        "brake_reaction_time": 0.0,
+        "missed_hazards": 0,
+        "unnecessary_braking_s": 0.0,
+        "max_state": "STOPPED",
+        "first_brake_t": 8.5
+      },
+      "changed_metrics_seed0": {},
+      "failure_rate_original": 1.0,
+      "failure_rate_with_intervention": 1.0,
+      "paired_fixed_by_intervention": 0,
+      "paired_broken_by_intervention": 0,
+      "n_seeds": 8
+    },
+    {
+      "component": "planner_logic",
+      "intervention": "policy=reference",
+      "description": "reference policy (original perception)",
+      "original_outcome_seed0": {
+        "collision": true,
+        "impact_speed": 6.98,
+        "min_gap": 0.0,
+        "min_ttc": 0.03983734808658552,
+        "brake_reaction_time": 0.0,
+        "missed_hazards": 0,
+        "unnecessary_braking_s": 0.0,
+        "max_state": "STOPPED",
+        "first_brake_t": 8.5
+      },
+      "with_intervention_seed0": {
+        "collision": false,
+        "impact_speed": 0.0,
+        "min_gap": 2.1233164773672115,
+        "min_ttc": 1.1781509146661717,
+        "brake_reaction_time": 0.0,
+        "missed_hazards": 0,
+        "unnecessary_braking_s": 0.0,
+        "max_state": "SLOWING",
+        "first_brake_t": 7.0
+      },
+      "changed_metrics_seed0": {
+        "collision": [
+          true,
+          false
+        ],
+        "impact_speed": [
+          6.98,
+          0.0
+        ],
+        "min_gap": [
+          0.0,
+          2.123
+        ],
+        "min_ttc": [
+          0.04,
+          1.178
+        ],
+        "max_state": [
+          "STOPPED",
+          "SLOWING"
+        ],
+        "first_brake_t": [
+          8.5,
+          7.0
+        ]
+      },
+      "failure_rate_original": 1.0,
+      "failure_rate_with_intervention": 0.0,
+      "paired_fixed_by_intervention": 8,
+      "paired_broken_by_intervention": 0,
+      "n_seeds": 8
+    },
+    {
+      "component": "planner_logic",
+      "intervention": "ideal_detection,oracle_distance,oracle_ttc,no_latency",
+      "description": "reference policy (ideal perception)",
+      "original_outcome_seed0": {
+        "collision": true,
+        "impact_speed": 6.98,
+        "min_gap": 0.0,
+        "min_ttc": 0.03983734808658552,
+        "brake_reaction_time": 0.0,
+        "missed_hazards": 0,
+        "unnecessary_braking_s": 0.0,
+        "max_state": "STOPPED",
+        "first_brake_t": 8.5
+      },
+      "with_intervention_seed0": {
+        "collision": false,
+        "impact_speed": 0.0,
+        "min_gap": 2.135755441028266,
+        "min_ttc": 1.1421806598577102,
+        "brake_reaction_time": 0.09999999999999964,
+        "missed_hazards": 0,
+        "unnecessary_braking_s": 0.0,
+        "max_state": "SLOWING",
+        "first_brake_t": 7.0
+      },
+      "changed_metrics_seed0": {
+        "collision": [
+          true,
+          false
+        ],
+        "impact_speed": [
+          6.98,
+          0.0
+        ],
+        "min_gap": [
+          0.0,
+          2.136
+        ],
+        "min_ttc": [
+          0.04,
+          1.142
+        ],
+        "brake_reaction_time": [
+          0.0,
+          0.1
+        ],
+        "max_state": [
+          "STOPPED",
+          "SLOWING"
+        ],
+        "first_brake_t": [
+          8.5,
+          7.0
+        ]
+      },
+      "failure_rate_original": 1.0,
+      "failure_rate_with_intervention": 0.0,
+      "paired_fixed_by_intervention": 8,
+      "paired_broken_by_intervention": 0,
+      "n_seeds": 8
+    }
+  ],
+  "minimal_fixing_sets": [],
+  "planner_logic_check": {
+    "failure_rate_ideal_perception": 1.0,
+    "ci90": [
+      0.7472,
+      1.0
+    ],
+    "reference_rate_original_perception": 0.0,
+    "reference_rate_ideal_perception": 0.0,
+    "collision_class": "avoidable",
+    "status": "supported"
+  },
+  "notes": [
+    "failure persists with ideal perception: perception cannot be the whole explanation",
+    "Labels are evidence consistent with a cause (Shapley share and 90 % intervals over noise seeds), not a proof of a unique root cause; components interact and the attribution is conditional on this scenario, planner configuration and noise model."
+  ],
+  "simulations": 40,
+  "attribution": {
+    "verdict": "primary",
+    "primary": [
+      "planner_logic"
+    ],
+    "contributing": [],
+    "outcome_improved_by": [],
+    "error_observed": [],
+    "window": {
+      "t_hazard": 8.700000000000001,
+      "t_unsafe_decision": 8.200000000000001,
+      "t_deadline": 10.0,
+      "t_end": 11.3,
+      "note": "first insufficient command"
+    },
+    "components": {
+      "object_detection": {
+        "label": "Object detection",
+        "error_observed": false,
+        "error_before_unsafe_decision": false,
+        "observation": "longest lost-track run 0 steps, no lead return in 0% of window steps",
+        "fixes_outcome": false,
+        "fix_fraction": 0.0,
+        "paired_fixed": 0,
+        "paired_broken": 0,
+        "sufficient_alone": false,
+        "failure_rate_alone": 1.0,
+        "shapley_share": 0.0,
+        "counterfactual_evidence": false,
+        "effect": 0.0,
+        "contributed": false,
+        "class": "not implicated"
+      },
+      "distance_estimation": {
+        "label": "Distance estimation",
+        "error_observed": false,
+        "error_before_unsafe_decision": false,
+        "observation": "zero-mean range residual rms 0.06 m after removing the 0.0 s lag; raw-return jitter 0.17 m",
+        "fixes_outcome": false,
+        "fix_fraction": 0.0,
+        "paired_fixed": 0,
+        "paired_broken": 0,
+        "sufficient_alone": false,
+        "failure_rate_alone": 1.0,
+        "shapley_share": 0.0,
+        "counterfactual_evidence": false,
+        "effect": 0.0,
+        "contributed": false,
+        "class": "not implicated"
+      },
+      "ttc_estimation": {
+        "label": "TTC estimation",
+        "error_observed": false,
+        "error_before_unsafe_decision": false,
+        "observation": "median |log(est/true TTC)| 0.09 (bound 0.59) over 33 steps",
+        "fixes_outcome": false,
+        "fix_fraction": 0.0,
+        "paired_fixed": 0,
+        "paired_broken": 0,
+        "sufficient_alone": false,
+        "failure_rate_alone": 1.0,
+        "shapley_share": 0.0,
+        "counterfactual_evidence": false,
+        "effect": 0.0,
+        "contributed": false,
+        "class": "not implicated"
+      },
+      "reaction_latency": {
+        "label": "Reaction latency (perception)",
+        "error_observed": false,
+        "error_before_unsafe_decision": false,
+        "observation": "perceived range best matches the true range 0.0 s earlier (rms 0.21 m at zero lag -> 0.21 m at the fitted lag)",
+        "fixes_outcome": false,
+        "fix_fraction": 0.0,
+        "paired_fixed": 0,
+        "paired_broken": 0,
+        "sufficient_alone": false,
+        "failure_rate_alone": 1.0,
+        "shapley_share": 0.0,
+        "counterfactual_evidence": false,
+        "effect": 0.0,
+        "contributed": false,
+        "class": "not implicated"
+      },
+      "planner_logic": {
+        "label": "Planner decision logic / thresholds",
+        "contributed": true,
+        "effect": 1.0,
+        "error_observed": true,
+        "fixes_outcome": false,
+        "observation": "with every perception component ideal the planner still fails in 8/8 seeds (90% CI 0.75..1.00); the RSS reference on the same inputs fails in 0.00 of seeds (a comparison point, not ground truth)",
+        "class": "primary root cause"
+      }
+    },
+    "inconclusive_reasons": [],
+    "failure_rate_original": 1.0,
+    "failure_rate_ideal_perception": 1.0,
+    "n_seeds": 8,
+    "definitions": {
+      "contributing": "error observed before the unsafe decision AND ground-truth replacement changes the outcome",
+      "fixes_outcome": "fixing only this component removes >= half of the failures (paired seeds)",
+      "primary root cause": "contributor with effect >= 0.5 and no contributor of comparable effect"
+    }
+  }
+}

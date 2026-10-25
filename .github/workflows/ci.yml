@@ -1,6 +1,9 @@
 name: tests
 on: [push, pull_request]
 
+env:
+  MPLBACKEND: Agg
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -22,3 +25,25 @@ jobs:
         run: python -m pytest -q tests
       - name: Safety simulator smoke test (no data needed)
         run: python src/safety_sim.py --n 5 --plots-dir /tmp/sim
+      - name: Autonomy Red Team regression suite (deterministic, no LLM/GPU/KITTI)
+        run: |
+          python -m autonomy_redteam regress \
+            --suite scenarios/regression/ --baseline scenarios/baselines/v1.json --out /tmp/redteam-regress
+      - name: Red-team regression, tiered contracts + statistics (improved planner, format-2 baseline)
+        run: |
+          python -m autonomy_redteam regress \
+            --suite scenarios/regression/ --baseline scenarios/baselines/v2_improved.json --planner improved --out /tmp/redteam-regress-v2
+      - name: Failure-to-fix demo smoke test (discovery -> fix -> protection)
+        run: python -m autonomy_redteam fix-demo --no-gif --validation 60 --out /tmp/redteam-fix
+      - name: Autonomy Red Team demo smoke test (small search budget)
+        run: python -m autonomy_redteam demo --budget 30 --no-gif --out /tmp/redteam-demo
+      - name: Upload red-team reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: redteam-reports-py${{ matrix.python-version }}
+          path: |
+            /tmp/redteam-regress
+            /tmp/redteam-regress-v2
+            /tmp/redteam-fix/report.md
+            /tmp/redteam-demo/investigation/report.md
