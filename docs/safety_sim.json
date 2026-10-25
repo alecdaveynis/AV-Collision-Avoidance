@@ -1,0 +1,122 @@
+{
+ "none": {
+  "collision_rate": 0.97625,
+  "impact_speed_mean": 11.891684869331181,
+  "false_brake_rate": 0.0,
+  "hard_false_brake_rate": 0.0,
+  "speed_loss_benign": 0.0,
+  "peak_decel_hazard": 0.0,
+  "per_scenario_collision": {
+   "lead_brake": 1.0,
+   "stationary": 1.0,
+   "cut_in": 0.905,
+   "ped_crossing": 1.0
+  },
+  "per_scenario_false_brake": {
+   "follow": 0.0,
+   "adjacent_pass": 0.0,
+   "ped_sidewalk": 0.0,
+   "oncoming": 0.0
+  }
+ },
+ "planner-analytic": {
+  "collision_rate": 0.15625,
+  "impact_speed_mean": 5.299164636784425,
+  "false_brake_rate": 0.04625,
+  "hard_false_brake_rate": 0.005,
+  "speed_loss_benign": 0.07603503167325816,
+  "peak_decel_hazard": 5.8917599554606594,
+  "per_scenario_collision": {
+   "lead_brake": 0.24,
+   "stationary": 0.005,
+   "cut_in": 0.045,
+   "ped_crossing": 0.335
+  },
+  "per_scenario_false_brake": {
+   "follow": 0.115,
+   "adjacent_pass": 0.03,
+   "ped_sidewalk": 0.02,
+   "oncoming": 0.02
+  }
+ },
+ "planner-kalman": {
+  "collision_rate": 0.12125,
+  "impact_speed_mean": 5.367155480773978,
+  "false_brake_rate": 0.04875,
+  "hard_false_brake_rate": 0.00625,
+  "speed_loss_benign": 0.08353503167325815,
+  "peak_decel_hazard": 5.782785497440041,
+  "per_scenario_collision": {
+   "lead_brake": 0.175,
+   "stationary": 0.0,
+   "cut_in": 0.045,
+   "ped_crossing": 0.265
+  },
+  "per_scenario_false_brake": {
+   "follow": 0.115,
+   "adjacent_pass": 0.03,
+   "ped_sidewalk": 0.02,
+   "oncoming": 0.03
+  }
+ },
+ "rss": {
+  "collision_rate": 0.05,
+  "impact_speed_mean": 6.855187728432777,
+  "false_brake_rate": 0.0125,
+  "hard_false_brake_rate": 0.00125,
+  "speed_loss_benign": 0.020335446683038497,
+  "peak_decel_hazard": 4.994137430494975,
+  "per_scenario_collision": {
+   "lead_brake": 0.0,
+   "stationary": 0.0,
+   "cut_in": 0.06,
+   "ped_crossing": 0.14
+  },
+  "per_scenario_false_brake": {
+   "follow": 0.04,
+   "adjacent_pass": 0.0,
+   "ped_sidewalk": 0.0,
+   "oncoming": 0.01
+  }
+ },
+ "aeb": {
+  "collision_rate": 0.12,
+  "impact_speed_mean": 6.254310591569225,
+  "false_brake_rate": 0.005,
+  "hard_false_brake_rate": 0.0025,
+  "speed_loss_benign": 0.0055999999999999965,
+  "peak_decel_hazard": 5.377556616199229,
+  "per_scenario_collision": {
+   "lead_brake": 0.11,
+   "stationary": 0.04,
+   "cut_in": 0.19,
+   "ped_crossing": 0.14
+  },
+  "per_scenario_false_brake": {
+   "follow": 0.005,
+   "adjacent_pass": 0.0,
+   "ped_sidewalk": 0.0,
+   "oncoming": 0.015
+  }
+ },
+ "predictive": {
+  "collision_rate": 0.01625,
+  "impact_speed_mean": 7.810501249665295,
+  "false_brake_rate": 0.03375,
+  "hard_false_brake_rate": 0.00125,
+  "speed_loss_benign": 0.03899999999999992,
+  "peak_decel_hazard": 4.758163510988961,
+  "per_scenario_collision": {
+   "lead_brake": 0.02,
+   "stationary": 0.0,
+   "cut_in": 0.045,
+   "ped_crossing": 0.0
+  },
+  "per_scenario_false_brake": {
+   "follow": 0.0,
+   "adjacent_pass": 0.045,
+   "ped_sidewalk": 0.005,
+   "oncoming": 0.085
+  }
+ }
+}

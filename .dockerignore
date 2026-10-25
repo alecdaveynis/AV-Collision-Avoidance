@@ -1,0 +1,8 @@
+.git
+.venv
+data
+output
+results
+docs
+*.mp4
+__pycache__

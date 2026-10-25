@@ -52,6 +52,8 @@ def draw_tracked_obstacles(image, tracks, model_names):
         label = f"ID:{t['id']} {model_names[t['class']]} {dist:.1f}m {tag}"
         if t.get('ttc_learned') is not None and t['ttc_learned'] < config.TTC_MAX - 0.05:
             label += f" ttc{t['ttc_learned']:.1f}s"
+        if t.get('obj_speed') is not None:          # object ground speed from the 3D Kalman track
+            label += f" {t['obj_speed'] * 3.6:.0f}km/h"
         cv2.putText(image, label, (x1, max(y1 - 10, 15)),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
     return image

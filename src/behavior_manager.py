@@ -87,10 +87,10 @@ def _ttc(dist, closing):
     return math.inf
 
 
-TTC_MODES = ('analytic', 'learned', 'fused')
+TTC_MODES = ('analytic', 'learned', 'fused', 'kalman')
 
 
-def combine_ttc(analytic, learned, mode):
+def combine_ttc(analytic, learned, mode, kinematic=None):
     """TTC used for one object under the selected mode.
 
     analytic : range-rate TTC (inf if not closing)
@@ -98,7 +98,11 @@ def combine_ttc(analytic, learned, mode):
     fused    : geometric mean of both (analytic capped at TTC_MAX so 'not closing'
                doesn't dominate); falls back to analytic when no network output.
     learned  : network only; falls back to analytic when no network output.
+    kalman   : TTC from the 3D Kalman track (``kinematic``, uses the object's own velocity);
+               falls back to analytic when the object has no 3D track.
     """
+    if mode == 'kalman':
+        return analytic if kinematic is None else kinematic
     if mode == 'analytic' or learned is None:
         return analytic
     if mode == 'learned':
@@ -155,14 +159,18 @@ class BehaviorManager:
 
         # --- smooth per-track distance, derive closing speed -------------------
         in_path = []
+        advisories = []          # predicted (not yet in-path) conflicts: may slow the car, never stop it
         for obs in obstacles:
+            if obs.get('advisory'):
+                advisories.append(obs)
+                continue
             sm = self._tracks.get(obs['id'])
             if sm is None:
                 sm = self._tracks[obs['id']] = _Smoother(obs['dist'], self.frame)
             else:
                 sm.update(obs['dist'], self.dt, self.frame)
             if obs.get('in_path', True):
-                in_path.append((obs['id'], sm, obs.get('ttc_learned')))
+                in_path.append((obs['id'], sm, obs.get('ttc_learned'), obs.get('ttc_3d')))
         self._forget_stale()
 
         # --- LiDAR in-path minimum, handled like one more track -----------------
@@ -192,12 +200,12 @@ class BehaviorManager:
         ttc = ttc_analytic = math.inf
         ttc_learned = None
         lead = None
-        for oid, sm, learned in in_path:
+        for oid, sm, learned, kin in in_path:
             analytic = _ttc(sm.dist, sm.closing)
             ttc_analytic = min(ttc_analytic, analytic)
             if learned is not None:
                 ttc_learned = learned if ttc_learned is None else min(ttc_learned, learned)
-            used = combine_ttc(analytic, learned, self.ttc_mode)
+            used = combine_ttc(analytic, learned, self.ttc_mode, kin)
             closing = sm.closing if sm.has_closing else v
             entities.append((sm.dist, stop_zone(closing), used))
             if lead is None or sm.dist < lead[1].dist:
@@ -222,6 +230,12 @@ class BehaviorManager:
                 raw = BehaviorState.SLOW
             if dist < 0.5 * zone or e_ttc < 0.5 * config.TTC_STOP:
                 immediate = True
+        if raw == BehaviorState.GO:
+            for adv in advisories:
+                if adv['dist'] < slow_dist or adv.get('ttc_3d', math.inf) < config.TTC_SLOW:
+                    raw = BehaviorState.SLOW
+                    ttc = min(ttc, adv.get('ttc_3d', math.inf))
+                    break
         self._apply_hysteresis(raw, immediate)
 
         # Zone shown on the dashboard: the lead's, or the static-obstacle zone if none.

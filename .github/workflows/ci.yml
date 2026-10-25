@@ -1,0 +1,24 @@
+name: tests
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install (CPU torch)
+        run: |
+          sudo apt-get update && sudo apt-get install -y libgl1 libglib2.0-0
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements.txt
+      - name: Unit tests
+        run: python -m pytest -q tests
+      - name: Safety simulator smoke test (no data needed)
+        run: python src/safety_sim.py --n 5 --plots-dir /tmp/sim

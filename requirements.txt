@@ -1,6 +1,9 @@
 numpy
+scipy
 opencv-python
 torch
 ultralytics
+lap            # BoT-SORT association (ultralytics installs it on first use otherwise)
 matplotlib
 pillow
+pytest

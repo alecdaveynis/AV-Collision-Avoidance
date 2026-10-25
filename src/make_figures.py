@@ -74,16 +74,18 @@ def architecture(out_path):
 
     path = _box(ax, 8.8, 6.6, 4.0, 1.5, 'Ego-path mask',
                 ['curved corridor(k)  U  gated lane', 'orange = corridor, green = lane edges'], 'fusion')
-    obs = _box(ax, 8.8, 4.6, 4.0, 1.5, 'LiDAR obstacles',
-               ['local per-cell ground removal', 'height > 0.5 m above ground, projected'], 'fusion')
+    obs = _box(ax, 8.8, 4.6, 4.0, 1.5, 'LiDAR obstacles + 3D tracks',
+               ['local per-cell ground removal, projected', 'BEV clusters -> Kalman tracks (world frame)',
+                'object velocity, TTC with 90% band'], 'fusion')
     fus = _box(ax, 8.8, 1.3, 4.0, 2.7, 'Per-object fusion',
                ['nearest-surface LiDAR range per box', 'cluster-supported in-path distance',
                 'ground-footprint in-path test', 'monocular fallback'], 'fusion')
 
     rng = _box(ax, 13.5, 5.5, 3.6, 2.3, 'Range & analytic TTC',
-               ['EMA range + range-jump gate', 'closing speed -> TTC', 'LiDAR range-rate safety layer'], 'decide')
+               ['EMA range + range-jump gate', 'closing speed -> TTC', 'LiDAR range-rate safety layer',
+                'Kalman TTC (--ttc kalman)'], 'decide')
     ttc = _box(ax, 13.5, 3.4, 3.6, 1.7, 'TTC fusion',
-               ['physics-informed GRU', '(camera + ego speed only)', 'analytic / learned / fused'], 'decide')
+               ['physics-informed GRU', '(camera + ego speed only)', 'analytic / learned / fused / kalman'], 'decide')
     fsm = _box(ax, 13.5, 0.9, 3.6, 2.3, 'Behavior planner (FSM)',
                ['DRIVE / SLOWING / STOPPED', 'stop zone 2 m + c^2/2a', 'slow zone 6 m + 1 s headway',
                 'TTC 1 s / 3 s, hysteresis'], 'decide')

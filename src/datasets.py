@@ -102,6 +102,21 @@ class Drive:
         j = self._oxts_index(i)
         return None if j is None else float(self.packets[j, 19])
 
+    def ego_pose_world(self, i, calib):
+        """4x4 transform Velodyne frame -> world (OXTS Mercator frame) at frame i, or None."""
+        j = self._oxts_index(i)
+        if j is None:
+            return None
+        return self.poses[j] @ np.linalg.inv(calib.T_imu_to_velo)
+
+    def ego_velocity_world(self, i):
+        """(2,) ego velocity in the world frame (m/s) at frame i, or None."""
+        j = self._oxts_index(i)
+        if j is None:
+            return None
+        v_body = self.packets[j, 8:11]          # vf, vl, vu in the IMU frame
+        return (self.poses[j][:3, :3] @ v_body)[:2]
+
     def driven_path(self, i, calib, length=40.0, min_length=20.0):
         """Where the car actually drove next, in the Velodyne frame at frame i.
 
